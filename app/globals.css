@@ -11,13 +11,14 @@
   --black: #050607;
   --panel: #090b0d;
   --accent: #77c8ff;
+  --font-display: "Helvetica Neue", "Aptos", "Segoe UI Variable Display", "Segoe UI", Arial, sans-serif;
   --page-pad: clamp(1.25rem, 4vw, 4.75rem);
   --max: 1500px;
   --type-label: clamp(0.76rem, 0.12vw + 0.73rem, 0.84rem);
   --type-small: clamp(0.9rem, 0.18vw + 0.85rem, 1rem);
   --type-body: clamp(1rem, 0.28vw + 0.92rem, 1.16rem);
-  --type-display: clamp(3.75rem, 6.2vw, 7.5rem);
-  --type-section: clamp(2.2rem, 3.8vw, 4.3rem);
+  --type-display: clamp(3.5rem, 5.1vw, 6.4rem);
+  --type-section: clamp(2.2rem, 3.4vw, 3.9rem);
 }
 
 * { box-sizing: border-box; }
@@ -230,10 +231,11 @@ a:focus-visible, button:focus-visible {
   max-width: 12ch;
   margin: 0;
   color: white;
-  font-size: clamp(4.25rem, min(9.5vw, 15vh), 10.8rem);
-  font-weight: 480;
-  line-height: 0.84;
-  letter-spacing: -0.072em;
+  font-family: var(--font-display);
+  font-size: clamp(4.1rem, min(8.8vw, 14vh), 9.6rem);
+  font-weight: 510;
+  line-height: 0.86;
+  letter-spacing: -0.062em;
   text-wrap: balance;
 }
 .hero h1 span, .page-hero h1 span, .contact-copy h1 span { color: rgba(255, 255, 255, 0.5); font-weight: 310; }
@@ -309,10 +311,11 @@ a:focus-visible, button:focus-visible {
 }
 .page-hero h1 {
   margin: 0;
+  font-family: var(--font-display);
   font-size: var(--type-display);
-  font-weight: 360;
-  line-height: 0.9;
-  letter-spacing: -0.068em;
+  font-weight: 440;
+  line-height: 0.94;
+  letter-spacing: -0.052em;
 }
 .page-intro {
   max-width: 28rem;
@@ -321,6 +324,105 @@ a:focus-visible, button:focus-visible {
   font-size: var(--type-body);
   font-weight: 340;
   line-height: 1.75;
+}
+
+.visual-page-hero {
+  position: relative;
+  display: flex;
+  min-height: 90svh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 8rem var(--page-pad) 6rem;
+  isolation: isolate;
+}
+.visual-hero-image,
+.visual-hero-shade {
+  position: absolute;
+  inset: 0;
+}
+.visual-hero-image {
+  z-index: -3;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.015);
+  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.visual-page-hero:hover .visual-hero-image { transform: scale(1.035); }
+.research-visual-hero .visual-hero-image {
+  background-image: url("/assets/mekong-satellite.jpg");
+  background-position: center 46%;
+  filter: saturate(0.72) contrast(1.1) brightness(0.78);
+}
+.work-visual-hero .visual-hero-image {
+  background-image: url("/assets/work-orbit.png");
+  background-position: center 53%;
+  filter: saturate(0.88) contrast(0.98) brightness(1.08);
+}
+.visual-hero-shade {
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(2, 4, 6, 0.76) 0%, rgba(2, 4, 6, 0.16) 34%, rgba(2, 4, 6, 0.2) 62%, rgba(2, 4, 6, 0.8) 100%),
+    radial-gradient(circle at center, rgba(2, 4, 6, 0.12) 0%, rgba(2, 4, 6, 0.58) 92%);
+}
+.research-visual-hero .visual-hero-shade {
+  background:
+    linear-gradient(180deg, rgba(2, 5, 5, 0.72) 0%, rgba(2, 5, 5, 0.2) 38%, rgba(2, 5, 5, 0.65) 100%),
+    radial-gradient(circle at center, rgba(2, 5, 5, 0.24) 0%, rgba(2, 5, 5, 0.64) 100%);
+}
+.work-visual-hero .visual-hero-shade {
+  background:
+    linear-gradient(180deg, rgba(2, 4, 6, 0.58) 0%, rgba(2, 4, 6, 0.08) 38%, rgba(2, 4, 6, 0.48) 100%),
+    radial-gradient(circle at center, rgba(2, 4, 6, 0.06) 0%, rgba(2, 4, 6, 0.3) 100%);
+}
+.visual-hero-copy {
+  width: min(100%, 62rem);
+  text-align: center;
+}
+.visual-hero-copy .eyebrow { margin-bottom: 1.5rem; }
+.visual-hero-copy h1 {
+  max-width: 15ch;
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 4.6vw, 5.6rem);
+  font-weight: 520;
+  line-height: 0.94;
+  letter-spacing: -0.052em;
+  text-wrap: balance;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.38);
+}
+.visual-hero-copy h1 span {
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 390;
+}
+.visual-hero-intro {
+  max-width: 42rem;
+  margin: 1.9rem auto 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: var(--type-body);
+  font-weight: 380;
+  line-height: 1.65;
+  text-wrap: balance;
+}
+.visual-hero-number,
+.visual-hero-credit {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: var(--type-label);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.visual-hero-number {
+  top: 8rem;
+  left: var(--page-pad);
+}
+.visual-hero-credit {
+  right: var(--page-pad);
+  bottom: 2rem;
+  left: var(--page-pad);
+  margin: 0;
+  text-align: center;
 }
 .section-pad {
   width: min(100%, calc(var(--max) + var(--page-pad) * 2));
@@ -402,48 +504,6 @@ a:focus-visible, button:focus-visible {
   transform: translate(0.2rem, -0.2rem);
 }
 
-.image-break {
-  position: relative;
-  display: flex;
-  min-height: 88svh;
-  align-items: flex-end;
-  overflow: hidden;
-  padding: var(--page-pad);
-  isolation: isolate;
-}
-.image-break-photo {
-  position: absolute;
-  z-index: -3;
-  inset: 0;
-  background: url("/assets/mekong-satellite.jpg") center / cover;
-  filter: saturate(0.72) contrast(1.12) brightness(0.8);
-  transform: scale(1.01);
-  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.image-break:hover .image-break-photo { transform: scale(1.045); }
-.image-break-overlay {
-  position: absolute;
-  z-index: -2;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(3, 5, 6, 0.08), rgba(3, 5, 6, 0.84)), linear-gradient(90deg, rgba(3, 5, 6, 0.3), transparent 55%);
-}
-.image-break-copy { width: min(100%, var(--max)); margin: 0 auto; }
-.image-break-copy > span {
-  color: var(--accent);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.image-break-copy h2 {
-  margin: 1.4rem 0 2rem;
-  font-size: clamp(3rem, 5.4vw, 6.5rem);
-  font-weight: 330;
-  line-height: 0.96;
-  letter-spacing: -0.06em;
-}
-.image-break-copy p { max-width: 34rem; margin: 0; color: rgba(255, 255, 255, 0.62); font-size: 0.86rem; line-height: 1.65; }
-
 .compact-hero { min-height: 76svh; }
 .profile-page { padding-top: clamp(5rem, 8vw, 8rem); }
 .profile-layout {
@@ -481,10 +541,11 @@ a:focus-visible, button:focus-visible {
 .profile-copy { padding-top: 1rem; }
 .profile-copy h2 {
   margin: 0;
-  font-size: clamp(3.5rem, 6.3vw, 7.5rem);
-  font-weight: 340;
-  line-height: 0.9;
-  letter-spacing: -0.075em;
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 5.2vw, 6.1rem);
+  font-weight: 440;
+  line-height: 0.94;
+  letter-spacing: -0.058em;
 }
 .profile-role {
   margin: 2.5rem 0;
@@ -590,10 +651,11 @@ a:focus-visible, button:focus-visible {
 }
 .milestone-layout > h2 {
   margin: 0;
-  font-size: clamp(2.5rem, 4vw, 4.5rem);
-  font-weight: 340;
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 3.5vw, 3.9rem);
+  font-weight: 430;
+  line-height: 1;
+  letter-spacing: -0.045em;
 }
 .milestone-list { border-top: 1px solid var(--line-strong); }
 .milestone-list article {
@@ -636,10 +698,11 @@ a:focus-visible, button:focus-visible {
 .contact-copy { position: relative; z-index: 2; }
 .contact-copy h1 {
   margin: 0;
-  font-size: clamp(3.1rem, 6.2vw, 7.2rem);
-  font-weight: 330;
-  line-height: 0.94;
-  letter-spacing: -0.065em;
+  font-family: var(--font-display);
+  font-size: clamp(3.1rem, 5vw, 6rem);
+  font-weight: 440;
+  line-height: 0.96;
+  letter-spacing: -0.052em;
 }
 .contact-copy > p:not(.eyebrow) {
   max-width: 35rem;
@@ -762,12 +825,28 @@ footer > div:last-child { padding-left: 2rem; }
   .page-number { margin-bottom: 3.5rem; }
   .page-hero h1 { font-size: clamp(3.1rem, 13vw, 4.5rem); line-height: 0.94; }
   .page-intro { margin-top: 2.5rem; }
+  .visual-page-hero {
+    min-height: 82svh;
+    padding: 7.5rem var(--page-pad) 5.5rem;
+  }
+  .visual-hero-number { top: 6.6rem; }
+  .visual-hero-copy { padding-top: 1rem; }
+  .visual-hero-copy .eyebrow { margin-bottom: 1rem; }
+  .visual-hero-copy h1 { font-size: clamp(2.9rem, 12vw, 4.2rem); line-height: 0.98; }
+  .visual-hero-intro { margin-top: 1.4rem; font-size: 0.96rem; line-height: 1.6; }
+  .visual-hero-credit {
+    right: 1.25rem;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    font-size: 0.65rem;
+    line-height: 1.5;
+  }
+  .research-visual-hero .visual-hero-image { background-position: 58% center; }
+  .work-visual-hero .visual-hero-image { background-position: 62% center; }
   .section-pad { padding-top: 5rem; padding-bottom: 5rem; }
   .research-item { grid-template-columns: auto 1fr auto; gap: 1rem; }
   .research-item h2 { font-size: 1.45rem; }
   .research-detail > p { font-size: 0.94rem; }
-  .image-break { min-height: 72svh; }
-  .image-break-copy h2 { font-size: clamp(2.7rem, 11.5vw, 4.2rem); }
   .profile-layout { grid-template-columns: 1fr; }
   .portrait-wrap { width: 82%; }
   .profile-copy h2 { font-size: clamp(3.8rem, 17vw, 5rem); }

@@ -5,15 +5,20 @@ export default function WorkPage() {
   return (
     <SiteFrame active="work">
       <main className="route-main">
-        <header className="page-hero">
-          <div className="page-number">03 / 04</div>
-          <div>
-            <p className="eyebrow">Selected Work</p>
+        <header className="visual-page-hero work-visual-hero">
+          <div className="visual-hero-image" aria-hidden="true" />
+          <div className="visual-hero-shade" aria-hidden="true" />
+          <span className="visual-hero-number">03 / 04</span>
+          <div className="visual-hero-copy">
+            <p className="eyebrow">Selected Work · Earth Observation</p>
             <h1>Research that<br /><span>moves with water.</span></h1>
+            <p className="visual-hero-intro">
+              Selected publications spanning model development, flood attribution,
+              monsoon dynamics and precipitation evaluation.
+            </p>
           </div>
-          <p className="page-intro">
-            Selected publications spanning model development, flood attribution,
-            monsoon dynamics and precipitation evaluation.
+          <p className="visual-hero-credit">
+            Basin-scale insight · Model development · Climate extremes
           </p>
         </header>
 

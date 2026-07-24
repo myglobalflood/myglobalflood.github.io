@@ -5,15 +5,20 @@ export default function ResearchPage() {
   return (
     <SiteFrame active="research">
       <main className="route-main">
-        <header className="page-hero research-hero">
-          <div className="page-number">01 / 04</div>
-          <div>
-            <p className="eyebrow">Research</p>
-            <h1>Three scales.<br /><span>One connected system.</span></h1>
+        <header className="visual-page-hero research-visual-hero">
+          <div className="visual-hero-image" aria-hidden="true" />
+          <div className="visual-hero-shade" aria-hidden="true" />
+          <span className="visual-hero-number">01 / 04</span>
+          <div className="visual-hero-copy">
+            <p className="eyebrow">Research · Basin Intelligence</p>
+            <h1>One system.<br /><span>Three scales.</span></h1>
+            <p className="visual-hero-intro">
+              From hillslopes to transboundary basins, we develop models that
+              make water dynamics visible, explainable and actionable.
+            </p>
           </div>
-          <p className="page-intro">
-            From hillslopes to transboundary basins, we develop models that make
-            water dynamics visible, explainable and actionable.
+          <p className="visual-hero-credit">
+            Mekong River near Huay Xai · NASA Earth Observatory · Landsat 8
           </p>
         </header>
 
@@ -35,18 +40,6 @@ export default function ResearchPage() {
           </div>
         </section>
 
-        <section className="image-break" aria-label="Mekong River research landscape">
-          <div className="image-break-photo" aria-hidden="true" />
-          <div className="image-break-overlay" />
-          <div className="image-break-copy" data-reveal>
-            <span>Lancang–Mekong Basin</span>
-            <h2>Observe the system.<br />Resolve the extremes.</h2>
-            <p>
-              Satellite view: Mekong River near Huay Xai, Laos / NASA Earth
-              Observatory, Landsat 8.
-            </p>
-          </div>
-        </section>
       </main>
     </SiteFrame>
   );
