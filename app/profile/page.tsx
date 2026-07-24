@@ -1,4 +1,5 @@
 import { SiteFrame } from "../components/site-frame";
+import { withBasePath } from "../site-path";
 
 export default function ProfilePage() {
   return (
@@ -7,7 +8,12 @@ export default function ProfilePage() {
         <section className="profile-page section-pad">
           <div className="profile-layout">
             <div className="portrait-wrap" data-reveal>
-              <div className="portrait" role="img" aria-label="Portrait of Jie Wang" />
+              <div
+                className="portrait"
+                style={{ backgroundImage: `linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.38)), url("${withBasePath("/assets/wang-jie.jpg")}")` }}
+                role="img"
+                aria-label="Portrait of Jie Wang"
+              />
               <span className="portrait-code">PI / 01</span>
             </div>
             <div className="profile-copy" data-reveal>

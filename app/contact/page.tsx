@@ -1,11 +1,16 @@
 import { SiteFrame } from "../components/site-frame";
+import { withBasePath } from "../site-path";
 
 export default function ContactPage() {
   return (
     <SiteFrame active="contact" footer={false}>
       <main className="route-main contact-main">
         <section className="contact">
-          <div className="contact-earth" aria-hidden="true" />
+          <div
+            className="contact-earth"
+            style={{ backgroundImage: `url("${withBasePath("/assets/contact-earth.webp")}")` }}
+            aria-hidden="true"
+          />
           <div className="contact-coordinate" aria-hidden="true">
             <span>36.03° N</span><span>103.83° E</span>
           </div>

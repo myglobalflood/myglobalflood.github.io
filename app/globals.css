@@ -165,7 +165,8 @@ a:focus-visible, button:focus-visible {
   position: absolute;
   z-index: -5;
   inset: -1.5rem;
-  background: url("/assets/mekong-satellite.webp") 50% 46% / cover;
+  background-position: 50% 46%;
+  background-size: cover;
   filter: grayscale(0.82) saturate(0.64) contrast(1.18) brightness(0.6);
   transform: translate3d(var(--hero-shift-x), var(--hero-shift-y), 0) scale(1.07);
   transition: transform 180ms linear;
@@ -314,12 +315,10 @@ a:focus-visible, button:focus-visible {
 }
 .visual-page-hero:hover .visual-hero-image { transform: scale(1.035); }
 .research-visual-hero .visual-hero-image {
-  background-image: url("/assets/mekong-satellite.webp");
   background-position: center 46%;
   filter: saturate(0.9) contrast(1.1) brightness(0.94);
 }
 .work-visual-hero .visual-hero-image {
-  background-image: url("/assets/work-water.webp");
   background-position: center 48%;
   filter: saturate(0.88) contrast(1.08) brightness(0.94);
 }
@@ -473,7 +472,8 @@ a:focus-visible, button:focus-visible {
 .portrait-wrap { position: relative; max-width: 26rem; }
 .portrait {
   aspect-ratio: 0.76;
-  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.38)), url("/assets/wang-jie.jpg") center 22% / cover;
+  background-position: center 22%;
+  background-size: cover;
   filter: saturate(0.86) contrast(1.08);
 }
 .portrait-wrap::before {
@@ -643,7 +643,9 @@ a:focus-visible, button:focus-visible {
   position: absolute;
   z-index: -2;
   inset: 0;
-  background: url("/assets/contact-earth.webp") center 42% / cover no-repeat;
+  background-position: center 42%;
+  background-size: cover;
+  background-repeat: no-repeat;
   filter: saturate(0.68) contrast(1.12) brightness(0.9);
   opacity: 0.56;
   transform: scale(1.025);

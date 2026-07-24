@@ -1,6 +1,6 @@
 # Project publishing context
 
-- For the current review phase, publish and preview this website through the existing ChatGPT Site project defined in `.openai/hosting.json`.
-- Do not create or use a personal GitHub repository or GitHub Pages deployment for this project.
-- A later production handoff may be published to the teacher's own repository, institutional hosting, or another destination after that destination is explicitly confirmed.
-- Preserve the existing ChatGPT Site project ID and update that same project for subsequent previews.
+- The primary public preview for mainland-China accessibility is GitHub Pages from `Grups666/AHSLab`.
+- Preserve the existing ChatGPT Site project defined in `.openai/hosting.json` as a secondary preview and keep its project ID unchanged.
+- Do not use the retired `Grups666/WJGroup` repository for this project.
+- A later production handoff may move to the teacher's own repository, institutional hosting, or another explicitly confirmed destination.

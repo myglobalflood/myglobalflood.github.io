@@ -1,12 +1,17 @@
 import { SiteFrame } from "../components/site-frame";
 import { milestones, publications } from "../site-data";
+import { withBasePath } from "../site-path";
 
 export default function WorkPage() {
   return (
     <SiteFrame active="work">
       <main className="route-main">
         <header className="visual-page-hero work-visual-hero">
-          <div className="visual-hero-image" aria-hidden="true" />
+          <div
+            className="visual-hero-image"
+            style={{ backgroundImage: `url("${withBasePath("/assets/work-water.webp")}")` }}
+            aria-hidden="true"
+          />
           <div className="visual-hero-shade" aria-hidden="true" />
           <div className="visual-hero-copy">
             <p className="eyebrow">Selected Work · Earth Observation</p>

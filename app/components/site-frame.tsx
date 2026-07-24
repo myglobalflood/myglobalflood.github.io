@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { withBasePath } from "../site-path";
 
 type RouteName = "home" | "research" | "profile" | "work" | "contact";
 
@@ -125,7 +126,7 @@ export function SiteFrame({
   return (
     <div className={`site-shell ${home ? "is-home" : "is-interior"}`} ref={shellRef}>
       <header className={`site-nav ${scrolled || !home ? "is-scrolled" : ""}`}>
-        <a className="brand" href="/" aria-label="AHS Lab home">
+        <a className="brand" href={withBasePath("/")} aria-label="AHS Lab home">
           <span className="brand-mark">AHS</span>
           <span className="brand-name">Advanced Hydrological<br />Simulation</span>
         </a>
@@ -147,7 +148,7 @@ export function SiteFrame({
           {navItems.map((item) => (
             <a
               className={active === item.key ? "is-active" : ""}
-              href={item.href}
+              href={withBasePath(item.href)}
               onClick={() => setMenuOpen(false)}
               key={item.key}
             >
@@ -163,7 +164,7 @@ export function SiteFrame({
       {!home && footer && (
         <footer>
           <div><span>AHS Lab</span><span>Floods &amp; Global Change</span></div>
-          <div><span>© 2026 Lanzhou University</span><a href="/">Home ↗</a></div>
+          <div><span>© 2026 Lanzhou University</span><a href={withBasePath("/")}>Home ↗</a></div>
         </footer>
       )}
       <div className="cursor-aura" aria-hidden="true" />

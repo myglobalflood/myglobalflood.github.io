@@ -1,12 +1,17 @@
 import { SiteFrame } from "../components/site-frame";
 import { research } from "../site-data";
+import { withBasePath } from "../site-path";
 
 export default function ResearchPage() {
   return (
     <SiteFrame active="research">
       <main className="route-main">
         <header className="visual-page-hero research-visual-hero">
-          <div className="visual-hero-image" aria-hidden="true" />
+          <div
+            className="visual-hero-image"
+            style={{ backgroundImage: `url("${withBasePath("/assets/mekong-satellite.webp")}")` }}
+            aria-hidden="true"
+          />
           <div className="visual-hero-shade" aria-hidden="true" />
           <div className="visual-hero-copy">
             <p className="eyebrow">Research · Basin Intelligence</p>

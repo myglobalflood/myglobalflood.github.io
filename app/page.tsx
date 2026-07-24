@@ -1,11 +1,16 @@
 import { SiteFrame } from "./components/site-frame";
+import { withBasePath } from "./site-path";
 
 export default function Home() {
   return (
     <SiteFrame active="home" home flow>
       <main className="home-main">
         <section className="hero">
-          <div className="hero-image" aria-hidden="true" />
+          <div
+            className="hero-image"
+            style={{ backgroundImage: `url("${withBasePath("/assets/mekong-satellite.webp")}")` }}
+            aria-hidden="true"
+          />
           <div className="hero-shade" aria-hidden="true" />
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-kicker hero-load">
@@ -19,7 +24,7 @@ export default function Home() {
               <br />
               <span>understood.</span>
             </h1>
-            <a className="hero-cta hero-load" href="/research/">
+            <a className="hero-cta hero-load" href={withBasePath("/research/")}>
               <span>View research</span>
               <b aria-hidden="true">↗</b>
             </a>

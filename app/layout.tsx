@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://ahs-lab-lzu.sappy-seed-4321.chatgpt.site/";
+const socialImage = new URL("assets/og.png", siteUrl).toString();
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ahs-lab-lzu.sappy-seed-4321.chatgpt.site/"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "AHS Lab · Floods & Global Change",
     template: "%s · AHS Lab",
@@ -14,13 +19,13 @@ export const metadata: Metadata = {
     title: "AHS Lab · Floods & Global Change",
     description: "High-performance modelling for floods, climate change and resilient water systems.",
     type: "website",
-    images: [{ url: "/assets/og.png", width: 1732, height: 908, alt: "AHS Lab — Floods, understood." }],
+    images: [{ url: socialImage, width: 1732, height: 908, alt: "AHS Lab — Floods, understood." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "AHS Lab · Floods & Global Change",
     description: "High-performance modelling for floods, climate change and resilient water systems.",
-    images: ["/assets/og.png"],
+    images: [socialImage],
   },
 };
 
