@@ -5,6 +5,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   "https://ahs-lab-lzu.sappy-seed-4321.chatgpt.site/";
 const socialImage = new URL("assets/og.png", siteUrl).toString();
+const favicon = new URL("favicon.svg", siteUrl).toString();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -15,6 +16,10 @@ export const metadata: Metadata = {
   description:
     "Advanced Hydrological Simulation and Application at Lanzhou University — high-performance flood modelling, attribution and monitoring.",
   keywords: ["hydrology", "flood modelling", "global change", "Lanzhou University", "Jie Wang"],
+  icons: {
+    icon: [{ url: favicon, type: "image/svg+xml" }],
+    shortcut: favicon,
+  },
   openGraph: {
     title: "AHS Lab · Floods & Global Change",
     description: "High-performance modelling for floods, climate change and resilient water systems.",
