@@ -4,17 +4,6 @@ export default function ProfilePage() {
   return (
     <SiteFrame active="profile">
       <main className="route-main">
-        <header className="page-hero compact-hero">
-          <div className="page-number">02 / 04</div>
-          <div>
-            <p className="eyebrow">Principal Investigator</p>
-            <h1>Jie Wang</h1>
-          </div>
-          <p className="page-intro">
-            High-performance hydrological modelling for a changing world.
-          </p>
-        </header>
-
         <section className="profile-page section-pad">
           <div className="profile-layout">
             <div className="portrait-wrap" data-reveal>

@@ -8,7 +8,6 @@ export default function WorkPage() {
         <header className="visual-page-hero work-visual-hero">
           <div className="visual-hero-image" aria-hidden="true" />
           <div className="visual-hero-shade" aria-hidden="true" />
-          <span className="visual-hero-number">03 / 04</span>
           <div className="visual-hero-copy">
             <p className="eyebrow">Selected Work · Earth Observation</p>
             <h1>Research that<br /><span>moves with water.</span></h1>
@@ -18,7 +17,7 @@ export default function WorkPage() {
             </p>
           </div>
           <p className="visual-hero-credit">
-            Basin-scale insight · Model development · Climate extremes
+            Ili River Delta · NASA Earth Observatory · Landsat 8
           </p>
         </header>
 

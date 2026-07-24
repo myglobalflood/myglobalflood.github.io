@@ -5,7 +5,7 @@ export default function ContactPage() {
     <SiteFrame active="contact" footer={false}>
       <main className="route-main contact-main">
         <section className="contact">
-          <div className="contact-orbit" aria-hidden="true" />
+          <div className="contact-earth" aria-hidden="true" />
           <div className="contact-coordinate" aria-hidden="true">
             <span>36.03° N</span><span>103.83° E</span>
           </div>

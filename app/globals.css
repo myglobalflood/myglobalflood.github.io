@@ -165,7 +165,7 @@ a:focus-visible, button:focus-visible {
   position: absolute;
   z-index: -5;
   inset: -1.5rem;
-  background: url("/assets/mekong-satellite.jpg") 50% 46% / cover;
+  background: url("/assets/mekong-satellite.webp") 50% 46% / cover;
   filter: grayscale(0.82) saturate(0.64) contrast(1.18) brightness(0.6);
   transform: translate3d(var(--hero-shift-x), var(--hero-shift-y), 0) scale(1.07);
   transition: transform 180ms linear;
@@ -238,7 +238,7 @@ a:focus-visible, button:focus-visible {
   letter-spacing: -0.062em;
   text-wrap: balance;
 }
-.hero h1 span, .page-hero h1 span, .contact-copy h1 span { color: rgba(255, 255, 255, 0.5); font-weight: 310; }
+.hero h1 span, .contact-copy h1 span { color: rgba(255, 255, 255, 0.5); font-weight: 310; }
 .hero-cta {
   display: inline-flex;
   gap: 1.5rem;
@@ -290,42 +290,6 @@ a:focus-visible, button:focus-visible {
   from { opacity: 0; transform: translateY(1.5rem); }
   to { opacity: 1; transform: translateY(0); }
 }
-.page-hero {
-  display: grid;
-  width: min(100%, calc(var(--max) + var(--page-pad) * 2));
-  min-height: 82svh;
-  grid-template-columns: 0.35fr 1.45fr 0.7fr;
-  gap: clamp(2rem, 4vw, 5rem);
-  align-items: end;
-  margin: 0 auto;
-  padding: 11rem var(--page-pad) clamp(5rem, 8vw, 8rem);
-  border-bottom: 1px solid var(--line);
-}
-.page-number {
-  align-self: start;
-  padding-top: 0.25rem;
-  color: var(--faint);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-}
-.page-hero h1 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-display);
-  font-weight: 440;
-  line-height: 0.94;
-  letter-spacing: -0.052em;
-}
-.page-intro {
-  max-width: 28rem;
-  margin: 0 0 0.35rem;
-  color: var(--muted);
-  font-size: var(--type-body);
-  font-weight: 340;
-  line-height: 1.75;
-}
-
 .visual-page-hero {
   position: relative;
   display: flex;
@@ -350,14 +314,14 @@ a:focus-visible, button:focus-visible {
 }
 .visual-page-hero:hover .visual-hero-image { transform: scale(1.035); }
 .research-visual-hero .visual-hero-image {
-  background-image: url("/assets/mekong-satellite.jpg");
+  background-image: url("/assets/mekong-satellite.webp");
   background-position: center 46%;
-  filter: saturate(0.72) contrast(1.1) brightness(0.78);
+  filter: saturate(0.9) contrast(1.1) brightness(0.94);
 }
 .work-visual-hero .visual-hero-image {
-  background-image: url("/assets/work-orbit.png");
-  background-position: center 53%;
-  filter: saturate(0.88) contrast(0.98) brightness(1.08);
+  background-image: url("/assets/work-water.webp");
+  background-position: center 48%;
+  filter: saturate(0.88) contrast(1.08) brightness(0.94);
 }
 .visual-hero-shade {
   z-index: -2;
@@ -367,13 +331,13 @@ a:focus-visible, button:focus-visible {
 }
 .research-visual-hero .visual-hero-shade {
   background:
-    linear-gradient(180deg, rgba(2, 5, 5, 0.72) 0%, rgba(2, 5, 5, 0.2) 38%, rgba(2, 5, 5, 0.65) 100%),
-    radial-gradient(circle at center, rgba(2, 5, 5, 0.24) 0%, rgba(2, 5, 5, 0.64) 100%);
+    linear-gradient(180deg, rgba(2, 5, 5, 0.58) 0%, rgba(2, 5, 5, 0.08) 38%, rgba(2, 5, 5, 0.5) 100%),
+    radial-gradient(circle at center, rgba(2, 5, 5, 0.08) 0%, rgba(2, 5, 5, 0.36) 100%);
 }
 .work-visual-hero .visual-hero-shade {
   background:
-    linear-gradient(180deg, rgba(2, 4, 6, 0.58) 0%, rgba(2, 4, 6, 0.08) 38%, rgba(2, 4, 6, 0.48) 100%),
-    radial-gradient(circle at center, rgba(2, 4, 6, 0.06) 0%, rgba(2, 4, 6, 0.3) 100%);
+    linear-gradient(180deg, rgba(2, 4, 6, 0.64) 0%, rgba(2, 4, 6, 0.04) 36%, rgba(2, 4, 6, 0.52) 100%),
+    radial-gradient(ellipse at center, rgba(2, 4, 6, 0.54) 0%, rgba(2, 4, 6, 0.1) 48%, rgba(2, 4, 6, 0.24) 100%);
 }
 .visual-hero-copy {
   width: min(100%, 62rem);
@@ -404,7 +368,6 @@ a:focus-visible, button:focus-visible {
   line-height: 1.65;
   text-wrap: balance;
 }
-.visual-hero-number,
 .visual-hero-credit {
   position: absolute;
   color: rgba(255, 255, 255, 0.5);
@@ -412,10 +375,6 @@ a:focus-visible, button:focus-visible {
   font-size: var(--type-label);
   letter-spacing: 0.09em;
   text-transform: uppercase;
-}
-.visual-hero-number {
-  top: 8rem;
-  left: var(--page-pad);
 }
 .visual-hero-credit {
   right: var(--page-pad);
@@ -504,19 +463,18 @@ a:focus-visible, button:focus-visible {
   transform: translate(0.2rem, -0.2rem);
 }
 
-.compact-hero { min-height: 76svh; }
-.profile-page { padding-top: clamp(5rem, 8vw, 8rem); }
+.profile-page { padding-top: clamp(9rem, 12vw, 12rem); }
 .profile-layout {
   display: grid;
   grid-template-columns: minmax(18rem, 0.72fr) 1.28fr;
   gap: clamp(3rem, 9vw, 10rem);
   align-items: start;
 }
-.portrait-wrap { position: relative; max-width: 30rem; }
+.portrait-wrap { position: relative; max-width: 26rem; }
 .portrait {
   aspect-ratio: 0.76;
   background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.38)), url("/assets/wang-jie.jpg") center 22% / cover;
-  filter: saturate(0.68) contrast(1.06);
+  filter: saturate(0.86) contrast(1.08);
 }
 .portrait-wrap::before {
   position: absolute;
@@ -677,23 +635,27 @@ a:focus-visible, button:focus-visible {
   place-items: center;
   overflow: hidden;
   padding: 9rem var(--page-pad) 5rem;
-  background: radial-gradient(circle at center, rgba(28, 91, 129, 0.17), transparent 30%), #030405;
+  background: #030405;
   text-align: center;
+  isolation: isolate;
 }
-.contact::before, .contact::after, .contact-orbit {
+.contact-earth {
   position: absolute;
-  width: min(72vw, 62rem);
-  aspect-ratio: 1;
-  border: 1px solid rgba(119, 200, 255, 0.12);
-  border-radius: 50%;
-  content: "";
+  z-index: -2;
+  inset: 0;
+  background: url("/assets/contact-earth.webp") center 42% / cover no-repeat;
+  filter: saturate(0.68) contrast(1.12) brightness(0.9);
+  opacity: 0.56;
+  transform: scale(1.025);
 }
-.contact::before { animation: orbit-pulse 7s ease-in-out infinite; }
-.contact::after { width: min(50vw, 42rem); animation: orbit-pulse 7s 1.4s ease-in-out infinite; }
-.contact-orbit { width: min(28vw, 23rem); animation: orbit-pulse 7s 2.8s ease-in-out infinite; }
-@keyframes orbit-pulse {
-  0%, 100% { opacity: 0.28; transform: scale(0.96); }
-  50% { opacity: 0.8; transform: scale(1.02); }
+.contact::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(3, 4, 5, 0.18) 0%, rgba(3, 4, 5, 0.2) 42%, rgba(3, 4, 5, 0.86) 100%),
+    radial-gradient(circle at center, rgba(3, 4, 5, 0.08) 0%, rgba(3, 4, 5, 0.45) 82%);
+  content: "";
 }
 .contact-copy { position: relative; z-index: 2; }
 .contact-copy h1 {
@@ -724,6 +686,7 @@ a:focus-visible, button:focus-visible {
 .contact-link:hover { border-color: var(--accent); color: var(--accent); }
 .contact-coordinate, .contact-meta {
   position: absolute;
+  z-index: 2;
   right: var(--page-pad);
   left: var(--page-pad);
   display: flex;
@@ -792,8 +755,6 @@ footer > div:last-child { padding-left: 2rem; }
   .site-nav nav a::after { display: none; }
   .site-nav nav a.is-active::before { margin-right: 0.8rem; color: var(--accent); content: "·"; }
   .menu-toggle { z-index: 1; display: block; }
-  .page-hero { grid-template-columns: 0.25fr 1.75fr; min-height: 74svh; }
-  .page-intro { grid-column: 2; }
   .research-item { grid-template-columns: 0.22fr 1.25fr auto; padding: 3rem 0; }
   .research-index { padding-top: 0.3rem; }
   .research-detail { grid-column: 2 / 4; }
@@ -816,20 +777,10 @@ footer > div:last-child { padding-left: 2rem; }
   .hero-copy { transform: translateY(-0.5rem); }
   .hero-cta { margin-top: 1.8rem; }
   .hero-index { display: none; }
-  .page-hero {
-    display: block;
-    min-height: auto;
-    padding-top: 9rem;
-    padding-bottom: 4.5rem;
-  }
-  .page-number { margin-bottom: 3.5rem; }
-  .page-hero h1 { font-size: clamp(3.1rem, 13vw, 4.5rem); line-height: 0.94; }
-  .page-intro { margin-top: 2.5rem; }
   .visual-page-hero {
     min-height: 82svh;
     padding: 7.5rem var(--page-pad) 5.5rem;
   }
-  .visual-hero-number { top: 6.6rem; }
   .visual-hero-copy { padding-top: 1rem; }
   .visual-hero-copy .eyebrow { margin-bottom: 1rem; }
   .visual-hero-copy h1 { font-size: clamp(2.9rem, 12vw, 4.2rem); line-height: 0.98; }
@@ -849,6 +800,7 @@ footer > div:last-child { padding-left: 2rem; }
   .research-detail > p { font-size: 0.94rem; }
   .profile-layout { grid-template-columns: 1fr; }
   .portrait-wrap { width: 82%; }
+  .profile-page { padding-top: 8rem; }
   .profile-copy h2 { font-size: clamp(3.8rem, 17vw, 5rem); }
   .profile-statement { grid-template-columns: 1fr; }
   .profile-statement p { font-size: clamp(2.05rem, 9.5vw, 3.1rem); }
@@ -856,9 +808,7 @@ footer > div:last-child { padding-left: 2rem; }
   .publication-year { display: none; }
   .publication-main strong { font-size: 1.08rem; }
   .milestone-list article { grid-template-columns: 0.35fr 1.65fr; gap: 1rem; }
-  .contact::before { width: 120vw; }
-  .contact::after { width: 82vw; }
-  .contact-orbit { width: 48vw; }
+  .contact-earth { background-position: 58% center; opacity: 0.5; }
   .contact-copy h1 { font-size: clamp(2.9rem, 11.5vw, 4.3rem); }
   .contact-coordinate { display: none; }
   .contact-meta { display: grid; gap: 0.5rem; }

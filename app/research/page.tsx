@@ -8,7 +8,6 @@ export default function ResearchPage() {
         <header className="visual-page-hero research-visual-hero">
           <div className="visual-hero-image" aria-hidden="true" />
           <div className="visual-hero-shade" aria-hidden="true" />
-          <span className="visual-hero-number">01 / 04</span>
           <div className="visual-hero-copy">
             <p className="eyebrow">Research · Basin Intelligence</p>
             <h1>One system.<br /><span>Three scales.</span></h1>
