@@ -648,7 +648,7 @@ a:focus-visible, button:focus-visible {
   background-repeat: no-repeat;
   filter: saturate(0.68) contrast(1.12) brightness(0.9);
   opacity: 0.56;
-  transform: translateY(clamp(1.25rem, 2.5vh, 1.9rem)) scale(1.025);
+  transform: translateY(calc(clamp(1.25rem, 2.5vh, 1.9rem) + 20px)) scale(1.025);
 }
 .contact::before {
   position: absolute;
@@ -813,7 +813,7 @@ footer > div:last-child { padding-left: 2rem; }
   .contact-earth {
     background-position: 58% center;
     opacity: 0.5;
-    transform: translateY(1rem) scale(1.025);
+    transform: translateY(calc(1rem + 20px)) scale(1.025);
   }
   .contact-copy h1 { font-size: clamp(2.9rem, 11.5vw, 4.3rem); }
   .contact-coordinate { display: none; }
