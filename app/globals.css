@@ -13,6 +13,11 @@
   --accent: #77c8ff;
   --page-pad: clamp(1.25rem, 4vw, 4.75rem);
   --max: 1500px;
+  --type-label: clamp(0.76rem, 0.12vw + 0.73rem, 0.84rem);
+  --type-small: clamp(0.9rem, 0.18vw + 0.85rem, 1rem);
+  --type-body: clamp(1rem, 0.28vw + 0.92rem, 1.16rem);
+  --type-display: clamp(3.75rem, 6.2vw, 7.5rem);
+  --type-section: clamp(2.2rem, 3.8vw, 4.3rem);
 }
 
 * { box-sizing: border-box; }
@@ -93,7 +98,7 @@ a:focus-visible, button:focus-visible {
 .brand:hover .brand-mark { border-color: var(--accent); color: var(--accent); transform: rotate(-8deg); }
 .brand-name {
   color: rgba(255, 255, 255, 0.78);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 520;
   line-height: 1.25;
   letter-spacing: 0.035em;
@@ -106,7 +111,7 @@ a:focus-visible, button:focus-visible {
   padding: 0.7rem 0;
   color: rgba(255, 255, 255, 0.62);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.7rem;
+  font-size: var(--type-label);
   letter-spacing: 0.09em;
   text-transform: uppercase;
   transition: color 250ms ease;
@@ -203,7 +208,7 @@ a:focus-visible, button:focus-visible {
   gap: 1.5rem;
   color: rgba(255, 255, 255, 0.52);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.7rem;
+  font-size: var(--type-label);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -216,7 +221,7 @@ a:focus-visible, button:focus-visible {
   margin: 0 0 1.3rem;
   color: var(--accent);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.76rem;
+  font-size: 0.82rem;
   font-weight: 510;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -241,7 +246,7 @@ a:focus-visible, button:focus-visible {
   border-bottom: 1px solid rgba(255, 255, 255, 0.48);
   color: rgba(255, 255, 255, 0.88);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: color 300ms ease, border-color 300ms ease;
@@ -261,7 +266,7 @@ a:focus-visible, button:focus-visible {
   gap: 1.6rem;
   color: rgba(255, 255, 255, 0.38);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -299,12 +304,12 @@ a:focus-visible, button:focus-visible {
   padding-top: 0.25rem;
   color: var(--faint);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   letter-spacing: 0.1em;
 }
 .page-hero h1 {
   margin: 0;
-  font-size: clamp(4rem, 8vw, 9rem);
+  font-size: var(--type-display);
   font-weight: 360;
   line-height: 0.9;
   letter-spacing: -0.068em;
@@ -313,7 +318,7 @@ a:focus-visible, button:focus-visible {
   max-width: 28rem;
   margin: 0 0 0.35rem;
   color: var(--muted);
-  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
+  font-size: var(--type-body);
   font-weight: 340;
   line-height: 1.75;
 }
@@ -359,12 +364,12 @@ a:focus-visible, button:focus-visible {
   padding-top: 3.8rem;
   color: var(--accent);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.66rem;
+  font-size: 0.76rem;
 }
 .research-item h2 {
   max-width: 17ch;
   margin: 0;
-  font-size: clamp(1.55rem, 2.7vw, 2.9rem);
+  font-size: clamp(1.65rem, 2.2vw, 2.5rem);
   font-weight: 390;
   line-height: 1.08;
   letter-spacing: -0.04em;
@@ -373,7 +378,7 @@ a:focus-visible, button:focus-visible {
   max-width: 32rem;
   margin: 0;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: var(--type-small);
   font-weight: 350;
   line-height: 1.75;
 }
@@ -384,7 +389,7 @@ a:focus-visible, button:focus-visible {
   border-radius: 2rem;
   color: var(--faint);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   letter-spacing: 0.05em;
 }
 .research-arrow, .publication-arrow {
@@ -426,18 +431,18 @@ a:focus-visible, button:focus-visible {
 .image-break-copy > span {
   color: var(--accent);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .image-break-copy h2 {
   margin: 1.4rem 0 2rem;
-  font-size: clamp(3rem, 7vw, 7.5rem);
+  font-size: clamp(3rem, 5.4vw, 6.5rem);
   font-weight: 330;
   line-height: 0.96;
   letter-spacing: -0.06em;
 }
-.image-break-copy p { max-width: 34rem; margin: 0; color: rgba(255, 255, 255, 0.58); font-size: 0.75rem; line-height: 1.6; }
+.image-break-copy p { max-width: 34rem; margin: 0; color: rgba(255, 255, 255, 0.62); font-size: 0.86rem; line-height: 1.65; }
 
 .compact-hero { min-height: 76svh; }
 .profile-page { padding-top: clamp(5rem, 8vw, 8rem); }
@@ -470,13 +475,13 @@ a:focus-visible, button:focus-visible {
   bottom: 1rem;
   color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
 }
 .profile-copy { padding-top: 1rem; }
 .profile-copy h2 {
   margin: 0;
-  font-size: clamp(4.5rem, 9vw, 9.5rem);
+  font-size: clamp(3.5rem, 6.3vw, 7.5rem);
   font-weight: 340;
   line-height: 0.9;
   letter-spacing: -0.075em;
@@ -484,7 +489,7 @@ a:focus-visible, button:focus-visible {
 .profile-role {
   margin: 2.5rem 0;
   color: rgba(255, 255, 255, 0.8);
-  font-size: clamp(1rem, 1.55vw, 1.3rem);
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
   font-weight: 350;
   line-height: 1.6;
 }
@@ -492,7 +497,7 @@ a:focus-visible, button:focus-visible {
   max-width: 44rem;
   margin: 0;
   color: var(--muted);
-  font-size: clamp(0.96rem, 1.35vw, 1.2rem);
+  font-size: var(--type-body);
   font-weight: 330;
   line-height: 1.82;
 }
@@ -508,18 +513,18 @@ a:focus-visible, button:focus-visible {
 .profile-meta span {
   color: var(--faint);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.66rem;
+  font-size: 0.74rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
-.profile-meta strong { color: rgba(255, 255, 255, 0.8); font-size: 0.86rem; font-weight: 430; line-height: 1.45; }
+.profile-meta strong { color: rgba(255, 255, 255, 0.82); font-size: 0.94rem; font-weight: 430; line-height: 1.5; }
 .text-link {
   display: inline-flex;
   gap: 1rem;
   align-items: center;
   padding-bottom: 0.45rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   transition: color 300ms ease, border-color 300ms ease;
 }
 .text-link:hover { border-color: var(--accent); color: var(--accent); }
@@ -532,14 +537,14 @@ a:focus-visible, button:focus-visible {
 .profile-statement > span {
   color: var(--faint);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .profile-statement p {
   max-width: 1000px;
   margin: -0.2em 0 0;
-  font-size: clamp(2.2rem, 4.6vw, 5rem);
+  font-size: var(--type-section);
   font-weight: 330;
   line-height: 1.08;
   letter-spacing: -0.045em;
@@ -561,19 +566,19 @@ a:focus-visible, button:focus-visible {
 .publication-number, .publication-year {
   color: var(--faint);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.68rem;
+  font-size: 0.76rem;
   letter-spacing: 0.08em;
 }
 .publication-main { display: grid; max-width: 56rem; gap: 0.8rem; }
-.publication-main strong { font-size: clamp(1rem, 1.65vw, 1.42rem); font-weight: 390; line-height: 1.38; letter-spacing: -0.018em; }
-.publication-main small { color: var(--muted); font-size: 0.76rem; line-height: 1.5; }
+.publication-main strong { font-size: clamp(1.1rem, 1.35vw, 1.35rem); font-weight: 390; line-height: 1.42; letter-spacing: -0.018em; }
+.publication-main small { color: var(--muted); font-size: 0.86rem; line-height: 1.55; }
 .milestones { border-top: 1px solid var(--line); }
 .section-label {
   display: flex;
   gap: 1.5rem;
   color: var(--faint);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
@@ -585,7 +590,7 @@ a:focus-visible, button:focus-visible {
 }
 .milestone-layout > h2 {
   margin: 0;
-  font-size: clamp(2.7rem, 5vw, 5.3rem);
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
   font-weight: 340;
   line-height: 0.98;
   letter-spacing: -0.055em;
@@ -598,9 +603,9 @@ a:focus-visible, button:focus-visible {
   padding: 2.2rem 0;
   border-bottom: 1px solid var(--line);
 }
-.milestone-list article > span { color: var(--accent); font-family: var(--font-geist-mono), monospace; font-size: 0.7rem; }
-.milestone-list h3 { margin: 0; font-size: 1.05rem; font-weight: 430; }
-.milestone-list p { margin: 0.65rem 0 0; color: var(--muted); font-size: 0.84rem; line-height: 1.6; }
+.milestone-list article > span { color: var(--accent); font-family: var(--font-geist-mono), monospace; font-size: 0.78rem; }
+.milestone-list h3 { margin: 0; font-size: 1.12rem; font-weight: 430; }
+.milestone-list p { margin: 0.65rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
 
 .contact-main { min-height: 100svh; }
 .contact {
@@ -631,7 +636,7 @@ a:focus-visible, button:focus-visible {
 .contact-copy { position: relative; z-index: 2; }
 .contact-copy h1 {
   margin: 0;
-  font-size: clamp(3.1rem, 7.5vw, 8.2rem);
+  font-size: clamp(3.1rem, 6.2vw, 7.2rem);
   font-weight: 330;
   line-height: 0.94;
   letter-spacing: -0.065em;
@@ -640,7 +645,7 @@ a:focus-visible, button:focus-visible {
   max-width: 35rem;
   margin: 2.5rem auto;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: var(--type-small);
   font-weight: 350;
   line-height: 1.75;
 }
@@ -650,7 +655,7 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   padding: 1rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.55);
-  font-size: clamp(0.86rem, 1.2vw, 1rem);
+  font-size: clamp(0.94rem, 0.8vw, 1.05rem);
   transition: color 300ms ease, border-color 300ms ease;
 }
 .contact-link:hover { border-color: var(--accent); color: var(--accent); }
@@ -662,7 +667,7 @@ a:focus-visible, button:focus-visible {
   justify-content: space-between;
   color: var(--faint);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.66rem;
+  font-size: 0.74rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -677,7 +682,7 @@ footer {
   border-top: 1px solid var(--line);
   color: var(--faint);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -720,7 +725,7 @@ footer > div:last-child { padding-left: 2rem; }
     transition: opacity 350ms ease, transform 350ms ease, visibility 350ms;
   }
   .site-nav nav.is-open { visibility: visible; opacity: 1; transform: translateY(0); }
-  .site-nav nav a { font-family: inherit; font-size: clamp(2.6rem, 9vw, 5rem); font-weight: 330; letter-spacing: -0.04em; text-transform: none; }
+  .site-nav nav a { font-family: inherit; font-size: clamp(2.5rem, 8vw, 4.2rem); font-weight: 330; letter-spacing: -0.04em; text-transform: none; }
   .site-nav nav a::after { display: none; }
   .site-nav nav a.is-active::before { margin-right: 0.8rem; color: var(--accent); content: "·"; }
   .menu-toggle { z-index: 1; display: block; }
@@ -755,27 +760,27 @@ footer > div:last-child { padding-left: 2rem; }
     padding-bottom: 4.5rem;
   }
   .page-number { margin-bottom: 3.5rem; }
-  .page-hero h1 { font-size: clamp(3.25rem, 15vw, 5rem); line-height: 0.92; }
+  .page-hero h1 { font-size: clamp(3.1rem, 13vw, 4.5rem); line-height: 0.94; }
   .page-intro { margin-top: 2.5rem; }
   .section-pad { padding-top: 5rem; padding-bottom: 5rem; }
   .research-item { grid-template-columns: auto 1fr auto; gap: 1rem; }
   .research-item h2 { font-size: 1.45rem; }
-  .research-detail > p { font-size: 0.8rem; }
+  .research-detail > p { font-size: 0.94rem; }
   .image-break { min-height: 72svh; }
-  .image-break-copy h2 { font-size: clamp(2.8rem, 13vw, 4.6rem); }
+  .image-break-copy h2 { font-size: clamp(2.7rem, 11.5vw, 4.2rem); }
   .profile-layout { grid-template-columns: 1fr; }
   .portrait-wrap { width: 82%; }
-  .profile-copy h2 { font-size: 5.7rem; }
+  .profile-copy h2 { font-size: clamp(3.8rem, 17vw, 5rem); }
   .profile-statement { grid-template-columns: 1fr; }
-  .profile-statement p { font-size: clamp(2.15rem, 10.8vw, 3.4rem); }
+  .profile-statement p { font-size: clamp(2.05rem, 9.5vw, 3.1rem); }
   .publication { grid-template-columns: auto 1fr auto; gap: 1rem; min-height: auto; padding: 2rem 0; }
   .publication-year { display: none; }
-  .publication-main strong { font-size: 1rem; }
+  .publication-main strong { font-size: 1.08rem; }
   .milestone-list article { grid-template-columns: 0.35fr 1.65fr; gap: 1rem; }
   .contact::before { width: 120vw; }
   .contact::after { width: 82vw; }
   .contact-orbit { width: 48vw; }
-  .contact-copy h1 { font-size: clamp(3rem, 13vw, 4.7rem); }
+  .contact-copy h1 { font-size: clamp(2.9rem, 11.5vw, 4.3rem); }
   .contact-coordinate { display: none; }
   .contact-meta { display: grid; gap: 0.5rem; }
   footer { gap: 1rem; }
