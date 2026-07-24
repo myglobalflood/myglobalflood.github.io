@@ -22,7 +22,7 @@ export default function ResearchPage() {
             {research.map((item) => (
               <article className="research-item" data-reveal key={item.index}>
                 <span className="research-index">{item.index}</span>
-                <div><h2>{item.title}</h2><p className="research-cn">{item.cn}</p></div>
+                <div><h2>{item.title}</h2></div>
                 <div className="research-detail">
                   <p>{item.text}</p>
                   <div className="tag-list">

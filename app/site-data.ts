@@ -2,21 +2,18 @@ export const research = [
   {
     index: "01",
     title: "High-performance flood modelling",
-    cn: "流域高性能洪水模拟与评估",
     text: "Advancing controllable hydrological–hydrodynamic models, including VIC-CAS and CaMa-Flood, for reliable large-basin simulation and assessment.",
     tags: ["VIC-CAS", "CaMa-Flood", "Large basins"],
   },
   {
     index: "02",
     title: "Flood change & attribution",
-    cn: "变化环境下洪水变化与归因",
     text: "Combining observations and models to reveal how climate and environmental change reshape flood components, extremes and future risk.",
     tags: ["Attribution", "Climate change", "Extremes"],
   },
   {
     index: "03",
     title: "Multi-scale flood monitoring",
-    cn: "复杂水文情势洪水多尺度监测",
     text: "Translating high-performance models into operational monitoring systems—from river floods to rapidly evolving mountain hazards.",
     tags: ["Monitoring", "Early warning", "Risk"],
   },

@@ -162,7 +162,7 @@ export function SiteFrame({
 
       {!home && footer && (
         <footer>
-          <div><span>AHS Lab</span><span>高等水文模拟与应用</span></div>
+          <div><span>AHS Lab</span><span>Floods &amp; Global Change</span></div>
           <div><span>© 2026 Lanzhou University</span><a href="/">Home ↗</a></div>
         </footer>
       )}

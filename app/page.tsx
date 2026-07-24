@@ -19,12 +19,10 @@ export default function Home() {
               <br />
               <span>understood.</span>
             </h1>
-            <div className="hero-bottom hero-load">
-              <p>以高性能模拟理解洪水<br />在变化世界中设计韧性</p>
-              <a className="round-link" href="/research/" aria-label="Explore research">
-                <span>Explore</span><b aria-hidden="true">↗</b>
-              </a>
-            </div>
+            <a className="hero-cta hero-load" href="/research/">
+              <span>View research</span>
+              <b aria-hidden="true">↗</b>
+            </a>
           </div>
           <div className="hero-index hero-load" aria-hidden="true">
             <span>VIC-CAS</span><span>CaMa-Flood</span>

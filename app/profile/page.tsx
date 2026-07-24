@@ -8,7 +8,7 @@ export default function ProfilePage() {
           <div className="page-number">02 / 04</div>
           <div>
             <p className="eyebrow">Principal Investigator</p>
-            <h1>Jie Wang<br /><span>王杰</span></h1>
+            <h1>Jie Wang</h1>
           </div>
           <p className="page-intro">
             High-performance hydrological modelling for a changing world.
@@ -23,7 +23,7 @@ export default function ProfilePage() {
             </div>
             <div className="profile-copy" data-reveal>
               <p className="eyebrow">Jie Wang · Ph.D.</p>
-              <h2>王杰</h2>
+              <h2>Jie Wang</h2>
               <p className="profile-role">
                 Lecturer · Professional Master&apos;s Supervisor<br />
                 Institute of Hydrology and Water Resources
@@ -53,7 +53,7 @@ export default function ProfilePage() {
         </section>
 
         <section className="profile-statement section-pad" data-reveal>
-          <span>Approach / 方法</span>
+          <span>Approach</span>
           <p>
             Model the process precisely. Explain the change clearly.
             <em> Turn knowledge into resilience.</em>
