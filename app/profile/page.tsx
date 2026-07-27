@@ -21,18 +21,18 @@ export default function ProfilePage() {
               <h2>Jie Wang</h2>
               <p className="profile-role">
                 Lecturer · Professional Master&apos;s Supervisor<br />
-                Institute of Hydrology and Water Resources
+                Institute of Hydrology and Water Resources Engineering
               </p>
               <p className="profile-bio">
-                Dr. Wang studies floods and global change through high-performance
-                hydrological–hydrodynamic modelling. His work connects model
-                development, process understanding and operational risk monitoring
-                across complex river basins.
+                Dr. Wang&apos;s research focuses on floods and global change. He develops
+                and applies high-performance hydrological–hydrodynamic models to
+                simulate floods, explain their changing drivers and support
+                multi-scale monitoring across complex river basins.
               </p>
               <div className="profile-meta">
-                <div><span>Based at</span><strong>Lanzhou University</strong></div>
-                <div><span>Focus</span><strong>Floods · Models · Climate</strong></div>
-                <div><span>Education</span><strong>UCAS · Hohai University</strong></div>
+                <div><span>Appointment</span><strong>Lecturer since June 2022</strong></div>
+                <div><span>Affiliation</span><strong>Lanzhou University</strong></div>
+                <div><span>Education</span><strong>Ph.D., UCAS · M.Eng. &amp; B.Eng., Hohai University</strong></div>
                 <div><span>Office</span><strong>Guanyun Building 1025</strong></div>
               </div>
               <div className="academic-links" aria-label="Academic profiles">
@@ -63,10 +63,10 @@ export default function ProfilePage() {
         </section>
 
         <section className="profile-statement section-pad" data-reveal>
-          <span>Approach</span>
+          <span>Academic path</span>
           <p>
-            Model the process precisely. Explain the change clearly.
-            <em> Turn knowledge into resilience.</em>
+            Hydrology and water resources at Hohai University.
+            <em> Physical geography and flood science at the Chinese Academy of Sciences.</em>
           </p>
         </section>
       </main>

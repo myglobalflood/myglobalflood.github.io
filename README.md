@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-The site is organized as separate routes for Home, Research, Profile, Work, and Contact.
+The site is organized as separate routes for Home, Research, Profile, Publications, and Contact.
 
 ## Publishing
 

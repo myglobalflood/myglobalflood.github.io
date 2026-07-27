@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { withBasePath } from "../site-path";
 
-type RouteName = "home" | "research" | "profile" | "work" | "contact";
+type RouteName = "home" | "research" | "profile" | "publications" | "contact";
 
 const navItems: Array<{ key: RouteName; label: string; href: string }> = [
   { key: "research", label: "Research", href: "/research/" },
   { key: "profile", label: "Profile", href: "/profile/" },
-  { key: "work", label: "Work", href: "/work/" },
+  { key: "publications", label: "Publications", href: "/publications/" },
   { key: "contact", label: "Contact", href: "/contact/" },
 ];
 

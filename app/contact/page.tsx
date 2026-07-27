@@ -18,15 +18,15 @@ export default function ContactPage() {
             <p className="eyebrow">Join the work</p>
             <h1>Let&apos;s understand<br /><span>what comes next.</span></h1>
             <p>
-              We welcome students and collaborators interested in flood modelling,
-              hydroclimate extremes and resilient water systems.
+              We welcome students and collaborators interested in flood simulation,
+              change attribution and multi-scale monitoring.
             </p>
             <a className="contact-link" href="mailto:jiewang@lzu.edu.cn">
               jiewang@lzu.edu.cn <span aria-hidden="true">↗</span>
             </a>
           </div>
           <div className="contact-meta">
-            <span>Flood Global Group · Institute of Hydrology &amp; Water Resources</span>
+            <span>Flood Global Group · Institute of Hydrology &amp; Water Resources Engineering</span>
             <span>Lanzhou University · China</span>
           </div>
         </section>

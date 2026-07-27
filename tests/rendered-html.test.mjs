@@ -45,6 +45,17 @@ test("publishes verified academic profile links", async () => {
   assert.match(html, /teachInfo\.jsp\?id=689/);
 });
 
+test("publishes the verified publication record under its own route", async () => {
+  const response = await render("/publications/");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Selected Publications/);
+  assert.match(html, /10\.1175\/JHM-D-26-0019\.1/);
+  assert.match(html, /10\.3390\/rs17081342/);
+  assert.match(html, /10\.1029\/2021WR029734/);
+});
+
 test("ships the final brand and social assets", async () => {
   const [favicon] = await Promise.all([
     readFile(new URL("../public/favicon.svg", import.meta.url), "utf8"),
