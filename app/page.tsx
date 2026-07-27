@@ -8,7 +8,7 @@ export default function Home() {
         <section className="hero">
           <div
             className="hero-image"
-            style={{ backgroundImage: `url("${withBasePath("/assets/mekong-satellite.webp")}")` }}
+            style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero.webp")}")` }}
             aria-hidden="true"
           />
           <div className="hero-shade" aria-hidden="true" />
@@ -18,7 +18,7 @@ export default function Home() {
             <span>Lanzhou University</span>
           </div>
           <div className="hero-copy">
-            <p className="eyebrow hero-load">Floods &amp; Global Change</p>
+            <p className="eyebrow hero-load">Flood Global Group</p>
             <h1 className="hero-load">
               Floods,
               <br />

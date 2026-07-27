@@ -126,9 +126,9 @@ export function SiteFrame({
   return (
     <div className={`site-shell ${home ? "is-home" : "is-interior"}`} ref={shellRef}>
       <header className={`site-nav ${scrolled || !home ? "is-scrolled" : ""}`}>
-        <a className="brand" href={withBasePath("/")} aria-label="AHS Lab home">
-          <span className="brand-mark">AHS</span>
-          <span className="brand-name">Advanced Hydrological<br />Simulation</span>
+        <a className="brand" href={withBasePath("/")} aria-label="Flood Global Group home">
+          <span className="brand-mark">FGG</span>
+          <span className="brand-name">Flood Global<br />Group</span>
         </a>
         <button
           className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
@@ -163,7 +163,7 @@ export function SiteFrame({
 
       {!home && footer && (
         <footer>
-          <div><span>AHS Lab</span><span>Floods &amp; Global Change</span></div>
+          <div><span>Flood Global Group</span><span>Floods &amp; Global Change</span></div>
           <div><span>© 2026 Lanzhou University</span><a href={withBasePath("/")}>Home ↗</a></div>
         </footer>
       )}

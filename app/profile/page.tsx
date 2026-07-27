@@ -35,14 +35,29 @@ export default function ProfilePage() {
                 <div><span>Education</span><strong>UCAS · Hohai University</strong></div>
                 <div><span>Office</span><strong>Guanyun Building 1025</strong></div>
               </div>
-              <a
-                className="text-link"
-                href="https://zhysz.lzu.edu.cn/system/zhy/teachInfo.jsp?id=689"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Full academic profile <span aria-hidden="true">↗</span>
-              </a>
+              <div className="academic-links" aria-label="Academic profiles">
+                <a
+                  href="https://orcid.org/0000-0003-2520-2920"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>ORCID</span><strong>0000-0003-2520-2920</strong><b aria-hidden="true">↗</b>
+                </a>
+                <a
+                  href="https://scholar.google.com/citations?hl=zh-CN&pli=1&user=jvNCMNgAAAAJ"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>Research</span><strong>Google Scholar</strong><b aria-hidden="true">↗</b>
+                </a>
+                <a
+                  href="https://zhysz.lzu.edu.cn/system/zhy/teachInfo.jsp?id=689"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>Institution</span><strong>LZU Academic Profile</strong><b aria-hidden="true">↗</b>
+                </a>
+              </div>
             </div>
           </div>
         </section>

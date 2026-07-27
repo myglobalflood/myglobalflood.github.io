@@ -46,6 +46,15 @@ export default function WorkPage() {
               </a>
             ))}
           </div>
+          <a
+            className="work-profile-link"
+            href="https://scholar.google.com/citations?hl=zh-CN&pli=1&user=jvNCMNgAAAAJ"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Explore the complete publication record on Google Scholar
+            <span aria-hidden="true">↗</span>
+          </a>
         </section>
 
         <section className="milestones section-pad">

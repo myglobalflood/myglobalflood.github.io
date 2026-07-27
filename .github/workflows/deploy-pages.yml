@@ -33,8 +33,7 @@ jobs:
       - name: Build static site
         env:
           GITHUB_PAGES: "true"
-          NEXT_PUBLIC_BASE_PATH: /AHSLab
-          NEXT_PUBLIC_SITE_URL: https://grups666.github.io/AHSLab/
+          NEXT_PUBLIC_SITE_URL: https://zmxxhyjie.github.io/
         run: npm run build:pages
 
       - name: Configure GitHub Pages
