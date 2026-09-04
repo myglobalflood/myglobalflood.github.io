@@ -31,9 +31,9 @@ test("renders the Flood and Global Change Group home page", async () => {
   const html = await response.text();
   assert.match(html, /Flood &amp; Global Change Group/);
   assert.match(html, /Floods, understood\./);
-  assert.match(html, /flood-hero-severe\.jpg/);
-  assert.match(html, /Louisiana Floods · 2016/);
-  assert.match(html, /USGS · NOAA/);
+  assert.match(html, /flood-hero-bern\.jpg/);
+  assert.match(html, /Aare River Flood · Bern/);
+  assert.match(html, /Christian Wasserfallen · Pexels/);
   assert.doesNotMatch(html, /hero-brand-card/);
   assert.doesNotMatch(html, /AHS Lab|Advanced Hydrological Simulation/);
 });
@@ -130,7 +130,7 @@ test("uses the Yellow River Delta image for the light contact page", async () =>
 test("ships the final brand and social assets", async () => {
   const [layout] = await Promise.all([
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    access(new URL("../public/assets/flood-hero-severe.jpg", import.meta.url)),
+    access(new URL("../public/assets/flood-hero-bern.jpg", import.meta.url)),
     access(new URL("../public/assets/flood-global-change-logo-frosted.png", import.meta.url)),
     access(new URL("../public/assets/contact-yellow-river.jpg", import.meta.url)),
     access(new URL("../public/assets/og.png", import.meta.url)),
