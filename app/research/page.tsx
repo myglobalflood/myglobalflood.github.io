@@ -89,7 +89,7 @@ export default function ResearchPage() {
               <div className="research-section-heading" data-reveal>
                 <p className="eyebrow">Funding · Principal Investigator</p>
                 <h2 id="funding-title">Funded projects<br />led by the group.</h2>
-                <p>Selected projects hosted by Jie Wang, presented in English with the original Chinese record.</p>
+                <p>Research programmes advancing flood modelling, monitoring and prediction across major river basins.</p>
               </div>
               <div className="research-card-grid funding-grid">
                 {hostedProjects.map((item) => (

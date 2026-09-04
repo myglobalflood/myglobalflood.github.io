@@ -64,7 +64,7 @@ export default function PublicationsPage() {
               <div className="publication-section-heading" data-reveal>
                 <p className="eyebrow">Papers</p>
                 <h2 id="papers-title">Peer-reviewed<br />research record.</h2>
-                <p>{sortedPublications.length} journal papers listed in the supplied curriculum vitae.</p>
+                <p>Studies of flood processes, climate drivers and water risks across scales.</p>
               </div>
               <div className="publication-list">
                 {sortedPublications.map((paper, index) => (
@@ -117,7 +117,7 @@ export default function PublicationsPage() {
               <div className="publication-section-heading" data-reveal>
                 <p className="eyebrow">Intellectual Property · Software Copyrights</p>
                 <h2 id="ip-title">Research translated<br />into working systems.</h2>
-                <p>Registered software is presented in English with the original Chinese title.</p>
+                <p>Software systems for hydrological modelling, flood detection, forecasting and risk assessment.</p>
               </div>
               <div className="knowledge-grid">
                 {intellectualProperty.map((item) => (

@@ -66,6 +66,7 @@ test("publishes the verified publication record under its own route", async () =
   assert.match(html, /2025SR0415905/);
   assert.match(html, /流域高性能水要素监测与预报系统软件V1\.0/);
   assert.match(html, /坡度对坡面降雨产流规律的影响/);
+  assert.doesNotMatch(html, /supplied curriculum vitae|presented in English|original Chinese/i);
   assert.doesNotMatch(html, /10\.5281\/zenodo\.14560820/);
 });
 
@@ -80,6 +81,7 @@ test("links both operational monitoring systems", async () => {
   assert.match(html, /Funding · Principal Investigator/);
   assert.match(html, /黄河源洪水成因解析和未来变化预估/);
   assert.match(html, /柳江流域精细化分布式预报模型建设改进与调试/);
+  assert.doesNotMatch(html, /selected projects hosted|presented in English|original Chinese record/i);
   assert.doesNotMatch(html, /Future Star Meteorological/);
   assert.doesNotMatch(html, /Research Areas/);
   assert.doesNotMatch(html, /Research Index/);
