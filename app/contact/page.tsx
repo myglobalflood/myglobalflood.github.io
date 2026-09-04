@@ -26,7 +26,7 @@ export default function ContactPage() {
             </a>
           </div>
           <div className="contact-meta">
-            <span>Flood Global Group · Institute of Hydrology &amp; Water Resources Engineering</span>
+            <span>Flood &amp; Global Change Group · Institute of Hydrology &amp; Water Resources Engineering</span>
             <span>Lanzhou University · China</span>
           </div>
         </section>

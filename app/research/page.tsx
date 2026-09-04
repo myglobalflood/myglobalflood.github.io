@@ -1,5 +1,5 @@
 import { SiteFrame } from "../components/site-frame";
-import { research } from "../site-data";
+import { monitoringSystems, research } from "../site-data";
 import { withBasePath } from "../site-path";
 
 export default function ResearchPage() {
@@ -40,6 +40,37 @@ export default function ResearchPage() {
                 </div>
                 <span className="research-arrow" aria-hidden="true">↗</span>
               </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="systems-section section-pad" aria-labelledby="systems-title">
+          <div className="section-heading" data-reveal>
+            <p className="eyebrow">Operational Systems</p>
+            <h2 id="systems-title">From flood science<br />to basin intelligence.</h2>
+            <p>
+              Research models are translated into monitoring services for complex,
+              transboundary river basins.
+            </p>
+          </div>
+          <div className="system-grid">
+            {monitoringSystems.map((system) => (
+              <a
+                className="system-card"
+                data-reveal
+                href={system.href}
+                target="_blank"
+                rel="noreferrer"
+                key={system.code}
+              >
+                <span className="system-code">{system.code}</span>
+                <div>
+                  <h3>{system.title}</h3>
+                  <p className="system-title-zh">{system.titleZh}</p>
+                  <p>{system.text}</p>
+                </div>
+                <span className="system-action">Open system ↗</span>
+              </a>
             ))}
           </div>
         </section>

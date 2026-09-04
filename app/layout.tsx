@@ -3,32 +3,32 @@ import "./globals.css";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://zmxxhyjie.github.io/";
+  "https://myglobalflood.github.io/";
 const socialImage = new URL("assets/og.png", siteUrl).toString();
 const favicon = new URL("favicon.svg", siteUrl).toString();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Flood Global Group · Lanzhou University",
-    template: "%s · Flood Global Group",
+    default: "Flood & Global Change Group · Lanzhou University",
+    template: "%s · Flood & Global Change Group",
   },
   description:
-    "Flood Global Group at Lanzhou University — high-performance flood modelling, change attribution and multi-scale monitoring.",
-  keywords: ["Flood Global Group", "FGG", "hydrology", "flood modelling", "global change", "Lanzhou University", "Jie Wang"],
+    "Flood & Global Change Group at Lanzhou University — high-performance flood modelling, change attribution and multi-scale monitoring.",
+  keywords: ["Flood and Global Change Group", "hydrology", "flood modelling", "global change", "Lanzhou University", "Jie Wang"],
   icons: {
     icon: [{ url: favicon, type: "image/svg+xml" }],
     shortcut: favicon,
   },
   openGraph: {
-    title: "Flood Global Group · Lanzhou University",
+    title: "Flood & Global Change Group · Lanzhou University",
     description: "High-performance modelling for floods, climate change and resilient water systems.",
     type: "website",
-    images: [{ url: socialImage, width: 1732, height: 908, alt: "Flood Global Group — Floods, understood." }],
+    images: [{ url: socialImage, width: 1732, height: 908, alt: "Flood and Global Change Group" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flood Global Group · Lanzhou University",
+    title: "Flood & Global Change Group · Lanzhou University",
     description: "High-performance modelling for floods, climate change and resilient water systems.",
     images: [socialImage],
   },

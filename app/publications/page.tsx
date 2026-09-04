@@ -1,5 +1,5 @@
 import { SiteFrame } from "../components/site-frame";
-import { milestones, publications } from "../site-data";
+import { milestones, openData, publications } from "../site-data";
 import { withBasePath } from "../site-path";
 
 export default function PublicationsPage() {
@@ -55,6 +55,33 @@ export default function PublicationsPage() {
             Explore the complete publication record on Google Scholar
             <span aria-hidden="true">↗</span>
           </a>
+        </section>
+
+        <section className="data-section section-pad" aria-labelledby="data-title">
+          <div className="section-heading" data-reveal>
+            <p className="eyebrow">Open Data</p>
+            <h2 id="data-title">Shared for reuse,<br />comparison and discovery.</h2>
+          </div>
+          <div className="dataset-list">
+            {openData.map((dataset) => (
+              <a
+                className="dataset-card"
+                data-reveal
+                href={dataset.href}
+                target="_blank"
+                rel="noreferrer"
+                key={dataset.doi}
+              >
+                <span className="dataset-year">{dataset.year}</span>
+                <div>
+                  <h3>{dataset.title}</h3>
+                  <p>{dataset.text}</p>
+                  <small>{dataset.repository} · DOI {dataset.doi}</small>
+                </div>
+                <span aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </div>
         </section>
 
         <section className="milestones section-pad">

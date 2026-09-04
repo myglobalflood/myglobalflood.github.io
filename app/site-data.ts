@@ -19,7 +19,41 @@ export const research = [
   },
 ];
 
+export const monitoringSystems = [
+  {
+    code: "GBM",
+    title: "Ganges–Brahmaputra–Meghna Drought and Flood Monitoring System",
+    titleZh: "恒河–布拉马普特河–梅格纳河流域干旱洪水监测系统",
+    text: "An operational view of drought, flood depth, flood risk and discharge across the GBM transboundary basin.",
+    href: "http://121.199.2.154/GBMMS.html",
+  },
+  {
+    code: "LMRB",
+    title: "Lancang–Mekong Drought and Flood Monitoring System",
+    titleZh: "澜沧江–湄公河流域干旱洪水监测系统",
+    text: "Basin-scale monitoring of drought conditions, flood dynamics, inundation depth, risk and river discharge.",
+    href: "http://121.199.2.154/LMRBMS.html",
+  },
+];
+
+export const openData = [
+  {
+    year: "2024",
+    title: "Historical flood record datasets in China from 2000 to 2020",
+    text: "A city-level record of 4,330 flood events compiled from the China Meteorological Disaster Yearbooks, news reports and government sources, including tropical-cyclone and non-tropical-cyclone events.",
+    repository: "Zenodo",
+    doi: "10.5281/zenodo.14560820",
+    href: "https://doi.org/10.5281/zenodo.14560820",
+  },
+];
+
 export const publications = [
+  {
+    year: "2026",
+    title: "Multiscale Spatiotemporal Variations of Ecosystem Water Limitation and Its Divergent Drivers on the Tibetan Plateau",
+    journal: "Ecohydrology · 19(5), e70244",
+    href: "https://doi.org/10.1002/eco.70244",
+  },
   {
     year: "2026",
     title: "Multidimensional evaluation of the gridded precipitation datasets over the source region of the Yellow River",

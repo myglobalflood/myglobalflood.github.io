@@ -23,26 +23,27 @@ async function render(pathname = "/") {
   );
 }
 
-test("renders the Flood Global Group home page", async () => {
+test("renders the Flood and Global Change Group home page", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /Flood Global Group/);
+  assert.match(html, /Flood &amp; Global Change Group/);
   assert.match(html, /Floods,/);
   assert.match(html, /flood-hero\.webp/);
   assert.doesNotMatch(html, /AHS Lab|Advanced Hydrological Simulation/);
 });
 
-test("publishes verified academic profile links", async () => {
-  const response = await render("/profile/");
+test("publishes verified academic profile links and a student roster section", async () => {
+  const response = await render("/people/");
   assert.equal(response.status, 200);
 
   const html = await response.text();
   assert.match(html, /0000-0003-2520-2920/);
   assert.match(html, /jvNCMNgAAAAJ/);
   assert.match(html, /teachInfo\.jsp\?id=689/);
+  assert.match(html, /Graduate Students/);
 });
 
 test("publishes the verified publication record under its own route", async () => {
@@ -54,6 +55,16 @@ test("publishes the verified publication record under its own route", async () =
   assert.match(html, /10\.1175\/JHM-D-26-0019\.1/);
   assert.match(html, /10\.3390\/rs17081342/);
   assert.match(html, /10\.1029\/2021WR029734/);
+  assert.match(html, /10\.5281\/zenodo\.14560820/);
+});
+
+test("links both operational monitoring systems", async () => {
+  const response = await render("/research/");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /GBMMS\.html/);
+  assert.match(html, /LMRBMS\.html/);
 });
 
 test("ships the final brand and social assets", async () => {
@@ -63,6 +74,6 @@ test("ships the final brand and social assets", async () => {
     access(new URL("../public/assets/og.png", import.meta.url)),
   ]);
 
-  assert.match(favicon, />FGG<\/text>/);
+  assert.match(favicon, />FGC<\/text>/);
   assert.doesNotMatch(favicon, /AHS/);
 });

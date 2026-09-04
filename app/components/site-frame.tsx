@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { withBasePath } from "../site-path";
 
-type RouteName = "home" | "research" | "profile" | "publications" | "contact";
+type RouteName = "home" | "research" | "people" | "publications" | "contact";
 
 const navItems: Array<{ key: RouteName; label: string; href: string }> = [
   { key: "research", label: "Research", href: "/research/" },
-  { key: "profile", label: "Profile", href: "/profile/" },
+  { key: "people", label: "People", href: "/people/" },
   { key: "publications", label: "Publications", href: "/publications/" },
   { key: "contact", label: "Contact", href: "/contact/" },
 ];
@@ -126,9 +126,11 @@ export function SiteFrame({
   return (
     <div className={`site-shell ${home ? "is-home" : "is-interior"}`} ref={shellRef}>
       <header className={`site-nav ${scrolled || !home ? "is-scrolled" : ""}`}>
-        <a className="brand" href={withBasePath("/")} aria-label="Flood Global Group home">
-          <span className="brand-mark">FGG</span>
-          <span className="brand-name">Flood Global<br />Group</span>
+        <a className="brand" href={withBasePath("/")} aria-label="Flood and Global Change Group home">
+          <span className="brand-mark">
+            <img src={withBasePath("/assets/flood-global-change-logo.jpg")} alt="" />
+          </span>
+          <span className="brand-name">Flood &amp; Global<br />Change Group</span>
         </a>
         <button
           className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
@@ -163,7 +165,7 @@ export function SiteFrame({
 
       {!home && footer && (
         <footer>
-          <div><span>Flood Global Group</span><span>Floods &amp; Global Change</span></div>
+          <div><span>Flood &amp; Global Change Group</span><span>Flood science · Climate · Resilience</span></div>
           <div><span>© 2026 Lanzhou University</span><a href={withBasePath("/")}>Home ↗</a></div>
         </footer>
       )}

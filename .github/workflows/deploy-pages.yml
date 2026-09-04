@@ -33,7 +33,7 @@ jobs:
       - name: Build static site
         env:
           GITHUB_PAGES: "true"
-          NEXT_PUBLIC_SITE_URL: https://zmxxhyjie.github.io/
+          NEXT_PUBLIC_SITE_URL: https://myglobalflood.github.io/
         run: npm run build:pages
 
       - name: Configure GitHub Pages
