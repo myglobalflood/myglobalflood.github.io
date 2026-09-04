@@ -18,23 +18,15 @@ export default function Home() {
             <span>Lanzhou University</span>
           </div>
           <div className="hero-copy">
-            <div>
+            <div className="hero-copy-center">
               <p className="eyebrow hero-load">Flood &amp; Global Change Group</p>
               <h1 className="hero-load">
-                Floods,
-                <br />
-                <span>understood.</span>
+                Floods, <span>understood.</span>
               </h1>
               <a className="hero-cta hero-load" href={withBasePath("/research/")}>
                 <span>View research</span>
                 <b aria-hidden="true">↗</b>
               </a>
-            </div>
-            <div className="hero-brand-card hero-load">
-              <img
-                src={withBasePath("/assets/flood-global-change-logo-frosted.png")}
-                alt="洪水与全球变化 · Flood and Global Change"
-              />
             </div>
           </div>
           <div className="hero-index hero-load" aria-hidden="true">

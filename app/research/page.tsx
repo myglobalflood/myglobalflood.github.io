@@ -35,11 +35,7 @@ export default function ResearchPage() {
 
           <div className="research-hub-content">
             <section className="research-hub-section" id="projects" aria-labelledby="projects-title">
-              <div className="research-section-heading" data-reveal>
-                <p className="eyebrow">Projects · Operational Systems</p>
-                <h2 id="projects-title">From flood science<br />to basin intelligence.</h2>
-                <p>Monitoring services for complex, transboundary river basins.</p>
-              </div>
+              <h2 className="content-section-label" id="projects-title">Projects · Operational Systems</h2>
               <div className="system-grid">
                 {monitoringSystems.map((system) => (
                   <a
@@ -63,10 +59,7 @@ export default function ResearchPage() {
             </section>
 
             <section className="research-hub-section" id="open-data" aria-labelledby="data-title">
-              <div className="research-section-heading" data-reveal>
-                <p className="eyebrow">Open Data</p>
-                <h2 id="data-title">Shared for reuse and discovery.</h2>
-              </div>
+              <h2 className="content-section-label" id="data-title">Open Data</h2>
               <div className="research-card-grid">
                 {openData.map((dataset) => (
                   <a
@@ -86,11 +79,7 @@ export default function ResearchPage() {
             </section>
 
             <section className="research-hub-section" id="funding" aria-labelledby="funding-title">
-              <div className="research-section-heading" data-reveal>
-                <p className="eyebrow">Funding · Principal Investigator</p>
-                <h2 id="funding-title">Funded projects<br />led by the group.</h2>
-                <p>Research programmes advancing flood modelling, monitoring and prediction across major river basins.</p>
-              </div>
+              <h2 className="content-section-label" id="funding-title">Funding · Principal Investigator</h2>
               <div className="research-card-grid funding-grid">
                 {hostedProjects.map((item) => (
                   <article className="system-card resource-card project-card" data-reveal key={item.title}>

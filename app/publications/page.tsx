@@ -61,11 +61,7 @@ export default function PublicationsPage() {
 
           <div className="publication-hub-content">
             <section className="publication-hub-section" id="papers" aria-labelledby="papers-title">
-              <div className="publication-section-heading" data-reveal>
-                <p className="eyebrow">Papers</p>
-                <h2 id="papers-title">Peer-reviewed<br />research record.</h2>
-                <p>Studies of flood processes, climate drivers and water risks across scales.</p>
-              </div>
+              <h2 className="content-section-label" id="papers-title">Papers</h2>
               <div className="publication-list">
                 {sortedPublications.map((paper, index) => (
                   "href" in paper && paper.href ? (
@@ -98,10 +94,7 @@ export default function PublicationsPage() {
             </section>
 
             <section className="publication-hub-section" id="books" aria-labelledby="books-title">
-              <div className="publication-section-heading" data-reveal>
-                <p className="eyebrow">Books · Scholarly Chapters</p>
-                <h2 id="books-title">Long-form work<br />on water hazards.</h2>
-              </div>
+              <h2 className="content-section-label" id="books-title">Books · Scholarly Chapters</h2>
               <div className="knowledge-grid">
                 {books.map((book) => (
                   <article className="knowledge-card" data-reveal key={book.title}>
@@ -114,11 +107,7 @@ export default function PublicationsPage() {
             </section>
 
             <section className="publication-hub-section" id="intellectual-property" aria-labelledby="ip-title">
-              <div className="publication-section-heading" data-reveal>
-                <p className="eyebrow">Intellectual Property · Software Copyrights</p>
-                <h2 id="ip-title">Research translated<br />into working systems.</h2>
-                <p>Software systems for hydrological modelling, flood detection, forecasting and risk assessment.</p>
-              </div>
+              <h2 className="content-section-label" id="ip-title">Intellectual Property · Software Copyrights</h2>
               <div className="knowledge-grid">
                 {intellectualProperty.map((item) => (
                   <article className="knowledge-card ip-card" data-reveal key={item.registration}>

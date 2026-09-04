@@ -1651,3 +1651,87 @@ footer { background: #edf8fa; }
   .people-hub .faculty-card { grid-template-columns: 1fr; }
   .people-hub .portrait-wrap { grid-row: 1; margin-left: 0; }
 }
+
+/* Public-facing content hierarchy and centered home statement */
+.content-section-label {
+  margin: 0 0 2rem;
+  color: var(--accent);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.82rem;
+  font-weight: 540;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-copy {
+  display: block;
+  width: min(100%, 96rem);
+  margin: 0 auto;
+  text-align: center;
+  transform: translateY(-1vh);
+}
+.hero-copy-center {
+  display: grid;
+  justify-items: center;
+}
+.hero .eyebrow {
+  margin-bottom: clamp(1rem, 2vh, 1.6rem);
+  color: #55d2e9;
+  text-shadow: 0 0.12rem 1.1rem rgba(0, 20, 29, 0.86);
+}
+.hero h1 {
+  max-width: none;
+  color: #ffffff;
+  font-size: clamp(4.2rem, 7.4vw, 9.2rem);
+  font-weight: 520;
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+  white-space: nowrap;
+  text-shadow: 0 0.25rem 2.4rem rgba(0, 20, 29, 0.58);
+}
+.hero h1 span {
+  color: rgba(232, 244, 247, 0.64);
+  font-weight: 300;
+}
+.hero-cta { justify-content: center; }
+
+.site-nav,
+.site-nav.is-scrolled {
+  box-sizing: border-box;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+.is-home .site-nav:not(.is-scrolled) { border-bottom-color: transparent; }
+
+@media (min-width: 901px) {
+  .site-nav nav {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    min-width: 34rem;
+    justify-content: center;
+    column-gap: clamp(1.4rem, 3vw, 3.5rem);
+  }
+  .site-nav nav a,
+  .site-nav nav a:hover,
+  .site-nav nav a.is-active {
+    font-size: var(--type-label);
+    font-weight: 520;
+    line-height: 1;
+    letter-spacing: 0.09em;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero h1 { font-size: clamp(3.2rem, 10.2vw, 6.2rem); }
+}
+
+@media (max-width: 640px) {
+  .content-section-label { margin-bottom: 1.4rem; }
+  .hero h1 {
+    max-width: 9ch;
+    font-size: clamp(3.3rem, 15vw, 5rem);
+    line-height: 0.88;
+    white-space: normal;
+  }
+}
