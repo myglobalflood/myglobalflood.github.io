@@ -46,6 +46,13 @@ test("keeps the shared navigation geometry stable between short and scrolling ro
   assert.doesNotMatch(css, /\.site-nav\.is-scrolled\s*\{[^}]*padding-(?:top|bottom):/s);
 });
 
+test("keeps the research and publication artwork visible and fixed behind scrolling content", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+
+  assert.match(css, /\.watermark-page\s*\{[^}]*animation:\s*watermark-page-fade/s);
+  assert.match(css, /\.page-watermark\s*\{[^}]*position:\s*fixed;[^}]*opacity:\s*0\.2;/s);
+});
+
 test("publishes the verified principal investigator profile in a compact people page", async () => {
   const response = await render("/people/");
   assert.equal(response.status, 200);

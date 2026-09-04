@@ -298,25 +298,29 @@ a:focus-visible, button:focus-visible {
   overflow: hidden;
   padding-top: var(--nav-height);
   isolation: isolate;
+  animation: watermark-page-fade 650ms both ease-out;
 }
 .page-watermark {
-  position: absolute;
+  position: fixed;
   z-index: 0;
   top: var(--nav-height);
   right: 0;
+  bottom: 0;
   left: 0;
-  height: clamp(42rem, 62vw, 72rem);
+  height: auto;
   background-position: center;
   background-size: cover;
-  filter: saturate(0.45) contrast(0.72);
-  opacity: 0.055;
+  filter: saturate(0.65) contrast(0.9);
+  opacity: 0.2;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.76) 48%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.76) 48%, transparent 100%);
 }
 .watermark-page > :not(.page-watermark) { position: relative; z-index: 1; }
 .research-page-watermark { background-position: center 35%; }
 .publication-page-watermark { background-position: center 32%; }
+@keyframes watermark-page-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 @keyframes route-enter {
   from { opacity: 0; transform: translateY(1.5rem); }
   to { opacity: 1; transform: translateY(0); }
