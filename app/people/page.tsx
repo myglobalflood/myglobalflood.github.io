@@ -11,15 +11,7 @@ export default function PeoplePage() {
   return (
     <SiteFrame active="people">
       <main className="route-main people-page">
-        <header className="people-intro section-pad">
-          <p className="eyebrow">People</p>
-          <h1>Working across scales,<br /><span>learning across disciplines.</span></h1>
-        </header>
-
-        <section className="people-group section-pad" aria-labelledby="faculty-title">
-          <div className="people-group-heading" data-reveal>
-            <span>01</span><h2 id="faculty-title">Faculty</h2>
-          </div>
+        <section className="people-compact section-pad" aria-labelledby="faculty-title">
           <article className="faculty-card" data-reveal>
             <div className="portrait-wrap">
               <div
@@ -31,8 +23,8 @@ export default function PeoplePage() {
               <span className="portrait-code">PI / 01</span>
             </div>
             <div className="faculty-copy">
-              <p className="eyebrow">Jie Wang · Ph.D.</p>
-              <h2>Jie Wang</h2>
+              <p className="eyebrow">People · Principal Investigator</p>
+              <h1 id="faculty-title">Jie Wang <span lang="zh-CN">王杰</span></h1>
               <p className="profile-role">
                 Lecturer · Professional Master&apos;s Supervisor<br />
                 Institute of Hydrology and Water Resources Engineering
@@ -58,15 +50,6 @@ export default function PeoplePage() {
               </div>
             </div>
           </article>
-        </section>
-
-        <section className="people-group student-group section-pad" aria-labelledby="students-title">
-          <div className="people-group-heading" data-reveal>
-            <span>02</span><h2 id="students-title">Graduate Students</h2>
-          </div>
-          <p className="empty-roster" data-reveal>
-            Student profiles will be added after the group roster is confirmed.
-          </p>
         </section>
       </main>
     </SiteFrame>

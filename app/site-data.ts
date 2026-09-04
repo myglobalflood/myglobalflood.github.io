@@ -1,24 +1,3 @@
-export const research = [
-  {
-    index: "01",
-    title: "High-performance flood simulation & assessment",
-    text: "Using independently controllable, high-performance hydrological–hydrodynamic models—including VIC-CAS and CaMa-Flood—to simulate and assess floods, while improving data and model capabilities.",
-    tags: ["VIC-CAS", "CaMa-Flood", "Simulation"],
-  },
-  {
-    index: "02",
-    title: "Flood change & attribution",
-    text: "Combining observations and models to analyse changes in floods, resolve their components and drivers, and project how flood regimes may evolve in a changing environment.",
-    tags: ["Attribution", "Global change", "Projection"],
-  },
-  {
-    index: "03",
-    title: "Multi-scale flood monitoring",
-    text: "Applying high-performance hydrological–hydrodynamic models to monitor complex flood regimes across scales, including river floods and flash floods.",
-    tags: ["Monitoring", "River floods", "Flash floods"],
-  },
-];
-
 export const monitoringSystems = [
   {
     code: "GBM",

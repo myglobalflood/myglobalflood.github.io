@@ -1,5 +1,5 @@
 import { SiteFrame } from "../components/site-frame";
-import { monitoringSystems, research } from "../site-data";
+import { milestones, monitoringSystems, openData } from "../site-data";
 import { withBasePath } from "../site-path";
 
 export default function ResearchPage() {
@@ -26,52 +26,80 @@ export default function ResearchPage() {
           </p>
         </header>
 
-        <section className="research-page section-pad">
-          <div className="research-list">
-            {research.map((item) => (
-              <article className="research-item" data-reveal key={item.index}>
-                <span className="research-index">{item.index}</span>
-                <div><h2>{item.title}</h2></div>
-                <div className="research-detail">
-                  <p>{item.text}</p>
-                  <div className="tag-list">
-                    {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
-                  </div>
-                </div>
-                <span className="research-arrow" aria-hidden="true">↗</span>
-              </article>
-            ))}
-          </div>
-        </section>
+        <section className="research-hub section-pad">
+          <aside className="research-local-nav" aria-label="Research page navigation">
+            <p>Research Index</p>
+            <a href="#projects"><span>01</span>Projects</a>
+            <a href="#open-data"><span>02</span>Open Data</a>
+            <a href="#funding"><span>03</span>Funding</a>
+          </aside>
 
-        <section className="systems-section section-pad" aria-labelledby="systems-title">
-          <div className="section-heading" data-reveal>
-            <p className="eyebrow">Operational Systems</p>
-            <h2 id="systems-title">From flood science<br />to basin intelligence.</h2>
-            <p>
-              Research models are translated into monitoring services for complex,
-              transboundary river basins.
-            </p>
-          </div>
-          <div className="system-grid">
-            {monitoringSystems.map((system) => (
-              <a
-                className="system-card"
-                data-reveal
-                href={system.href}
-                target="_blank"
-                rel="noreferrer"
-                key={system.code}
-              >
-                <span className="system-code">{system.code}</span>
-                <div>
-                  <h3>{system.title}</h3>
-                  <p className="system-title-zh">{system.titleZh}</p>
-                  <p>{system.text}</p>
-                </div>
-                <span className="system-action">Open system ↗</span>
-              </a>
-            ))}
+          <div className="research-hub-content">
+            <section className="research-hub-section" id="projects" aria-labelledby="projects-title">
+              <div className="research-section-heading" data-reveal>
+                <p className="eyebrow">Projects · Operational Systems</p>
+                <h2 id="projects-title">From flood science<br />to basin intelligence.</h2>
+                <p>Monitoring services for complex, transboundary river basins.</p>
+              </div>
+              <div className="system-grid">
+                {monitoringSystems.map((system) => (
+                  <a
+                    className="system-card"
+                    data-reveal
+                    href={system.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    key={system.code}
+                  >
+                    <span className="system-code">{system.code}</span>
+                    <div>
+                      <h3>{system.title}</h3>
+                      <p className="system-title-zh" lang="zh-CN">{system.titleZh}</p>
+                      <p>{system.text}</p>
+                    </div>
+                    <span className="system-action">Open system ↗</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+
+            <section className="research-hub-section" id="open-data" aria-labelledby="data-title">
+              <div className="research-section-heading" data-reveal>
+                <p className="eyebrow">Open Data</p>
+                <h2 id="data-title">Shared for reuse and discovery.</h2>
+              </div>
+              <div className="research-card-grid">
+                {openData.map((dataset) => (
+                  <a
+                    className="system-card resource-card"
+                    data-reveal
+                    href={dataset.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    key={dataset.doi}
+                  >
+                    <span className="system-code">{dataset.year} · {dataset.repository}</span>
+                    <div><h3>{dataset.title}</h3><p>{dataset.text}</p></div>
+                    <span className="system-action">DOI {dataset.doi} ↗</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+
+            <section className="research-hub-section" id="funding" aria-labelledby="funding-title">
+              <div className="research-section-heading" data-reveal>
+                <p className="eyebrow">Funding &amp; Recognition</p>
+                <h2 id="funding-title">Support for sustained research.</h2>
+              </div>
+              <div className="research-card-grid funding-grid">
+                {milestones.map((item) => (
+                  <article className="system-card resource-card" data-reveal key={item.title}>
+                    <span className="system-code">{item.date}</span>
+                    <div><h3>{item.title}</h3><p>{item.text}</p></div>
+                  </article>
+                ))}
+              </div>
+            </section>
           </div>
         </section>
 

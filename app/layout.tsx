@@ -5,7 +5,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   "https://myglobalflood.github.io/";
 const socialImage = new URL("assets/og.png", siteUrl).toString();
-const favicon = new URL("favicon.svg", siteUrl).toString();
+const favicon = new URL("assets/flood-global-change-logo.jpg", siteUrl).toString();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -17,8 +17,9 @@ export const metadata: Metadata = {
     "Flood & Global Change Group at Lanzhou University — high-performance flood modelling, change attribution and multi-scale monitoring.",
   keywords: ["Flood and Global Change Group", "hydrology", "flood modelling", "global change", "Lanzhou University", "Jie Wang"],
   icons: {
-    icon: [{ url: favicon, type: "image/svg+xml" }],
+    icon: [{ url: favicon, type: "image/jpeg" }],
     shortcut: favicon,
+    apple: favicon,
   },
   openGraph: {
     title: "Flood & Global Change Group · Lanzhou University",

@@ -1,5 +1,5 @@
 import { SiteFrame } from "../components/site-frame";
-import { milestones, openData, publications } from "../site-data";
+import { publications } from "../site-data";
 import { withBasePath } from "../site-path";
 
 export default function PublicationsPage() {
@@ -14,7 +14,7 @@ export default function PublicationsPage() {
           />
           <div className="visual-hero-shade" aria-hidden="true" />
           <div className="visual-hero-copy">
-            <p className="eyebrow">Selected Publications · 2018–2026</p>
+            <p className="eyebrow">Publication · 2018–2026</p>
             <h1>Research that<br /><span>moves with water.</span></h1>
             <p className="visual-hero-intro">
               Peer-reviewed research spanning hydrological–hydrodynamic model
@@ -57,49 +57,6 @@ export default function PublicationsPage() {
           </a>
         </section>
 
-        <section className="data-section section-pad" aria-labelledby="data-title">
-          <div className="section-heading" data-reveal>
-            <p className="eyebrow">Open Data</p>
-            <h2 id="data-title">Shared for reuse,<br />comparison and discovery.</h2>
-          </div>
-          <div className="dataset-list">
-            {openData.map((dataset) => (
-              <a
-                className="dataset-card"
-                data-reveal
-                href={dataset.href}
-                target="_blank"
-                rel="noreferrer"
-                key={dataset.doi}
-              >
-                <span className="dataset-year">{dataset.year}</span>
-                <div>
-                  <h3>{dataset.title}</h3>
-                  <p>{dataset.text}</p>
-                  <small>{dataset.repository} · DOI {dataset.doi}</small>
-                </div>
-                <span aria-hidden="true">↗</span>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        <section className="milestones section-pad">
-          <div className="section-label" data-reveal>
-            <span>Recognition &amp; Funding</span><span>Selected verified milestones</span>
-          </div>
-          <div className="milestone-layout">
-            <h2 data-reveal>Research with<br />lasting consequence.</h2>
-            <div className="milestone-list">
-              {milestones.map((item) => (
-                <article data-reveal key={item.title}>
-                  <span>{item.date}</span>
-                  <div><h3>{item.title}</h3><p>{item.text}</p></div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
     </SiteFrame>
   );

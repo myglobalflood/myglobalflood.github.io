@@ -8,7 +8,7 @@ type RouteName = "home" | "research" | "people" | "publications" | "contact";
 const navItems: Array<{ key: RouteName; label: string; href: string }> = [
   { key: "research", label: "Research", href: "/research/" },
   { key: "people", label: "People", href: "/people/" },
-  { key: "publications", label: "Publications", href: "/publications/" },
+  { key: "publications", label: "Publication", href: "/publications/" },
   { key: "contact", label: "Contact", href: "/contact/" },
 ];
 

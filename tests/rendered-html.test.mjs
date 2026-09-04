@@ -35,7 +35,7 @@ test("renders the Flood and Global Change Group home page", async () => {
   assert.doesNotMatch(html, /AHS Lab|Advanced Hydrological Simulation/);
 });
 
-test("publishes verified academic profile links and a student roster section", async () => {
+test("publishes the verified principal investigator profile in a compact people page", async () => {
   const response = await render("/people/");
   assert.equal(response.status, 200);
 
@@ -43,7 +43,8 @@ test("publishes verified academic profile links and a student roster section", a
   assert.match(html, /0000-0003-2520-2920/);
   assert.match(html, /jvNCMNgAAAAJ/);
   assert.match(html, /teachInfo\.jsp\?id=689/);
-  assert.match(html, /Graduate Students/);
+  assert.match(html, /Principal Investigator/);
+  assert.doesNotMatch(html, /Graduate Students/);
 });
 
 test("publishes the verified publication record under its own route", async () => {
@@ -51,11 +52,11 @@ test("publishes the verified publication record under its own route", async () =
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /Selected Publications/);
+  assert.match(html, /Publication · 2018–2026/);
   assert.match(html, /10\.1175\/JHM-D-26-0019\.1/);
   assert.match(html, /10\.3390\/rs17081342/);
   assert.match(html, /10\.1029\/2021WR029734/);
-  assert.match(html, /10\.5281\/zenodo\.14560820/);
+  assert.doesNotMatch(html, /10\.5281\/zenodo\.14560820/);
 });
 
 test("links both operational monitoring systems", async () => {
@@ -65,15 +66,19 @@ test("links both operational monitoring systems", async () => {
   const html = await response.text();
   assert.match(html, /GBMMS\.html/);
   assert.match(html, /LMRBMS\.html/);
+  assert.match(html, /10\.5281\/zenodo\.14560820/);
+  assert.match(html, /Funding &amp; Recognition/);
+  assert.doesNotMatch(html, /Research Areas/);
 });
 
 test("ships the final brand and social assets", async () => {
-  const [favicon] = await Promise.all([
-    readFile(new URL("../public/favicon.svg", import.meta.url), "utf8"),
+  const [layout] = await Promise.all([
+    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     access(new URL("../public/assets/flood-hero.webp", import.meta.url)),
+    access(new URL("../public/assets/flood-global-change-logo.jpg", import.meta.url)),
     access(new URL("../public/assets/og.png", import.meta.url)),
   ]);
 
-  assert.match(favicon, />FGC<\/text>/);
-  assert.doesNotMatch(favicon, /AHS/);
+  assert.match(layout, /assets\/flood-global-change-logo\.jpg/);
+  assert.doesNotMatch(layout, /favicon\.svg/);
 });
