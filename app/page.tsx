@@ -8,7 +8,7 @@ export default function Home() {
         <section className="hero">
           <div
             className="hero-image"
-            style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-bern.jpg")}")` }}
+            style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-minnesota.jpg")}")` }}
             aria-hidden="true"
           />
           <div className="hero-shade" aria-hidden="true" />
@@ -28,7 +28,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-index hero-load" aria-hidden="true">
-            <span>Aare River Flood · Bern</span><span>Christian Wasserfallen · Pexels</span>
+            <span>Red River Flood · Moorhead, Minnesota</span><span>Andrea Booher · FEMA · Public Domain</span>
             <span>Flood · Climate · Resilience</span>
           </div>
         </section>
