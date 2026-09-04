@@ -51,15 +51,17 @@ test("keeps the research and publication artwork visible and fixed behind scroll
 
   assert.match(css, /\.watermark-page\s*\{[^}]*animation:\s*watermark-page-fade/s);
   assert.match(css, /\.page-watermark\s*\{[^}]*position:\s*fixed;/s);
-  assert.match(css, /Balanced interior exposure[\s\S]*\.page-watermark\s*\{[^}]*opacity:\s*0\.28;/s);
+  assert.match(css, /Unified dark interior theme[\s\S]*\.is-interior \.page-watermark\s*\{[^}]*opacity:\s*0\.34;/s);
 });
 
-test("uses a subdued interior palette and compact section rhythm", async () => {
+test("uses a unified dark interior palette and compact section rhythm", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
-  assert.match(css, /Balanced interior exposure[\s\S]*\.route-main\s*\{\s*background:\s*#e6eef0;/s);
+  assert.match(css, /Unified dark interior theme[\s\S]*\.is-interior \.route-main\s*\{\s*background:\s*#0d222a;/s);
+  assert.match(css, /\.is-interior \.site-nav,[\s\S]*background:\s*rgba\(7, 22, 29, 0\.88\);/s);
   assert.match(css, /\.research-hub-section,[\s\S]*\.publication-hub-section\s*\{[^}]*padding-bottom:\s*clamp\(2rem, 3vw, 3rem\);/s);
-  assert.match(css, /\.people-page\s*\{[^}]*linear-gradient\(180deg, #e8f0f2 0%, #e2ebed 100%\)/s);
+  assert.match(css, /\.is-interior \.people-page\s*\{[^}]*linear-gradient\(180deg, #102a33 0%, #0b2028 62%, #081a21 100%\)/s);
+  assert.match(css, /\.is-interior \.contact-copy\s*\{[^}]*background:\s*rgba\(8, 31, 39, 0\.78\);/s);
 });
 
 test("publishes the verified principal investigator profile in a compact people page", async () => {
@@ -126,7 +128,7 @@ test("links both operational monitoring systems", async () => {
   assert.doesNotMatch(html, /Research · Basin Intelligence|One system|Three scales|From hillslopes/);
 });
 
-test("uses the Yellow River Delta image for the light contact page", async () => {
+test("uses the Yellow River Delta image for the contact page", async () => {
   const response = await render("/contact/");
   assert.equal(response.status, 200);
 
