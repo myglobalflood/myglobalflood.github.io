@@ -15,10 +15,10 @@ function PublicationContent({
       <span className="publication-year">{paper.year}</span>
       <span className="publication-main">
         <strong>{paper.title}</strong>
-        {"titleZh" in paper && paper.titleZh ? <em lang="zh-CN">{paper.titleZh}</em> : null}
+        {"titleZh" in paper && paper.titleZh ? <em className="zh-copy" lang="zh-CN">{paper.titleZh}</em> : null}
         <small>
           {paper.journal}
-          {"journalZh" in paper && paper.journalZh ? <span lang="zh-CN"> · {paper.journalZh}</span> : null}
+          {"journalZh" in paper && paper.journalZh ? <span className="zh-copy" lang="zh-CN"> · {paper.journalZh}</span> : null}
         </small>
       </span>
       {"href" in paper && paper.href ? <span className="publication-arrow" aria-hidden="true">↗</span> : <span />}
@@ -105,11 +105,11 @@ export default function PublicationsPage() {
                     <span className="publication-year">{item.year}</span>
                     <span className="publication-main">
                       <strong>{item.title}</strong>
-                      <em lang="zh-CN">{item.titleZh}</em>
+                      <em className="zh-copy" lang="zh-CN">{item.titleZh}</em>
                       <small>
                         {item.registration} · {item.authors.split(" / ")[0]}
                         {item.authors.includes(" / ") ? (
-                          <span lang="zh-CN"> / {item.authors.split(" / ")[1]}</span>
+                          <span className="zh-copy" lang="zh-CN"> / {item.authors.split(" / ")[1]}</span>
                         ) : null}
                       </small>
                     </span>

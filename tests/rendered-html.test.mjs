@@ -76,13 +76,14 @@ test("uses SimSun for every marked Chinese passage and separates bilingual proje
   const researchHtml = await researchResponse.text();
   const publicationsHtml = await publicationsResponse.text();
 
-  assert.match(css, /:lang\(zh-CN\)\s*\{[^}]*font-family:\s*"SimSun",\s*"宋体"[^;]*!important;/s);
+  assert.match(css, /@font-face\s*\{[^}]*font-family:\s*"Group Songti";[^}]*local\("SimSun"\)[^}]*local\("宋体"\)/s);
+  assert.match(css, /:lang\(zh-CN\),\s*\.zh-copy\s*\{[^}]*font-family:\s*"Group Songti",\s*"SimSun",\s*"宋体"[^;]*!important;/s);
   assert.match(css, /\.is-interior \.project-card h3\s*\{[^}]*line-height:\s*1\.25;/s);
   assert.match(css, /\.is-interior \.project-card \.system-title-zh\s*\{[^}]*line-height:\s*1\.82;/s);
   assert.match(css, /\.is-interior \.project-meta \[lang="zh-CN"\]\s*\{[^}]*font-size:\s*0\.9rem;/s);
-  assert.match(researchHtml, /project-sponsor-zh" lang="zh-CN"/);
+  assert.match(researchHtml, /project-sponsor-zh zh-copy" lang="zh-CN"/);
   assert.match(researchHtml, /主持（结题）/);
-  assert.match(publicationsHtml, /lang="zh-CN"[^>]*>[\s\S]{0,80}王杰/);
+  assert.match(publicationsHtml, /class="zh-copy" lang="zh-CN"[^>]*>[\s\S]{0,80}王杰/);
 });
 
 test("publishes the verified principal investigator profile in a compact people page", async () => {

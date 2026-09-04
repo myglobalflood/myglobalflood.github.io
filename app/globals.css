@@ -1158,8 +1158,19 @@ footer { background: #edf8fa; }
 
 /* Stable shared frame and September layout refinement */
 
-:lang(zh-CN) {
-  font-family: "SimSun", "宋体", "Songti SC", "STSong", "Noto Serif CJK SC", serif !important;
+@font-face {
+  font-family: "Group Songti";
+  src: local("SimSun"), local("宋体"), local("Songti SC"), local("STSong");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:lang(zh-CN),
+.zh-copy {
+  font-family: "Group Songti", "SimSun", "宋体", "Songti SC", "STSong", serif !important;
+  font-style: normal;
+  font-weight: 400;
   font-synthesis: none;
   letter-spacing: normal;
 }
@@ -1797,7 +1808,11 @@ body { background: #081a21; }
 .is-interior .project-card .project-sponsor-zh {
   line-height: 1.68;
 }
-.is-interior .project-card .project-sponsor-zh { margin: 0.4rem 0 0; }
+.is-interior .project-card .project-sponsor-zh {
+  margin: 0.4rem 0 0;
+  font-size: 0.94rem;
+  line-height: 1.78;
+}
 .is-interior .project-card h3 {
   margin: 1.35rem 0 0;
   padding-bottom: 0.08em;
@@ -1828,8 +1843,8 @@ body { background: #081a21; }
 
 .is-interior .people-page {
   background:
-    radial-gradient(circle at 72% 18%, rgba(61, 154, 174, 0.13), transparent 27rem),
-    radial-gradient(circle at 16% 72%, rgba(204, 146, 70, 0.07), transparent 25rem),
+    radial-gradient(circle at 77% 17%, rgba(61, 154, 174, 0.2), transparent 29rem),
+    radial-gradient(circle at 18% 68%, rgba(204, 146, 70, 0.1), transparent 27rem),
     linear-gradient(180deg, #102a33 0%, #0b2028 62%, #081a21 100%);
 }
 .people-hub {
@@ -1838,13 +1853,61 @@ body { background: #081a21; }
 }
 .people-hub-section { padding-bottom: clamp(3rem, 5vw, 4.5rem); }
 .people-hub-section + .people-hub-section { padding-top: clamp(3rem, 5vw, 4.5rem); }
-.is-interior .faculty-copy > h1 span { color: var(--accent-mint); }
+.is-interior .people-hub .faculty-card {
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border: 1px solid rgba(132, 199, 213, 0.2);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(73, 164, 184, 0.12), transparent 18rem),
+    linear-gradient(145deg, rgba(18, 50, 60, 0.88), rgba(9, 31, 39, 0.74));
+  box-shadow: 0 1.4rem 4rem rgba(0, 8, 12, 0.22);
+}
+.is-interior .faculty-copy > h1 { color: #f3f8f9; }
+.is-interior .faculty-copy > h1 span {
+  color: #d7b986;
+  font-size: 0.42em;
+}
 .is-interior .profile-role,
 .is-interior .profile-meta dd { color: #c5d5d9; }
+.is-interior .profile-bio { color: #91aab0; }
+.is-interior .people-hub .portrait-wrap {
+  padding: 0.42rem;
+  border: 1px solid rgba(225, 179, 110, 0.28);
+  border-radius: 0.65rem;
+  background: rgba(9, 30, 38, 0.62);
+  box-shadow: 0 1.2rem 3rem rgba(0, 8, 12, 0.26);
+}
+.is-interior .people-hub .portrait { border-radius: 0.38rem; }
+.is-interior .people-hub .profile-meta {
+  gap: 1px;
+  padding: 1px;
+  border: 1px solid rgba(132, 199, 213, 0.15);
+  border-radius: 0.9rem;
+  background: rgba(132, 199, 213, 0.12);
+  overflow: hidden;
+}
+.is-interior .people-hub .profile-meta div {
+  padding: 1.15rem 1.3rem;
+  background: rgba(8, 30, 38, 0.92);
+}
+.is-interior .people-hub .profile-meta dt { color: #6fc5d6; }
+.is-interior .people-hub .profile-meta dd { color: #d3e0e3; }
 .is-interior .academic-links b { color: rgba(221, 239, 243, 0.44); }
-.is-interior .member-card { background: rgba(17, 46, 56, 0.54); }
-.is-interior .member-card:hover { background: rgba(25, 58, 68, 0.8); }
-.is-interior .academic-links { background: rgba(13, 38, 47, 0.4); }
+.is-interior .member-grid { gap: 1rem; border-top: 0; }
+.is-interior .member-card {
+  border: 1px solid rgba(132, 199, 213, 0.15);
+  border-radius: 0.85rem;
+  background: linear-gradient(145deg, rgba(17, 46, 56, 0.7), rgba(10, 34, 42, 0.54));
+}
+.is-interior .member-card:hover { background: linear-gradient(145deg, rgba(25, 58, 68, 0.88), rgba(13, 40, 49, 0.72)); }
+.is-interior .academic-links {
+  border: 1px solid rgba(132, 199, 213, 0.15);
+  border-radius: 0.9rem;
+  background: rgba(7, 27, 35, 0.62);
+  overflow: hidden;
+}
+.is-interior .academic-links span { color: #6fc5d6; }
+.is-interior .academic-links strong { color: #d4e1e4; }
 
 .is-interior .publication-list { background: rgba(12, 37, 45, 0.28); }
 .is-interior .publication:hover { background: rgba(28, 62, 72, 0.62); }

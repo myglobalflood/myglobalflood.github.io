@@ -23,7 +23,7 @@ export default function PeoplePage() {
               <article className="faculty-card" data-reveal>
                 <div className="faculty-copy faculty-intro">
                   <p className="eyebrow">People · Principal Investigator</p>
-                  <h1 id="faculty-title">Jie Wang <span lang="zh-CN">王杰</span></h1>
+                  <h1 id="faculty-title">Jie Wang <span className="zh-copy" lang="zh-CN">王杰</span></h1>
                   <p className="profile-role">
                     Lecturer · Professional Master&apos;s Supervisor<br />
                     Institute of Hydrology and Water Resources Engineering

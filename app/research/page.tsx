@@ -35,7 +35,7 @@ export default function ResearchPage() {
                     <span className="system-code">{system.code}</span>
                     <div>
                       <h3>{system.title}</h3>
-                      <p className="system-title-zh" lang="zh-CN">{system.titleZh}</p>
+                      <p className="system-title-zh zh-copy" lang="zh-CN">{system.titleZh}</p>
                       <p>{system.text}</p>
                     </div>
                     <span className="system-action">Open system ↗</span>
@@ -59,7 +59,7 @@ export default function ResearchPage() {
                     <span className="system-code">{dataset.year} · {dataset.repository}</span>
                     <div>
                       <h3>{dataset.title}</h3>
-                      <p className="system-title-zh" lang="zh-CN">{dataset.titleZh}</p>
+                      <p className="system-title-zh zh-copy" lang="zh-CN">{dataset.titleZh}</p>
                       <p>{dataset.text}</p>
                     </div>
                     <span className="system-action">DOI {dataset.doi} ↗</span>
@@ -76,13 +76,13 @@ export default function ResearchPage() {
                     <span className="system-code">{item.period}</span>
                     <div className="project-card-copy">
                       <p className="project-sponsor">{item.sponsor}</p>
-                      <p className="project-sponsor-zh" lang="zh-CN">{item.sponsorZh}</p>
+                      <p className="project-sponsor-zh zh-copy" lang="zh-CN">{item.sponsorZh}</p>
                       <h3>{item.title}</h3>
-                      <p className="system-title-zh" lang="zh-CN">{item.titleZh}</p>
+                      <p className="system-title-zh zh-copy" lang="zh-CN">{item.titleZh}</p>
                     </div>
                     <div className="project-meta">
                       <span>{item.meta}</span>
-                      <span lang="zh-CN">{item.metaZh}</span>
+                      <span className="zh-copy" lang="zh-CN">{item.metaZh}</span>
                     </div>
                   </article>
                 ))}
