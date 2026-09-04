@@ -62,6 +62,25 @@ test("uses a unified dark interior palette and compact section rhythm", async ()
   assert.match(css, /\.research-hub-section,[\s\S]*\.publication-hub-section\s*\{[^}]*padding-bottom:\s*clamp\(2rem, 3vw, 3rem\);/s);
   assert.match(css, /\.is-interior \.people-page\s*\{[^}]*linear-gradient\(180deg, #102a33 0%, #0b2028 62%, #081a21 100%\)/s);
   assert.match(css, /\.is-interior \.contact-copy\s*\{[^}]*background:\s*rgba\(8, 31, 39, 0\.78\);/s);
+  assert.match(css, /--accent-mint:\s*#91cfc4;[\s\S]*--accent-warm:\s*#e1b36e;/s);
+});
+
+test("uses SimSun for every marked Chinese passage and separates bilingual project lines", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const [researchResponse, publicationsResponse] = await Promise.all([
+    render("/research/"),
+    render("/publications/"),
+  ]);
+  const researchHtml = await researchResponse.text();
+  const publicationsHtml = await publicationsResponse.text();
+
+  assert.match(css, /:lang\(zh-CN\)\s*\{[^}]*font-family:\s*"SimSun",\s*"宋体"[^;]*!important;/s);
+  assert.match(css, /\.is-interior \.project-card h3\s*\{[^}]*line-height:\s*1\.25;/s);
+  assert.match(css, /\.is-interior \.project-card \.system-title-zh\s*\{[^}]*line-height:\s*1\.82;/s);
+  assert.match(css, /\.is-interior \.project-meta \[lang="zh-CN"\]\s*\{[^}]*font-size:\s*0\.9rem;/s);
+  assert.match(researchHtml, /project-sponsor-zh" lang="zh-CN"/);
+  assert.match(researchHtml, /主持（结题）/);
+  assert.match(publicationsHtml, /lang="zh-CN"[^>]*>[\s\S]{0,80}王杰/);
 });
 
 test("publishes the verified principal investigator profile in a compact people page", async () => {

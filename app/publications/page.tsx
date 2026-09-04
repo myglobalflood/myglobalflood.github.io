@@ -106,7 +106,12 @@ export default function PublicationsPage() {
                     <span className="publication-main">
                       <strong>{item.title}</strong>
                       <em lang="zh-CN">{item.titleZh}</em>
-                      <small>{item.registration} · {item.authors}</small>
+                      <small>
+                        {item.registration} · {item.authors.split(" / ")[0]}
+                        {item.authors.includes(" / ") ? (
+                          <span lang="zh-CN"> / {item.authors.split(" / ")[1]}</span>
+                        ) : null}
+                      </small>
                     </span>
                     <span />
                   </article>
