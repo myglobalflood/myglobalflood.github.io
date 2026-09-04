@@ -38,11 +38,10 @@ export default function PeoplePage() {
                 <div className="portrait-wrap">
                   <div
                     className="portrait"
-                    style={{ backgroundImage: `linear-gradient(180deg, transparent 55%, rgba(0, 66, 92, 0.28)), url("${withBasePath("/assets/wang-jie.jpg")}")` }}
+                    style={{ backgroundImage: `url("${withBasePath("/assets/wang-jie.jpg")}")` }}
                     role="img"
                     aria-label="Portrait of Jie Wang"
                   />
-                  <span className="portrait-code">PI / 01</span>
                 </div>
                 <dl className="profile-meta">
                   <div><dt>Appointment</dt><dd>Lecturer since June 2022</dd></div>

@@ -295,7 +295,7 @@ a:focus-visible, button:focus-visible {
 }
 .watermark-page {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   padding-top: var(--nav-height);
   isolation: isolate;
   animation: watermark-page-fade 650ms both ease-out;
@@ -1871,13 +1871,17 @@ body { background: #081a21; }
 .is-interior .profile-meta dd { color: #c5d5d9; }
 .is-interior .profile-bio { color: #91aab0; }
 .is-interior .people-hub .portrait-wrap {
-  padding: 0.42rem;
-  border: 1px solid rgba(225, 179, 110, 0.28);
-  border-radius: 0.65rem;
-  background: rgba(9, 30, 38, 0.62);
-  box-shadow: 0 1.2rem 3rem rgba(0, 8, 12, 0.26);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
-.is-interior .people-hub .portrait { border-radius: 0.38rem; }
+.is-interior .people-hub .portrait-wrap::before { display: none; }
+.is-interior .people-hub .portrait {
+  border-radius: 0;
+  filter: none;
+}
 .is-interior .people-hub .profile-meta {
   gap: 1px;
   padding: 1px;
@@ -1936,10 +1940,11 @@ body { background: #081a21; }
     radial-gradient(circle at center, rgba(28, 94, 108, 0.06) 0%, rgba(4, 16, 21, 0.52) 88%);
 }
 .is-interior .contact-copy {
-  border-color: rgba(160, 214, 224, 0.18);
-  background: rgba(8, 31, 39, 0.78);
+  border-color: rgba(160, 214, 224, 0.24);
+  background:
+    linear-gradient(145deg, rgba(9, 36, 44, 0.58), rgba(7, 27, 35, 0.42));
   box-shadow: 0 1.6rem 5rem rgba(0, 8, 12, 0.32);
-  backdrop-filter: blur(16px) saturate(116%);
+  backdrop-filter: blur(18px) saturate(128%);
 }
 .is-interior .contact-copy h1 { color: #f2f8f9; }
 .is-interior .contact-copy h1 span { color: #83c1ca; }

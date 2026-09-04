@@ -49,8 +49,9 @@ test("keeps the shared navigation geometry stable between short and scrolling ro
 test("keeps the research and publication artwork visible and fixed behind scrolling content", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
-  assert.match(css, /\.watermark-page\s*\{[^}]*animation:\s*watermark-page-fade/s);
+  assert.match(css, /\.watermark-page\s*\{[^}]*overflow:\s*clip;[^}]*animation:\s*watermark-page-fade/s);
   assert.match(css, /\.page-watermark\s*\{[^}]*position:\s*fixed;/s);
+  assert.match(css, /\.research-local-nav\s*\{[^}]*position:\s*sticky;[^}]*top:\s*calc\(var\(--nav-height\) \+ 2rem\);/s);
   assert.match(css, /Unified dark interior theme[\s\S]*\.is-interior \.page-watermark\s*\{[^}]*opacity:\s*0\.34;/s);
 });
 
@@ -61,7 +62,7 @@ test("uses a unified dark interior palette and compact section rhythm", async ()
   assert.match(css, /\.is-interior \.site-nav,[\s\S]*background:\s*rgba\(7, 22, 29, 0\.88\);/s);
   assert.match(css, /\.research-hub-section,[\s\S]*\.publication-hub-section\s*\{[^}]*padding-bottom:\s*clamp\(2rem, 3vw, 3rem\);/s);
   assert.match(css, /\.is-interior \.people-page\s*\{[^}]*linear-gradient\(180deg, #102a33 0%, #0b2028 62%, #081a21 100%\)/s);
-  assert.match(css, /\.is-interior \.contact-copy\s*\{[^}]*background:\s*rgba\(8, 31, 39, 0\.78\);/s);
+  assert.match(css, /\.is-interior \.contact-copy\s*\{[^}]*rgba\(9, 36, 44, 0\.58\)[^}]*backdrop-filter:\s*blur\(18px\) saturate\(128%\);/s);
   assert.match(css, /--accent-mint:\s*#91cfc4;[\s\S]*--accent-warm:\s*#e1b36e;/s);
   assert.doesNotMatch(css, /\.is-interior #(open-data|funding|books|intellectual-property) \.content-section-label/);
   assert.doesNotMatch(css, /\.is-interior #(members|alumni) \.eyebrow/);
@@ -99,6 +100,7 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(html, /Alumni/);
   assert.match(html, /Name to be added/);
   assert.match(html, /faculty-intro/);
+  assert.doesNotMatch(html, /portrait-code|PI \/ 01/);
   assert.doesNotMatch(html, /Graduate Students/);
 });
 
