@@ -5,7 +5,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   "https://myglobalflood.github.io/";
 const socialImage = new URL("assets/og.png", siteUrl).toString();
-const favicon = new URL("assets/flood-global-change-logo-transparent.png", siteUrl).toString();
+const favicon = new URL("assets/flood-global-change-logo-frosted.png", siteUrl).toString();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

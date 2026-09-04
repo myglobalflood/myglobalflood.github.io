@@ -55,10 +55,17 @@ test("publishes the verified publication record under its own route", async () =
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /Publication · 2018–2026/);
+  assert.match(html, /Publication · 2014–2026/);
+  assert.match(html, /Papers/);
+  assert.match(html, /Books/);
+  assert.match(html, /Intellectual Property/);
   assert.match(html, /10\.1175\/JHM-D-26-0019\.1/);
   assert.match(html, /10\.3390\/rs17081342/);
   assert.match(html, /10\.1029\/2021WR029734/);
+  assert.match(html, /Water Hazards: Drought and Flood/);
+  assert.match(html, /2025SR0415905/);
+  assert.match(html, /流域高性能水要素监测与预报系统软件V1\.0/);
+  assert.match(html, /坡度对坡面降雨产流规律的影响/);
   assert.doesNotMatch(html, /10\.5281\/zenodo\.14560820/);
 });
 
@@ -70,7 +77,10 @@ test("links both operational monitoring systems", async () => {
   assert.match(html, /GBMMS\.html/);
   assert.match(html, /LMRBMS\.html/);
   assert.match(html, /10\.5281\/zenodo\.14560820/);
-  assert.match(html, /Funding &amp; Recognition/);
+  assert.match(html, /Funding · Principal Investigator/);
+  assert.match(html, /黄河源洪水成因解析和未来变化预估/);
+  assert.match(html, /柳江流域精细化分布式预报模型建设改进与调试/);
+  assert.doesNotMatch(html, /Future Star Meteorological/);
   assert.doesNotMatch(html, /Research Areas/);
   assert.doesNotMatch(html, /Research Index/);
 });
@@ -89,11 +99,11 @@ test("ships the final brand and social assets", async () => {
   const [layout] = await Promise.all([
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     access(new URL("../public/assets/flood-hero.webp", import.meta.url)),
-    access(new URL("../public/assets/flood-global-change-logo-transparent.png", import.meta.url)),
+    access(new URL("../public/assets/flood-global-change-logo-frosted.png", import.meta.url)),
     access(new URL("../public/assets/contact-yellow-river.jpg", import.meta.url)),
     access(new URL("../public/assets/og.png", import.meta.url)),
   ]);
 
-  assert.match(layout, /assets\/flood-global-change-logo-transparent\.png/);
+  assert.match(layout, /assets\/flood-global-change-logo-frosted\.png/);
   assert.doesNotMatch(layout, /favicon\.svg/);
 });

@@ -1,5 +1,5 @@
 import { SiteFrame } from "../components/site-frame";
-import { milestones, monitoringSystems, openData } from "../site-data";
+import { hostedProjects, monitoringSystems, openData } from "../site-data";
 import { withBasePath } from "../site-path";
 
 export default function ResearchPage() {
@@ -87,14 +87,24 @@ export default function ResearchPage() {
 
             <section className="research-hub-section" id="funding" aria-labelledby="funding-title">
               <div className="research-section-heading" data-reveal>
-                <p className="eyebrow">Funding &amp; Recognition</p>
-                <h2 id="funding-title">Support for sustained research.</h2>
+                <p className="eyebrow">Funding · Principal Investigator</p>
+                <h2 id="funding-title">Funded projects<br />led by the group.</h2>
+                <p>Selected projects hosted by Jie Wang, presented in English with the original Chinese record.</p>
               </div>
               <div className="research-card-grid funding-grid">
-                {milestones.map((item) => (
-                  <article className="system-card resource-card" data-reveal key={item.title}>
-                    <span className="system-code">{item.date}</span>
-                    <div><h3>{item.title}</h3><p>{item.text}</p></div>
+                {hostedProjects.map((item) => (
+                  <article className="system-card resource-card project-card" data-reveal key={item.title}>
+                    <span className="system-code">{item.period}</span>
+                    <div className="project-card-copy">
+                      <p className="project-sponsor">{item.sponsor}</p>
+                      <p className="project-sponsor-zh" lang="zh-CN">{item.sponsorZh}</p>
+                      <h3>{item.title}</h3>
+                      <p className="system-title-zh" lang="zh-CN">{item.titleZh}</p>
+                    </div>
+                    <div className="project-meta">
+                      <span>{item.meta}</span>
+                      <span lang="zh-CN">{item.metaZh}</span>
+                    </div>
                   </article>
                 ))}
               </div>

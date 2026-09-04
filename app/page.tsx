@@ -32,7 +32,7 @@ export default function Home() {
             </div>
             <div className="hero-brand-card hero-load">
               <img
-                src={withBasePath("/assets/flood-global-change-logo-transparent.png")}
+                src={withBasePath("/assets/flood-global-change-logo-frosted.png")}
                 alt="洪水与全球变化 · Flood and Global Change"
               />
             </div>

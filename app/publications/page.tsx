@@ -1,8 +1,34 @@
 import { SiteFrame } from "../components/site-frame";
-import { publications } from "../site-data";
+import { books, intellectualProperty, publications } from "../site-data";
 import { withBasePath } from "../site-path";
 
+function PublicationContent({
+  paper,
+  index,
+}: {
+  paper: (typeof publications)[number];
+  index: number;
+}) {
+  return (
+    <>
+      <span className="publication-number">{String(index + 1).padStart(2, "0")}</span>
+      <span className="publication-year">{paper.year}</span>
+      <span className="publication-main">
+        <strong>{paper.title}</strong>
+        {"titleZh" in paper && paper.titleZh ? <em lang="zh-CN">{paper.titleZh}</em> : null}
+        <small>
+          {paper.journal}
+          {"journalZh" in paper && paper.journalZh ? <span lang="zh-CN"> · {paper.journalZh}</span> : null}
+        </small>
+      </span>
+      {"href" in paper && paper.href ? <span className="publication-arrow" aria-hidden="true">↗</span> : <span />}
+    </>
+  );
+}
+
 export default function PublicationsPage() {
+  const sortedPublications = [...publications].sort((a, b) => Number(b.year) - Number(a.year));
+
   return (
     <SiteFrame active="publications">
       <main className="route-main">
@@ -14,11 +40,11 @@ export default function PublicationsPage() {
           />
           <div className="visual-hero-shade" aria-hidden="true" />
           <div className="visual-hero-copy">
-            <p className="eyebrow">Publication · 2018–2026</p>
+            <p className="eyebrow">Publication · 2014–2026</p>
             <h1>Research that<br /><span>moves with water.</span></h1>
             <p className="visual-hero-intro">
-              Peer-reviewed research spanning hydrological–hydrodynamic model
-              development, flood attribution, monsoon dynamics and precipitation evaluation.
+              Peer-reviewed papers, scholarly book chapters and registered
+              software supporting flood science and basin intelligence.
             </p>
           </div>
           <p className="visual-hero-credit">
@@ -26,37 +52,88 @@ export default function PublicationsPage() {
           </p>
         </header>
 
-        <section className="work-page section-pad">
-          <div className="publication-list">
-            {publications.map((paper, index) => (
+        <section className="publication-hub section-pad">
+          <aside className="research-local-nav publication-local-nav" aria-label="Publication page navigation">
+            <a href="#papers"><span>01</span>Papers</a>
+            <a href="#books"><span>02</span>Books</a>
+            <a href="#intellectual-property"><span>03</span>Intellectual Property</a>
+          </aside>
+
+          <div className="publication-hub-content">
+            <section className="publication-hub-section" id="papers" aria-labelledby="papers-title">
+              <div className="publication-section-heading" data-reveal>
+                <p className="eyebrow">Papers</p>
+                <h2 id="papers-title">Peer-reviewed<br />research record.</h2>
+                <p>{sortedPublications.length} journal papers listed in the supplied curriculum vitae.</p>
+              </div>
+              <div className="publication-list">
+                {sortedPublications.map((paper, index) => (
+                  "href" in paper && paper.href ? (
+                    <a
+                      className="publication"
+                      data-reveal
+                      href={paper.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      key={`${paper.year}-${paper.title}`}
+                    >
+                      <PublicationContent paper={paper} index={index} />
+                    </a>
+                  ) : (
+                    <article className="publication" data-reveal key={`${paper.year}-${paper.title}`}>
+                      <PublicationContent paper={paper} index={index} />
+                    </article>
+                  )
+                ))}
+              </div>
               <a
-                className="publication"
-                data-reveal
-                href={paper.href}
+                className="work-profile-link"
+                href="https://scholar.google.com/citations?hl=zh-CN&pli=1&user=jvNCMNgAAAAJ"
                 target="_blank"
                 rel="noreferrer"
-                key={paper.title}
               >
-                <span className="publication-number">{String(index + 1).padStart(2, "0")}</span>
-                <span className="publication-year">{paper.year}</span>
-                <span className="publication-main">
-                  <strong>{paper.title}</strong><small>{paper.journal}</small>
-                </span>
-                <span className="publication-arrow" aria-hidden="true">↗</span>
+                Explore the complete publication record on Google Scholar
+                <span aria-hidden="true">↗</span>
               </a>
-            ))}
-          </div>
-          <a
-            className="work-profile-link"
-            href="https://scholar.google.com/citations?hl=zh-CN&pli=1&user=jvNCMNgAAAAJ"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore the complete publication record on Google Scholar
-            <span aria-hidden="true">↗</span>
-          </a>
-        </section>
+            </section>
 
+            <section className="publication-hub-section" id="books" aria-labelledby="books-title">
+              <div className="publication-section-heading" data-reveal>
+                <p className="eyebrow">Books · Scholarly Chapters</p>
+                <h2 id="books-title">Long-form work<br />on water hazards.</h2>
+              </div>
+              <div className="knowledge-grid">
+                {books.map((book) => (
+                  <article className="knowledge-card" data-reveal key={book.title}>
+                    <span className="system-code">{book.year}</span>
+                    <h3>{book.title}</h3>
+                    <p>{book.text}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="publication-hub-section" id="intellectual-property" aria-labelledby="ip-title">
+              <div className="publication-section-heading" data-reveal>
+                <p className="eyebrow">Intellectual Property · Software Copyrights</p>
+                <h2 id="ip-title">Research translated<br />into working systems.</h2>
+                <p>Registered software is presented in English with the original Chinese title.</p>
+              </div>
+              <div className="knowledge-grid">
+                {intellectualProperty.map((item) => (
+                  <article className="knowledge-card ip-card" data-reveal key={item.registration}>
+                    <span className="system-code">{item.year} · {item.registration}</span>
+                    <div>
+                      <h3>{item.title}</h3>
+                      <p className="knowledge-title-zh" lang="zh-CN">{item.titleZh}</p>
+                    </div>
+                    <p className="knowledge-meta">{item.authors}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
+        </section>
       </main>
     </SiteFrame>
   );
