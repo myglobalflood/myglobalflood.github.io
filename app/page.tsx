@@ -19,10 +19,8 @@ export default function Home() {
           </div>
           <div className="hero-copy">
             <div className="hero-copy-center">
-              <p className="eyebrow hero-load">Flood &amp; Global Change Group</p>
-              <h1 className="hero-load">
-                Floods, <span>understood.</span>
-              </h1>
+              <p className="eyebrow hero-load">Floods, understood.</p>
+              <h1 className="hero-load">Flood &amp; Global Change Group</h1>
               <a className="hero-cta hero-load" href={withBasePath("/research/")}>
                 <span>View research</span>
                 <b aria-hidden="true">↗</b>

@@ -30,10 +30,18 @@ test("renders the Flood and Global Change Group home page", async () => {
 
   const html = await response.text();
   assert.match(html, /Flood &amp; Global Change Group/);
-  assert.match(html, /Floods,/);
+  assert.match(html, /Floods, understood\./);
   assert.match(html, /flood-hero\.webp/);
   assert.doesNotMatch(html, /hero-brand-card/);
   assert.doesNotMatch(html, /AHS Lab|Advanced Hydrological Simulation/);
+});
+
+test("keeps the shared navigation geometry stable between short and scrolling routes", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+
+  assert.match(css, /html\s*\{[^}]*overflow-y:\s*scroll;[^}]*scrollbar-gutter:\s*stable;/s);
+  assert.match(css, /\.site-nav\s*\{[^}]*height:\s*var\(--nav-height\);[^}]*padding:\s*0 var\(--page-pad\);[^}]*border-bottom:\s*1px solid transparent;/s);
+  assert.doesNotMatch(css, /\.site-nav\.is-scrolled\s*\{[^}]*padding-(?:top|bottom):/s);
 });
 
 test("publishes the verified principal investigator profile in a compact people page", async () => {
@@ -67,6 +75,7 @@ test("publishes the verified publication record under its own route", async () =
   assert.match(html, /2025SR0415905/);
   assert.match(html, /流域高性能水要素监测与预报系统软件V1\.0/);
   assert.match(html, /坡度对坡面降雨产流规律的影响/);
+  assert.doesNotMatch(html, /knowledge-card|knowledge-grid|ip-card/);
   assert.doesNotMatch(html, /Peer-reviewed research record|Research translated|Long-form work/);
   assert.doesNotMatch(html, /supplied curriculum vitae|presented in English|original Chinese/i);
   assert.doesNotMatch(html, /10\.5281\/zenodo\.14560820/);

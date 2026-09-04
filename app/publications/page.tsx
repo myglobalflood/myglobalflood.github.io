@@ -95,12 +95,16 @@ export default function PublicationsPage() {
 
             <section className="publication-hub-section" id="books" aria-labelledby="books-title">
               <h2 className="content-section-label" id="books-title">Books · Scholarly Chapters</h2>
-              <div className="knowledge-grid">
-                {books.map((book) => (
-                  <article className="knowledge-card" data-reveal key={book.title}>
-                    <span className="system-code">{book.year}</span>
-                    <h3>{book.title}</h3>
-                    <p>{book.text}</p>
+              <div className="publication-list">
+                {books.map((book, index) => (
+                  <article className="publication" data-reveal key={book.title}>
+                    <span className="publication-number">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="publication-year">{book.year}</span>
+                    <span className="publication-main">
+                      <strong>{book.title}</strong>
+                      <small>{book.text}</small>
+                    </span>
+                    <span />
                   </article>
                 ))}
               </div>
@@ -108,15 +112,17 @@ export default function PublicationsPage() {
 
             <section className="publication-hub-section" id="intellectual-property" aria-labelledby="ip-title">
               <h2 className="content-section-label" id="ip-title">Intellectual Property · Software Copyrights</h2>
-              <div className="knowledge-grid">
-                {intellectualProperty.map((item) => (
-                  <article className="knowledge-card ip-card" data-reveal key={item.registration}>
-                    <span className="system-code">{item.year} · {item.registration}</span>
-                    <div>
-                      <h3>{item.title}</h3>
-                      <p className="knowledge-title-zh" lang="zh-CN">{item.titleZh}</p>
-                    </div>
-                    <p className="knowledge-meta">{item.authors}</p>
+              <div className="publication-list">
+                {intellectualProperty.map((item, index) => (
+                  <article className="publication" data-reveal key={item.registration}>
+                    <span className="publication-number">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="publication-year">{item.year}</span>
+                    <span className="publication-main">
+                      <strong>{item.title}</strong>
+                      <em lang="zh-CN">{item.titleZh}</em>
+                      <small>{item.registration} · {item.authors}</small>
+                    </span>
+                    <span />
                   </article>
                 ))}
               </div>
