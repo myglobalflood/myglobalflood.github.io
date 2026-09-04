@@ -63,6 +63,8 @@ test("uses a unified dark interior palette and compact section rhythm", async ()
   assert.match(css, /\.is-interior \.people-page\s*\{[^}]*linear-gradient\(180deg, #102a33 0%, #0b2028 62%, #081a21 100%\)/s);
   assert.match(css, /\.is-interior \.contact-copy\s*\{[^}]*background:\s*rgba\(8, 31, 39, 0\.78\);/s);
   assert.match(css, /--accent-mint:\s*#91cfc4;[\s\S]*--accent-warm:\s*#e1b36e;/s);
+  assert.doesNotMatch(css, /\.is-interior #(open-data|funding|books|intellectual-property) \.content-section-label/);
+  assert.doesNotMatch(css, /\.is-interior #(members|alumni) \.eyebrow/);
 });
 
 test("uses SimSun for every marked Chinese passage and separates bilingual project lines", async () => {

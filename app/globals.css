@@ -1785,16 +1785,7 @@ body { background: #081a21; }
 .is-interior .project-card .project-sponsor-zh,
 .is-interior .project-meta { color: var(--muted); }
 .is-interior .project-card .project-sponsor-zh { color: var(--accent-mint); }
-.is-interior .project-meta span:last-child { color: var(--accent-warm); }
-
-.is-interior #open-data .content-section-label,
-.is-interior #open-data .system-code { color: var(--accent-mint); }
-.is-interior #funding .content-section-label,
-.is-interior #funding .system-code { color: var(--accent-warm); }
-.is-interior #funding .project-card:nth-child(even) {
-  border-color: rgba(225, 179, 110, 0.22);
-  background: linear-gradient(145deg, rgba(19, 45, 52, 0.94), rgba(30, 42, 39, 0.9));
-}
+.is-interior .project-meta span:last-child { color: var(--accent-mint); }
 
 .is-interior .project-card-copy {
   display: flex;
@@ -1847,12 +1838,7 @@ body { background: #081a21; }
 }
 .people-hub-section { padding-bottom: clamp(3rem, 5vw, 4.5rem); }
 .people-hub-section + .people-hub-section { padding-top: clamp(3rem, 5vw, 4.5rem); }
-.is-interior #pi .eyebrow,
-.is-interior .faculty-copy > h1 span { color: var(--accent-warm); }
-.is-interior #members .eyebrow,
-.is-interior #members .member-card > span { color: var(--accent-mint); }
-.is-interior #alumni .eyebrow,
-.is-interior #alumni .member-card > span { color: #8ebbc6; }
+.is-interior .faculty-copy > h1 span { color: var(--accent-mint); }
 .is-interior .profile-role,
 .is-interior .profile-meta dd { color: #c5d5d9; }
 .is-interior .academic-links b { color: rgba(221, 239, 243, 0.44); }
@@ -1864,10 +1850,6 @@ body { background: #081a21; }
 .is-interior .publication:hover { background: rgba(28, 62, 72, 0.62); }
 .is-interior .publication-main em,
 .is-interior .publication-main small span { color: var(--accent-mint); }
-.is-interior #books .content-section-label,
-.is-interior #books .publication-year { color: var(--accent-warm); }
-.is-interior #intellectual-property .content-section-label,
-.is-interior #intellectual-property .publication-year { color: var(--accent-mint); }
 .is-interior .work-profile-link {
   border-bottom-color: rgba(132, 199, 213, 0.36);
   color: #b9ccd0;
@@ -1897,7 +1879,6 @@ body { background: #081a21; }
   backdrop-filter: blur(16px) saturate(116%);
 }
 .is-interior .contact-copy h1 { color: #f2f8f9; }
-.is-interior .contact-copy .eyebrow { color: var(--accent-warm); }
 .is-interior .contact-copy h1 span { color: #83c1ca; }
 .is-interior .contact-copy > p:not(.eyebrow) { color: #a9bdc2; }
 .is-interior .contact-coordinate,
