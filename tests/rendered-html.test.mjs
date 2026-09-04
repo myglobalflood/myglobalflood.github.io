@@ -44,6 +44,9 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(html, /jvNCMNgAAAAJ/);
   assert.match(html, /teachInfo\.jsp\?id=689/);
   assert.match(html, /Principal Investigator/);
+  assert.match(html, /Current Members/);
+  assert.match(html, /Alumni/);
+  assert.match(html, /Name to be added/);
   assert.doesNotMatch(html, /Graduate Students/);
 });
 
@@ -69,16 +72,28 @@ test("links both operational monitoring systems", async () => {
   assert.match(html, /10\.5281\/zenodo\.14560820/);
   assert.match(html, /Funding &amp; Recognition/);
   assert.doesNotMatch(html, /Research Areas/);
+  assert.doesNotMatch(html, /Research Index/);
+});
+
+test("uses the Yellow River Delta image for the light contact page", async () => {
+  const response = await render("/contact/");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /contact-yellow-river\.jpg/);
+  assert.match(html, /NASA Earth Observatory/);
+  assert.doesNotMatch(html, /contact-earth\.webp/);
 });
 
 test("ships the final brand and social assets", async () => {
   const [layout] = await Promise.all([
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     access(new URL("../public/assets/flood-hero.webp", import.meta.url)),
-    access(new URL("../public/assets/flood-global-change-logo.jpg", import.meta.url)),
+    access(new URL("../public/assets/flood-global-change-logo-transparent.png", import.meta.url)),
+    access(new URL("../public/assets/contact-yellow-river.jpg", import.meta.url)),
     access(new URL("../public/assets/og.png", import.meta.url)),
   ]);
 
-  assert.match(layout, /assets\/flood-global-change-logo\.jpg/);
+  assert.match(layout, /assets\/flood-global-change-logo-transparent\.png/);
   assert.doesNotMatch(layout, /favicon\.svg/);
 });

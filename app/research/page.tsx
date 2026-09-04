@@ -28,7 +28,6 @@ export default function ResearchPage() {
 
         <section className="research-hub section-pad">
           <aside className="research-local-nav" aria-label="Research page navigation">
-            <p>Research Index</p>
             <a href="#projects"><span>01</span>Projects</a>
             <a href="#open-data"><span>02</span>Open Data</a>
             <a href="#funding"><span>03</span>Funding</a>
