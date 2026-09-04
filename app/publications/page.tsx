@@ -31,26 +31,12 @@ export default function PublicationsPage() {
 
   return (
     <SiteFrame active="publications">
-      <main className="route-main">
-        <header className="visual-page-hero work-visual-hero">
-          <div
-            className="visual-hero-image"
-            style={{ backgroundImage: `url("${withBasePath("/assets/work-water.webp")}")` }}
-            aria-hidden="true"
-          />
-          <div className="visual-hero-shade" aria-hidden="true" />
-          <div className="visual-hero-copy">
-            <p className="eyebrow">Publication · 2014–2026</p>
-            <h1>Research that<br /><span>moves with water.</span></h1>
-            <p className="visual-hero-intro">
-              Peer-reviewed papers, scholarly book chapters and registered
-              software supporting flood science and basin intelligence.
-            </p>
-          </div>
-          <p className="visual-hero-credit">
-            Ili River Delta · NASA Earth Observatory · Landsat 8
-          </p>
-        </header>
+      <main className="route-main watermark-page">
+        <div
+          className="page-watermark publication-page-watermark"
+          style={{ backgroundImage: `url("${withBasePath("/assets/work-water.webp")}")` }}
+          aria-hidden="true"
+        />
 
         <section className="publication-hub section-pad">
           <aside className="research-local-nav publication-local-nav" aria-label="Publication page navigation">

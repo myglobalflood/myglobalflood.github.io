@@ -21,7 +21,7 @@ export default function PeoplePage() {
           <div className="people-hub-content">
             <section className="people-hub-section" id="pi" aria-labelledby="faculty-title">
               <article className="faculty-card" data-reveal>
-                <div className="faculty-copy">
+                <div className="faculty-copy faculty-intro">
                   <p className="eyebrow">People · Principal Investigator</p>
                   <h1 id="faculty-title">Jie Wang <span lang="zh-CN">王杰</span></h1>
                   <p className="profile-role">
@@ -34,19 +34,6 @@ export default function PeoplePage() {
                     attribution and multi-scale monitoring to understand changing
                     flood regimes across complex river basins.
                   </p>
-                  <dl className="profile-meta">
-                    <div><dt>Appointment</dt><dd>Lecturer since June 2022</dd></div>
-                    <div><dt>Affiliation</dt><dd>Lanzhou University</dd></div>
-                    <div><dt>Education</dt><dd>Ph.D., UCAS · M.Eng. &amp; B.Eng., Hohai University</dd></div>
-                    <div><dt>Office</dt><dd>Guanyun Building 1025</dd></div>
-                  </dl>
-                  <div className="academic-links" aria-label="Academic profiles">
-                    {profileLinks.map((link) => (
-                      <a href={link.href} target="_blank" rel="noreferrer" key={link.label}>
-                        <span>{link.label}</span><strong>{link.value}</strong><b aria-hidden="true">↗</b>
-                      </a>
-                    ))}
-                  </div>
                 </div>
                 <div className="portrait-wrap">
                   <div
@@ -56,6 +43,19 @@ export default function PeoplePage() {
                     aria-label="Portrait of Jie Wang"
                   />
                   <span className="portrait-code">PI / 01</span>
+                </div>
+                <dl className="profile-meta">
+                  <div><dt>Appointment</dt><dd>Lecturer since June 2022</dd></div>
+                  <div><dt>Affiliation</dt><dd>Lanzhou University</dd></div>
+                  <div><dt>Education</dt><dd>Ph.D., UCAS · M.Eng. &amp; B.Eng., Hohai University</dd></div>
+                  <div><dt>Office</dt><dd>Guanyun Building 1025</dd></div>
+                </dl>
+                <div className="academic-links" aria-label="Academic profiles">
+                  {profileLinks.map((link) => (
+                    <a href={link.href} target="_blank" rel="noreferrer" key={link.label}>
+                      <span>{link.label}</span><strong>{link.value}</strong><b aria-hidden="true">↗</b>
+                    </a>
+                  ))}
                 </div>
               </article>
             </section>

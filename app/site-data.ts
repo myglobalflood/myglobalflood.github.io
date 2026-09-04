@@ -17,12 +17,13 @@ export const monitoringSystems = [
 
 export const openData = [
   {
-    year: "2024",
-    title: "Historical flood record datasets in China from 2000 to 2020",
-    text: "A city-level record of 4,330 flood events compiled from the China Meteorological Disaster Yearbooks, news reports and government sources, including tropical-cyclone and non-tropical-cyclone events.",
-    repository: "Zenodo",
-    doi: "10.5281/zenodo.14560820",
-    href: "https://doi.org/10.5281/zenodo.14560820",
+    year: "1951–2024",
+    title: "A 0.1° Resolution Bias-Corrected Daily Meteorological Dataset for the Source Region of the Yellow River",
+    titleZh: "黄河源逐日0.1°校正气象数据集（1951–2024）",
+    text: "Daily 0.1° bias-corrected precipitation, temperature and wind-speed data for the Source Region of the Yellow River, covering 1951–2024.",
+    repository: "National Tibetan Plateau Data Center",
+    doi: "10.11888/Atmos.tpdc.303450",
+    href: "https://data.tpdc.ac.cn/zh-hans/data/188649f5-bbef-4588-a44c-e6af578b0238",
   },
 ];
 

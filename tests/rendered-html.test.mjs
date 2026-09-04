@@ -31,7 +31,9 @@ test("renders the Flood and Global Change Group home page", async () => {
   const html = await response.text();
   assert.match(html, /Flood &amp; Global Change Group/);
   assert.match(html, /Floods, understood\./);
-  assert.match(html, /flood-hero\.webp/);
+  assert.match(html, /flood-hero-severe\.jpg/);
+  assert.match(html, /Louisiana Floods · 2016/);
+  assert.match(html, /USGS · NOAA/);
   assert.doesNotMatch(html, /hero-brand-card/);
   assert.doesNotMatch(html, /AHS Lab|Advanced Hydrological Simulation/);
 });
@@ -56,6 +58,7 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(html, /Current Members/);
   assert.match(html, /Alumni/);
   assert.match(html, /Name to be added/);
+  assert.match(html, /faculty-intro/);
   assert.doesNotMatch(html, /Graduate Students/);
 });
 
@@ -64,7 +67,8 @@ test("publishes the verified publication record under its own route", async () =
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /Publication · 2014–2026/);
+  assert.match(html, /page-watermark publication-page-watermark/);
+  assert.match(html, /work-water\.webp/);
   assert.match(html, /Papers/);
   assert.match(html, /Books/);
   assert.match(html, /Intellectual Property/);
@@ -77,6 +81,7 @@ test("publishes the verified publication record under its own route", async () =
   assert.match(html, /坡度对坡面降雨产流规律的影响/);
   assert.doesNotMatch(html, /knowledge-card|knowledge-grid|ip-card/);
   assert.doesNotMatch(html, /Peer-reviewed research record|Research translated|Long-form work/);
+  assert.doesNotMatch(html, /Publication · 2014–2026|Research that|moves with water|Peer-reviewed papers/);
   assert.doesNotMatch(html, /supplied curriculum vitae|presented in English|original Chinese/i);
   assert.doesNotMatch(html, /10\.5281\/zenodo\.14560820/);
 });
@@ -88,7 +93,11 @@ test("links both operational monitoring systems", async () => {
   const html = await response.text();
   assert.match(html, /GBMMS\.html/);
   assert.match(html, /LMRBMS\.html/);
-  assert.match(html, /10\.5281\/zenodo\.14560820/);
+  assert.match(html, /page-watermark research-page-watermark/);
+  assert.match(html, /mekong-satellite\.webp/);
+  assert.match(html, /188649f5-bbef-4588-a44c-e6af578b0238/);
+  assert.match(html, /10\.11888\/Atmos\.tpdc\.303450/);
+  assert.match(html, /黄河源逐日0\.1°校正气象数据集/);
   assert.match(html, /Funding · Principal Investigator/);
   assert.match(html, /黄河源洪水成因解析和未来变化预估/);
   assert.match(html, /柳江流域精细化分布式预报模型建设改进与调试/);
@@ -97,6 +106,8 @@ test("links both operational monitoring systems", async () => {
   assert.doesNotMatch(html, /Future Star Meteorological/);
   assert.doesNotMatch(html, /Research Areas/);
   assert.doesNotMatch(html, /Research Index/);
+  assert.doesNotMatch(html, /10\.5281\/zenodo\.14560820/);
+  assert.doesNotMatch(html, /Research · Basin Intelligence|One system|Three scales|From hillslopes/);
 });
 
 test("uses the Yellow River Delta image for the light contact page", async () => {
@@ -112,7 +123,7 @@ test("uses the Yellow River Delta image for the light contact page", async () =>
 test("ships the final brand and social assets", async () => {
   const [layout] = await Promise.all([
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    access(new URL("../public/assets/flood-hero.webp", import.meta.url)),
+    access(new URL("../public/assets/flood-hero-severe.jpg", import.meta.url)),
     access(new URL("../public/assets/flood-global-change-logo-frosted.png", import.meta.url)),
     access(new URL("../public/assets/contact-yellow-river.jpg", import.meta.url)),
     access(new URL("../public/assets/og.png", import.meta.url)),

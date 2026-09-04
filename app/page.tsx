@@ -8,7 +8,7 @@ export default function Home() {
         <section className="hero">
           <div
             className="hero-image"
-            style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero.webp")}")` }}
+            style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-severe.jpg")}")` }}
             aria-hidden="true"
           />
           <div className="hero-shade" aria-hidden="true" />
@@ -28,8 +28,8 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-index hero-load" aria-hidden="true">
-            <span>VIC-CAS</span><span>CaMa-Flood</span>
-            <span>Climate · Risk · Resilience</span>
+            <span>Louisiana Floods · 2016</span><span>USGS · NOAA</span>
+            <span>Flood · Climate · Resilience</span>
           </div>
         </section>
       </main>

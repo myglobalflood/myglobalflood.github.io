@@ -5,26 +5,12 @@ import { withBasePath } from "../site-path";
 export default function ResearchPage() {
   return (
     <SiteFrame active="research">
-      <main className="route-main">
-        <header className="visual-page-hero research-visual-hero">
-          <div
-            className="visual-hero-image"
-            style={{ backgroundImage: `url("${withBasePath("/assets/mekong-satellite.webp")}")` }}
-            aria-hidden="true"
-          />
-          <div className="visual-hero-shade" aria-hidden="true" />
-          <div className="visual-hero-copy">
-            <p className="eyebrow">Research · Basin Intelligence</p>
-            <h1>One system.<br /><span>Three scales.</span></h1>
-            <p className="visual-hero-intro">
-              From hillslopes to transboundary basins, we develop models that
-              make water dynamics visible, explainable and actionable.
-            </p>
-          </div>
-          <p className="visual-hero-credit">
-            Mekong River near Huay Xai · NASA Earth Observatory · Landsat 8
-          </p>
-        </header>
+      <main className="route-main watermark-page">
+        <div
+          className="page-watermark research-page-watermark"
+          style={{ backgroundImage: `url("${withBasePath("/assets/mekong-satellite.webp")}")` }}
+          aria-hidden="true"
+        />
 
         <section className="research-hub section-pad">
           <aside className="research-local-nav" aria-label="Research page navigation">
@@ -71,7 +57,11 @@ export default function ResearchPage() {
                     key={dataset.doi}
                   >
                     <span className="system-code">{dataset.year} · {dataset.repository}</span>
-                    <div><h3>{dataset.title}</h3><p>{dataset.text}</p></div>
+                    <div>
+                      <h3>{dataset.title}</h3>
+                      <p className="system-title-zh" lang="zh-CN">{dataset.titleZh}</p>
+                      <p>{dataset.text}</p>
+                    </div>
                     <span className="system-action">DOI {dataset.doi} ↗</span>
                   </a>
                 ))}
