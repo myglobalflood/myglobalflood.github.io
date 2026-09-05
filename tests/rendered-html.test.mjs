@@ -69,6 +69,9 @@ test("offers a persistent, fully adapted light theme", async () => {
   assert.match(css, /Persistent light theme[\s\S]*html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*filter:/s);
   assert.match(css, /html\[data-theme="light"\] \.is-interior\s*\{[^}]*--glass-surface:\s*linear-gradient/s);
   assert.match(css, /html\[data-theme="light"\] \.is-interior \.contact-earth\s*\{[^}]*filter:/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-copy-center::before\s*\{\s*content:\s*none;/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero h1\s*\{[^}]*text-shadow:\s*none;/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero \.eyebrow\s*\{[^}]*text-shadow:\s*none;/s);
 });
 
 test("keeps the research and publication artwork visible and fixed behind scrolling content", async () => {

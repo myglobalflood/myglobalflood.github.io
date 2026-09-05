@@ -2103,15 +2103,15 @@ html[data-theme="light"] .is-home .flow-field {
   opacity: 0.2;
 }
 html[data-theme="light"] .is-home .hero-copy-center::before {
-  background: radial-gradient(ellipse at center, rgba(216, 231, 237, 0.76) 0%, rgba(206, 225, 233, 0.46) 48%, transparent 76%);
+  content: none;
 }
 html[data-theme="light"] .is-home .hero .eyebrow {
   color: #08728e;
-  text-shadow: 0 0.12rem 1.2rem rgba(229, 242, 245, 0.62);
+  text-shadow: none;
 }
 html[data-theme="light"] .is-home .hero h1 {
   color: #143843;
-  text-shadow: 0 0.15rem 1.4rem rgba(231, 243, 246, 0.7), 0 0 2.8rem rgba(216, 233, 238, 0.46);
+  text-shadow: none;
 }
 html[data-theme="light"] .is-home .hero-cta {
   border-bottom-color: rgba(19, 75, 89, 0.42);
