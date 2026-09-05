@@ -177,8 +177,8 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(html, /page-watermark people-page-watermark/);
   assert.match(html, /work-water\.webp/);
   assert.doesNotMatch(html, /flood-hero-minnesota|flood-hero-pakistan/);
-  assert.match(html, /wang-jie-cv-original\.jpg/);
-  assert.match(html, /width="114" height="160"/);
+  assert.match(html, /wang-jie-portrait-hd\.jpg/);
+  assert.match(html, /width="413" height="531"/);
   assert.doesNotMatch(html, /portrait-code|PI \/ 01/);
   assert.doesNotMatch(html, /Graduate Students/);
 });

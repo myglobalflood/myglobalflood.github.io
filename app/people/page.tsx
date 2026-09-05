@@ -45,9 +45,9 @@ export default function PeoplePage() {
                   <div className="portrait-wrap">
                     <img
                       className="portrait"
-                      src={withBasePath("/assets/wang-jie-cv-original.jpg")}
-                      width={114}
-                      height={160}
+                      src={withBasePath("/assets/wang-jie-portrait-hd.jpg")}
+                      width={413}
+                      height={531}
                       alt="Portrait of Jie Wang"
                     />
                   </div>
