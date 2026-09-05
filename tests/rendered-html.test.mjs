@@ -73,7 +73,7 @@ test("offers a persistent, fully adapted light theme", async () => {
   assert.match(css, /html\[data-theme="light"\] \.is-home \.hero h1\s*\{[^}]*text-shadow:\s*none;/s);
   assert.match(css, /html\[data-theme="light"\] \.is-home \.hero \.eyebrow\s*\{[^}]*text-shadow:\s*none;/s);
   assert.match(css, /html\[data-theme="light"\] \.is-home \.site-nav\.is-scrolled\s*\{[^}]*background:\s*transparent;[^}]*backdrop-filter:\s*none;/s);
-  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*filter:\s*saturate\(0?\.4\) contrast\(1\.02\) brightness\(1\.03\);/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*filter:\s*saturate\(0?\.35\) contrast\(0?\.98\) brightness\(1\);/s);
   assert.match(css, /\.hero-image\s*\{[^}]*filter:\s*saturate\(0?\.3\) contrast\(0?\.92\) brightness\(0?\.88\);/s);
 });
 
@@ -100,16 +100,37 @@ test("uses a unified dark interior palette and compact section rhythm", async ()
   assert.doesNotMatch(css, /\.is-interior #(members|alumni) \.eyebrow/);
 });
 
-test("shares rounded, padded glass navigation on all three content pages", async () => {
+test("keeps page navigation unfilled with comfortable narrow-screen spacing", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   for (const pathname of ["/people/", "/research/", "/publications/"]) {
     const html = await (await render(pathname)).text();
-    assert.match(html, /<aside class="research-local-nav[^\"]*glass-panel"/);
+    assert.match(html, /<aside class="research-local-nav/);
+    assert.doesNotMatch(html, /<aside class="research-local-nav[^\"]*glass-panel"/);
   }
-  assert.match(css, /\.research-local-nav\s*\{[^}]*padding:\s*0\.75rem;[^}]*border-radius:\s*1rem;/s);
-  assert.match(css, /\.research-local-nav a\s*\{[^}]*padding:\s*0\.8rem 0\.75rem;/s);
+  assert.match(css, /\.research-local-nav\s*\{[^}]*padding:\s*1\.1rem 0;[^}]*background:\s*transparent;/s);
+  assert.match(css, /\.research-local-nav a\s*\{[^}]*padding:\s*0\.8rem 0;/s);
   assert.match(css, /\.research-local-nav\s*\{[^}]*overflow-x:\s*auto;[^}]*padding:\s*0\.65rem 0\.8rem;/s);
   assert.doesNotMatch(css, /\.research-local-nav\s*\{[^}]*margin-(?:left|right):\s*calc\(var\(--page-pad\) \* -1\)/s);
+});
+
+test("protects light-home text contrast without heavy multi-layer fog", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const scrim = css.match(/html\[data-theme="light"\] \.is-home \.hero-shade\s*\{([^}]+)\}/s)[1];
+  const stops = [...scrim.matchAll(/rgba\((\d+), (\d+), (\d+), ([\d.]+)\)/g)]
+    .map((match) => match.slice(1).map(Number));
+  assert.equal((scrim.match(/linear-gradient\(/g) || []).length, 1);
+  assert.doesNotMatch(scrim, /radial-gradient|blur\(/);
+  const luminance = (rgb) => rgb.map((channel) => channel / 255)
+    .map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4)
+    .reduce((sum, channel, index) => sum + channel * [0.2126, 0.7152, 0.0722][index], 0);
+  for (const [red, green, blue, alpha] of stops) {
+    assert.ok(alpha <= 0.64, "Keep visible photo detail; do not restore a thick white wash");
+    const shadow = luminance([red * alpha, green * alpha, blue * alpha]);
+    assert.ok((shadow + 0.05) / (luminance([5, 22, 29]) + 0.05) >= 4.5, "Labels must remain readable even over black image pixels");
+    assert.ok((shadow + 0.05) / (luminance([8, 35, 43]) + 0.05) >= 3, "Large title must retain sufficient contrast");
+  }
+  assert.match(css, /\.is-home \.hero \.eyebrow\s*\{\s*color:\s*#05161d;/s);
+  assert.match(css, /\.is-home \.site-nav nav a\s*\{\s*color:\s*#05161d;/s);
 });
 
 test("uses SimSun for every marked Chinese passage and separates bilingual project lines", async () => {

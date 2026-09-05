@@ -63,7 +63,7 @@ export default function PublicationsPage() {
         />
 
         <section className="publication-hub section-pad">
-          <aside className="research-local-nav publication-local-nav glass-panel" aria-label="Publication page navigation">
+          <aside className="research-local-nav publication-local-nav" aria-label="Publication page navigation">
             <a href="#papers"><span>01</span>Papers</a>
             <a href="#books"><span>02</span>Books</a>
             <a href="#intellectual-property"><span>03</span>Intellectual Property</a>

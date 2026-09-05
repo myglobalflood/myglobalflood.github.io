@@ -1252,9 +1252,10 @@ footer { background: #edf8fa; }
   align-self: start;
   min-width: 0;
   max-width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--line);
-  border-radius: 1rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
 }
 .research-local-nav > p {
   margin: 0 0 1.2rem;
@@ -1266,10 +1267,9 @@ footer { background: #edf8fa; }
 }
 .research-local-nav a {
   display: grid;
-  grid-template-columns: 1.5rem minmax(0, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
   align-items: baseline;
-  padding: 0.8rem 0.75rem;
+  padding: 0.8rem 0;
   border-radius: 0.65rem;
   color: #496872;
   font-size: 0.9rem;
@@ -2093,10 +2093,20 @@ html[data-theme="light"] .menu-toggle span,
 html[data-theme="light"] .is-interior .menu-toggle span { background: #214f5b; }
 
 html[data-theme="light"] .is-home .hero-image {
-  filter: saturate(0.4) contrast(1.02) brightness(1.03);
+  filter: saturate(0.35) contrast(0.98) brightness(1);
 }
 html[data-theme="light"] .is-home .hero-shade {
-  background: linear-gradient(180deg, rgba(205, 223, 229, 0.2) 0%, rgba(205, 223, 229, 0.1) 44%, rgba(187, 211, 219, 0.18) 100%);
+  /* A single even scrim preserves detail without a white halo around the title.
+     Its minimum alpha also protects dark labels over the photograph's shadows. */
+  background: linear-gradient(180deg, rgba(211, 226, 230, 0.62) 0%, rgba(211, 226, 230, 0.58) 36%, rgba(211, 226, 230, 0.58) 70%, rgba(211, 226, 230, 0.62) 100%);
+}
+html[data-theme="light"] .is-home .brand-name,
+html[data-theme="light"] .is-home .site-nav nav a {
+  color: #05161d;
+}
+html[data-theme="light"] .is-home .site-nav nav a:hover,
+html[data-theme="light"] .is-home .site-nav nav a.is-active {
+  color: #05161d;
 }
 html[data-theme="light"] .is-home .hero-grid {
   opacity: 0.1;
@@ -2112,20 +2122,20 @@ html[data-theme="light"] .is-home .hero-copy-center::before {
   content: none;
 }
 html[data-theme="light"] .is-home .hero .eyebrow {
-  color: #08728e;
+  color: #05161d;
   text-shadow: none;
 }
 html[data-theme="light"] .is-home .hero h1 {
-  color: #143843;
+  color: #08232b;
   text-shadow: none;
 }
 html[data-theme="light"] .is-home .hero-cta {
-  border-bottom-color: rgba(19, 75, 89, 0.42);
-  color: #234e59;
+  border-bottom-color: rgba(5, 22, 29, 0.55);
+  color: #05161d;
 }
-html[data-theme="light"] .is-home .hero-cta:hover { color: #08728e; }
-html[data-theme="light"] .is-home .hero-kicker { color: rgba(25, 66, 77, 0.62); }
-html[data-theme="light"] .is-home .hero-index { color: rgba(24, 65, 75, 0.58); }
+html[data-theme="light"] .is-home .hero-cta:hover { color: #05161d; }
+html[data-theme="light"] .is-home .hero-kicker,
+html[data-theme="light"] .is-home .hero-index { color: #08232b; }
 
 html[data-theme="light"] .is-interior {
   --ink: #163942;
