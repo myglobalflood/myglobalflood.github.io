@@ -1748,6 +1748,11 @@ body { background: #081a21; }
   --accent: #55c9e0;
   --accent-mint: #91cfc4;
   --accent-warm: #e1b36e;
+  --glass-border: rgba(132, 199, 213, 0.22);
+  --glass-surface: linear-gradient(145deg, rgba(16, 45, 55, 0.62), rgba(8, 29, 37, 0.44));
+  --glass-surface-hover: linear-gradient(145deg, rgba(23, 56, 66, 0.74), rgba(11, 37, 46, 0.6));
+  --glass-shadow: 0 1.25rem 3.8rem rgba(0, 8, 12, 0.24);
+  --glass-blur: 12px;
   color: var(--ink);
   background:
     radial-gradient(circle at 10% 28%, rgba(38, 134, 154, 0.16), transparent 32rem),
@@ -1780,14 +1785,18 @@ body { background: #081a21; }
   opacity: 0.34;
 }
 
+.is-interior .glass-panel {
+  border-color: var(--glass-border);
+  background: var(--glass-surface);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(122%);
+}
+
 .is-interior .system-card {
-  border-color: rgba(119, 196, 212, 0.26);
-  background: linear-gradient(145deg, rgba(16, 45, 55, 0.66), rgba(8, 29, 37, 0.5));
-  box-shadow: 0 1.1rem 3.2rem rgba(0, 9, 13, 0.2);
-  backdrop-filter: blur(13px) saturate(122%);
+  border-color: var(--glass-border);
 }
 .is-interior .system-card:hover {
-  background: linear-gradient(145deg, rgba(21, 54, 64, 0.78), rgba(11, 37, 46, 0.68));
+  background: var(--glass-surface-hover);
   box-shadow: 0 1.35rem 3.6rem rgba(0, 8, 12, 0.3);
 }
 .is-interior .system-card h3 { color: #edf5f6; }
@@ -1849,9 +1858,9 @@ body { background: #081a21; }
     linear-gradient(180deg, #102a33 0%, #0b2028 62%, #081a21 100%);
 }
 .is-interior .people-page-watermark {
-  background-position: 42% 48%;
-  filter: saturate(0.58) contrast(1.04) brightness(0.46);
-  opacity: 0.4;
+  background-position: 52% 54%;
+  filter: saturate(0.72) contrast(1.08) brightness(0.62);
+  opacity: 0.52;
 }
 .people-hub {
   padding-top: clamp(7.5rem, 10vw, 9rem);
@@ -1861,13 +1870,11 @@ body { background: #081a21; }
 .people-hub-section + .people-hub-section { padding-top: clamp(3rem, 5vw, 4.5rem); }
 .is-interior .people-hub .faculty-card {
   padding: clamp(2rem, 4vw, 3.5rem);
-  border: 1px solid rgba(132, 199, 213, 0.24);
+  border: 1px solid var(--glass-border);
   border-radius: 1.25rem;
   background:
     radial-gradient(circle at 88% 12%, rgba(73, 164, 184, 0.13), transparent 18rem),
-    linear-gradient(145deg, rgba(18, 50, 60, 0.68), rgba(7, 28, 36, 0.5));
-  box-shadow: 0 1.4rem 4rem rgba(0, 8, 12, 0.22);
-  backdrop-filter: blur(14px) saturate(122%);
+    var(--glass-surface);
 }
 .is-interior .faculty-copy > h1 { color: #f3f8f9; }
 .is-interior .faculty-copy > h1 span {
@@ -1892,32 +1899,26 @@ body { background: #081a21; }
 .is-interior .people-hub .profile-meta {
   gap: 1px;
   padding: 1px;
-  border: 1px solid rgba(132, 199, 213, 0.15);
+  border: 1px solid var(--glass-border);
   border-radius: 0.9rem;
-  background: rgba(132, 199, 213, 0.12);
   overflow: hidden;
 }
 .is-interior .people-hub .profile-meta div {
   padding: 1.15rem 1.3rem;
-  background: rgba(7, 29, 37, 0.68);
-  backdrop-filter: blur(10px) saturate(118%);
+  background: rgba(7, 29, 37, 0.28);
 }
 .is-interior .people-hub .profile-meta dt { color: #6fc5d6; }
 .is-interior .people-hub .profile-meta dd { color: #d3e0e3; }
 .is-interior .academic-links b { color: rgba(221, 239, 243, 0.44); }
 .is-interior .member-grid { gap: 1rem; border-top: 0; }
 .is-interior .member-card {
-  border: 1px solid rgba(132, 199, 213, 0.15);
+  border: 1px solid var(--glass-border);
   border-radius: 0.85rem;
-  background: linear-gradient(145deg, rgba(17, 46, 56, 0.58), rgba(8, 30, 38, 0.4));
-  backdrop-filter: blur(11px) saturate(118%);
 }
-.is-interior .member-card:hover { background: linear-gradient(145deg, rgba(25, 58, 68, 0.72), rgba(11, 37, 46, 0.58)); }
+.is-interior .member-card:hover { background: var(--glass-surface-hover); }
 .is-interior .academic-links {
-  border: 1px solid rgba(132, 199, 213, 0.15);
+  border: 1px solid var(--glass-border);
   border-radius: 0.9rem;
-  background: rgba(7, 27, 35, 0.5);
-  backdrop-filter: blur(11px) saturate(118%);
   overflow: hidden;
 }
 .is-interior .academic-links span { color: #6fc5d6; }
@@ -1950,11 +1951,7 @@ body { background: #081a21; }
     radial-gradient(circle at center, rgba(28, 94, 108, 0.06) 0%, rgba(4, 16, 21, 0.52) 88%);
 }
 .is-interior .contact-copy {
-  border-color: rgba(160, 214, 224, 0.24);
-  background:
-    linear-gradient(145deg, rgba(9, 36, 44, 0.5), rgba(7, 27, 35, 0.3));
-  box-shadow: 0 1.6rem 5rem rgba(0, 8, 12, 0.32);
-  backdrop-filter: blur(12px) saturate(128%);
+  border-color: var(--glass-border);
 }
 .is-interior .contact-copy h1 { color: #f2f8f9; }
 .is-interior .contact-copy h1 span { color: #83c1ca; }

@@ -13,7 +13,7 @@ export default function PeoplePage() {
       <main className="route-main people-page watermark-page">
         <div
           className="page-watermark people-page-watermark"
-          style={{ backgroundImage: `url("${withBasePath("/assets/contact-yellow-river.jpg")}")` }}
+          style={{ backgroundImage: `url("${withBasePath("/assets/people-qinghai-lake.jpg")}")` }}
           aria-hidden="true"
         />
 
@@ -26,7 +26,7 @@ export default function PeoplePage() {
 
           <div className="people-hub-content">
             <section className="people-hub-section" id="pi" aria-labelledby="faculty-title">
-              <article className="faculty-card" data-reveal>
+              <article className="faculty-card glass-panel" data-reveal>
                 <div className="faculty-copy faculty-intro">
                   <p className="eyebrow">People · Principal Investigator</p>
                   <h1 id="faculty-title">Jie Wang <span className="zh-copy" lang="zh-CN">王杰</span></h1>
@@ -49,13 +49,13 @@ export default function PeoplePage() {
                     aria-label="Portrait of Jie Wang"
                   />
                 </div>
-                <dl className="profile-meta">
+                <dl className="profile-meta glass-panel">
                   <div><dt>Appointment</dt><dd>Lecturer since June 2022</dd></div>
                   <div><dt>Affiliation</dt><dd>Lanzhou University</dd></div>
                   <div><dt>Education</dt><dd>Ph.D., UCAS · M.Eng. &amp; B.Eng., Hohai University</dd></div>
                   <div><dt>Office</dt><dd>Guanyun Building 1025</dd></div>
                 </dl>
-                <div className="academic-links" aria-label="Academic profiles">
+                <div className="academic-links glass-panel" aria-label="Academic profiles">
                   {profileLinks.map((link) => (
                     <a href={link.href} target="_blank" rel="noreferrer" key={link.label}>
                       <span>{link.label}</span><strong>{link.value}</strong><b aria-hidden="true">↗</b>
@@ -72,7 +72,7 @@ export default function PeoplePage() {
               </div>
               <div className="member-grid">
                 {["01", "02", "03"].map((slot) => (
-                  <article className="member-card" data-reveal key={slot}>
+                  <article className="member-card glass-panel" data-reveal key={slot}>
                     <span>{slot}</span><h3>Name to be added</h3><p>Graduate student profile</p>
                   </article>
                 ))}
@@ -86,7 +86,7 @@ export default function PeoplePage() {
               </div>
               <div className="member-grid">
                 {["01", "02", "03"].map((slot) => (
-                  <article className="member-card" data-reveal key={slot}>
+                  <article className="member-card glass-panel" data-reveal key={slot}>
                     <span>{slot}</span><h3>Name to be added</h3><p>Alumni profile</p>
                   </article>
                 ))}

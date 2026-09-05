@@ -25,7 +25,7 @@ export default function ResearchPage() {
               <div className="system-grid">
                 {monitoringSystems.map((system) => (
                   <a
-                    className="system-card"
+                    className="system-card glass-panel"
                     data-reveal
                     href={system.href}
                     target="_blank"
@@ -49,7 +49,7 @@ export default function ResearchPage() {
               <div className="research-card-grid">
                 {openData.map((dataset) => (
                   <a
-                    className="system-card resource-card"
+                    className="system-card resource-card glass-panel"
                     data-reveal
                     href={dataset.href}
                     target="_blank"
@@ -72,7 +72,7 @@ export default function ResearchPage() {
               <h2 className="content-section-label" id="funding-title">Funding · Principal Investigator</h2>
               <div className="research-card-grid funding-grid">
                 {hostedProjects.map((item) => (
-                  <article className="system-card resource-card project-card" data-reveal key={item.title}>
+                  <article className="system-card resource-card project-card glass-panel" data-reveal key={item.title}>
                     <span className="system-code">{item.period}</span>
                     <div className="project-card-copy">
                       <p className="project-sponsor">{item.sponsor}</p>

@@ -62,8 +62,8 @@ test("uses a unified dark interior palette and compact section rhythm", async ()
   assert.match(css, /\.is-interior \.site-nav,[\s\S]*background:\s*rgba\(7, 22, 29, 0\.88\);/s);
   assert.match(css, /\.research-hub-section,[\s\S]*\.publication-hub-section\s*\{[^}]*padding-bottom:\s*clamp\(2rem, 3vw, 3rem\);/s);
   assert.match(css, /\.is-interior \.people-page\s*\{[^}]*linear-gradient\(180deg, #102a33 0%, #0b2028 62%, #081a21 100%\)/s);
-  assert.match(css, /\.is-interior \.contact-copy\s*\{[^}]*rgba\(9, 36, 44, 0\.5\)[^}]*backdrop-filter:\s*blur\(12px\) saturate\(128%\);/s);
-  assert.match(css, /\.is-interior \.system-card\s*\{[^}]*rgba\(16, 45, 55, 0\.66\)[^}]*backdrop-filter:\s*blur\(13px\) saturate\(122%\);/s);
+  assert.match(css, /--glass-surface:\s*linear-gradient\(145deg, rgba\(16, 45, 55, 0\.62\), rgba\(8, 29, 37, 0\.44\)\);/s);
+  assert.match(css, /\.is-interior \.glass-panel\s*\{[^}]*background:\s*var\(--glass-surface\);[^}]*backdrop-filter:\s*blur\(var\(--glass-blur\)\) saturate\(122%\);/s);
   assert.match(css, /--accent-mint:\s*#91cfc4;[\s\S]*--accent-warm:\s*#e1b36e;/s);
   assert.doesNotMatch(css, /\.is-interior #(open-data|funding|books|intellectual-property) \.content-section-label/);
   assert.doesNotMatch(css, /\.is-interior #(members|alumni) \.eyebrow/);
@@ -98,11 +98,12 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(html, /teachInfo\.jsp\?id=689/);
   assert.match(html, /Principal Investigator/);
   assert.match(html, /Current Members/);
+  assert.match(html, /class="faculty-card glass-panel"/);
   assert.match(html, /Alumni/);
   assert.match(html, /Name to be added/);
   assert.match(html, /faculty-intro/);
   assert.match(html, /page-watermark people-page-watermark/);
-  assert.match(html, /contact-yellow-river\.jpg/);
+  assert.match(html, /people-qinghai-lake\.jpg/);
   assert.doesNotMatch(html, /portrait-code|PI \/ 01/);
   assert.doesNotMatch(html, /Graduate Students/);
 });

@@ -14,7 +14,7 @@ export default function ContactPage() {
           <div className="contact-coordinate" aria-hidden="true">
             <span>36.03° N</span><span>103.83° E</span>
           </div>
-          <div className="contact-copy">
+          <div className="contact-copy glass-panel">
             <p className="eyebrow">Join the work</p>
             <h1>Let&apos;s understand<br /><span>what comes next.</span></h1>
             <p>
