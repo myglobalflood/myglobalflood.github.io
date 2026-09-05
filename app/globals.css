@@ -1009,7 +1009,10 @@ body { background: #f7fcfd; color: var(--ink); }
   /* The AI-enhanced derivative retains a separate, untouched source image.
      Only a trace of softening is needed; never blur the text layer. */
   --hero-soften: clamp(0.2px, 0.025vw, 0.55px);
-  background-position: 50% 46%;
+  /* Bias the crop toward the upper floodwater. The origin also shifts the
+     framing when cover has no vertical overflow; pointer parallax stays intact. */
+  background-position: 50% 28%;
+  transform-origin: 50% 20%;
   filter: saturate(0.3) contrast(0.92) brightness(0.88) blur(var(--hero-soften));
 }
 .hero-shade {
@@ -2100,15 +2103,15 @@ html[data-theme="light"] .is-home .hero-image {
 html[data-theme="light"] .is-home .hero-shade {
   /* A single even scrim preserves detail without a white halo around the title.
      Its minimum alpha also protects dark labels over the photograph's shadows. */
-  background: linear-gradient(180deg, rgba(211, 226, 230, 0.62) 0%, rgba(211, 226, 230, 0.58) 36%, rgba(211, 226, 230, 0.58) 70%, rgba(211, 226, 230, 0.62) 100%);
+  background: linear-gradient(180deg, rgba(211, 226, 230, 0.56) 0%, rgba(211, 226, 230, 0.54) 36%, rgba(211, 226, 230, 0.54) 70%, rgba(211, 226, 230, 0.56) 100%);
 }
 html[data-theme="light"] .is-home .brand-name,
 html[data-theme="light"] .is-home .site-nav nav a {
-  color: #05161d;
+  color: #00090d;
 }
 html[data-theme="light"] .is-home .site-nav nav a:hover,
 html[data-theme="light"] .is-home .site-nav nav a.is-active {
-  color: #05161d;
+  color: #00090d;
 }
 html[data-theme="light"] .is-home .hero-grid {
   opacity: 0.1;
@@ -2124,7 +2127,7 @@ html[data-theme="light"] .is-home .hero-copy-center::before {
   content: none;
 }
 html[data-theme="light"] .is-home .hero .eyebrow {
-  color: #05161d;
+  color: #00090d;
   text-shadow: none;
 }
 html[data-theme="light"] .is-home .hero h1 {
@@ -2132,12 +2135,12 @@ html[data-theme="light"] .is-home .hero h1 {
   text-shadow: none;
 }
 html[data-theme="light"] .is-home .hero-cta {
-  border-bottom-color: rgba(5, 22, 29, 0.55);
-  color: #05161d;
+  border-bottom-color: rgba(0, 9, 13, 0.55);
+  color: #00090d;
 }
-html[data-theme="light"] .is-home .hero-cta:hover { color: #05161d; }
+html[data-theme="light"] .is-home .hero-cta:hover { color: #00090d; }
 html[data-theme="light"] .is-home .hero-kicker,
-html[data-theme="light"] .is-home .hero-index { color: #08232b; }
+html[data-theme="light"] .is-home .hero-index { color: #00090d; }
 
 html[data-theme="light"] .is-interior {
   --ink: #163942;

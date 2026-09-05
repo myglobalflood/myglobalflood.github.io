@@ -124,13 +124,39 @@ test("protects light-home text contrast without heavy multi-layer fog", async ()
     .map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4)
     .reduce((sum, channel, index) => sum + channel * [0.2126, 0.7152, 0.0722][index], 0);
   for (const [red, green, blue, alpha] of stops) {
-    assert.ok(alpha <= 0.64, "Keep visible photo detail; do not restore a thick white wash");
+    assert.ok(alpha <= 0.56, "Keep the reduced light-home scrim; do not restore heavy fog");
     const shadow = luminance([red * alpha, green * alpha, blue * alpha]);
-    assert.ok((shadow + 0.05) / (luminance([5, 22, 29]) + 0.05) >= 4.5, "Labels must remain readable even over black image pixels");
+    assert.ok((shadow + 0.05) / (luminance([0, 9, 13]) + 0.05) >= 4.5, "Labels must remain readable even over black image pixels");
     assert.ok((shadow + 0.05) / (luminance([8, 35, 43]) + 0.05) >= 3, "Large title must retain sufficient contrast");
   }
-  assert.match(css, /\.is-home \.hero \.eyebrow\s*\{\s*color:\s*#05161d;/s);
-  assert.match(css, /\.is-home \.site-nav nav a\s*\{\s*color:\s*#05161d;/s);
+  assert.match(css, /\.is-home \.hero \.eyebrow\s*\{\s*color:\s*#00090d;/s);
+  assert.match(css, /\.is-home \.site-nav nav a\s*\{\s*color:\s*#00090d;/s);
+});
+
+test("raises the hero viewpoint without changing pointer parallax", async () => {
+  const [css, frame] = await Promise.all([
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/site-frame.tsx", import.meta.url), "utf8"),
+  ]);
+  assert.match(css, /\.hero-image\s*\{[^}]*background-position:\s*50% 28%;[^}]*transform-origin:\s*50% 20%;/s);
+  assert.match(css, /transform:\s*translate3d\(var\(--hero-shift-x\), var\(--hero-shift-y\), 0\) scale\(1\.07\);/);
+  assert.match(css, /transition:\s*transform 180ms linear;/);
+  assert.ok(frame.includes('(event.clientX / window.innerWidth - 0.5) * -10'));
+  assert.ok(frame.includes('(event.clientY / window.innerHeight - 0.5) * -8'));
+  // The upper source point must move down into view even where cover crops only
+  // horizontally. Existing overscan must cover both extremes of the mouse pan.
+  for (const [width, height] of [[2560, 1229], [1920, 1080], [1265, 712], [390, 844]]) {
+    const layerWidth = width + 48;
+    const layerHeight = height + 48;
+    const coverScale = Math.max(layerWidth / 1672, layerHeight / 941);
+    const verticalCrop = 941 * coverScale - layerHeight;
+    const previousTop = -24 - layerHeight * 0.07 * 0.5 - verticalCrop * 0.46 * 1.07;
+    const raisedTop = -24 - layerHeight * 0.07 * 0.2 - verticalCrop * 0.28 * 1.07;
+    assert.ok(raisedTop > previousTop, "Reveal more of the upper part of the photograph");
+    const layerTop = -24 - layerHeight * 0.07 * 0.2;
+    assert.ok(layerTop + 4 < 0, "No gap at the top during pointer movement");
+    assert.ok(layerTop + layerHeight * 1.07 - 4 > height, "No gap at the bottom during pointer movement");
+  }
 });
 
 test("uses SimSun for every marked Chinese passage and separates bilingual project lines", async () => {
