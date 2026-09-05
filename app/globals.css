@@ -313,6 +313,9 @@ a:focus-visible, button:focus-visible {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+.hero-index a { color: inherit; text-decoration: none; }
+.hero-index a:hover,
+.hero-index a:focus-visible { color: var(--accent); text-decoration: underline; }
 .hero-load { animation: hero-enter 1200ms both cubic-bezier(0.16, 1, 0.3, 1); }
 .hero h1.hero-load { animation-delay: 100ms; }
 .hero-cta.hero-load { animation-delay: 220ms; }
@@ -350,7 +353,7 @@ a:focus-visible, button:focus-visible {
 }
 .watermark-page > :not(.page-watermark) { position: relative; z-index: 1; }
 .research-page-watermark { background-position: center 35%; }
-.publication-page-watermark { background-position: center 32%; }
+.publication-page-watermark { background-position: center 48%; }
 @keyframes watermark-page-fade {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -1003,14 +1006,15 @@ body { background: #f7fcfd; color: var(--ink); }
 .is-interior .menu-toggle span { background: #12313d; }
 
 .hero-image {
-  background-position: 50% 52%;
-  filter: saturate(0.6) contrast(0.92) brightness(0.78);
+  /* Keep the selected flood photograph intact; grade only its backdrop layer. */
+  background-position: 50% 46%;
+  filter: saturate(0.3) contrast(0.92) brightness(0.88);
 }
 .hero-shade {
   background:
-    linear-gradient(180deg, rgba(0, 25, 35, 0.52) 0%, rgba(0, 25, 35, 0.26) 42%, rgba(0, 25, 35, 0.58) 100%),
-    linear-gradient(90deg, rgba(0, 25, 35, 0.2) 0%, rgba(0, 25, 35, 0.08) 52%, rgba(0, 25, 35, 0.16) 100%),
-    radial-gradient(ellipse at center, rgba(0, 20, 28, 0.08) 0%, rgba(0, 20, 28, 0.2) 100%);
+    linear-gradient(180deg, rgba(8, 30, 40, 0.46) 0%, rgba(8, 30, 40, 0.2) 42%, rgba(6, 26, 36, 0.54) 100%),
+    linear-gradient(90deg, rgba(9, 34, 45, 0.18) 0%, rgba(9, 34, 45, 0.12) 52%, rgba(9, 34, 45, 0.18) 100%),
+    radial-gradient(ellipse at center, rgba(8, 29, 39, 0.12) 0%, rgba(8, 29, 39, 0.18) 100%);
 }
 .hero-copy {
   display: grid;
@@ -1897,7 +1901,7 @@ body { background: #081a21; }
     linear-gradient(180deg, #12303a 0%, #0e252e 62%, #0a1e26 100%);
 }
 .is-interior .people-page-watermark {
-  background-position: center 48%;
+  background-position: center 32%;
   filter: saturate(0.7) contrast(1.02) brightness(0.72);
   opacity: 0.48;
 }
@@ -2080,13 +2084,13 @@ html[data-theme="light"] .menu-toggle span,
 html[data-theme="light"] .is-interior .menu-toggle span { background: #214f5b; }
 
 html[data-theme="light"] .is-home .hero-image {
-  filter: saturate(0.58) contrast(0.94) brightness(0.94);
+  filter: saturate(0.24) contrast(0.86) brightness(0.94);
 }
 html[data-theme="light"] .is-home .hero-shade {
   background:
-    linear-gradient(180deg, rgba(213, 229, 233, 0.46) 0%, rgba(213, 229, 233, 0.15) 42%, rgba(205, 225, 230, 0.52) 100%),
-    linear-gradient(90deg, rgba(211, 228, 233, 0.3) 0%, rgba(222, 236, 240, 0.1) 52%, rgba(209, 227, 232, 0.22) 100%),
-    radial-gradient(ellipse at center, rgba(231, 240, 243, 0.14) 0%, rgba(193, 216, 222, 0.28) 100%);
+    linear-gradient(180deg, rgba(196, 215, 222, 0.46) 0%, rgba(205, 223, 229, 0.2) 42%, rgba(187, 211, 219, 0.5) 100%),
+    linear-gradient(90deg, rgba(200, 221, 228, 0.22) 0%, rgba(211, 229, 235, 0.12) 52%, rgba(194, 216, 224, 0.22) 100%),
+    radial-gradient(ellipse at center, rgba(216, 231, 237, 0.18) 0%, rgba(176, 203, 214, 0.24) 100%);
 }
 html[data-theme="light"] .is-home .hero-grid {
   opacity: 0.1;
@@ -2099,7 +2103,7 @@ html[data-theme="light"] .is-home .flow-field {
   opacity: 0.2;
 }
 html[data-theme="light"] .is-home .hero-copy-center::before {
-  background: radial-gradient(ellipse at center, rgba(226, 238, 241, 0.72) 0%, rgba(218, 233, 237, 0.44) 48%, transparent 76%);
+  background: radial-gradient(ellipse at center, rgba(216, 231, 237, 0.76) 0%, rgba(206, 225, 233, 0.46) 48%, transparent 76%);
 }
 html[data-theme="light"] .is-home .hero .eyebrow {
   color: #08728e;

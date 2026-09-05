@@ -58,7 +58,7 @@ export default function PublicationsPage() {
       <main className="route-main watermark-page">
         <div
           className="page-watermark publication-page-watermark"
-          style={{ backgroundImage: `url("${withBasePath("/assets/work-water.webp")}")` }}
+          style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-minnesota.jpg")}")` }}
           aria-hidden="true"
         />
 

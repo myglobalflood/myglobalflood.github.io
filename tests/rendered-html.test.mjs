@@ -31,9 +31,11 @@ test("renders the Flood and Global Change Group home page", async () => {
   const html = await response.text();
   assert.match(html, /Flood &amp; Global Change Group/);
   assert.match(html, /Floods, understood\./);
-  assert.match(html, /flood-hero-minnesota\.jpg/);
-  assert.match(html, /Red River Flood · Moorhead, Minnesota/);
-  assert.match(html, /Andrea Booher · FEMA · Public Domain/);
+  assert.match(html, /flood-hero-pakistan\.jpg/);
+  assert.match(html, /Pakistan Floods · Pano Aqil · 2010/);
+  assert.match(html, /Wayne Gray · U.S. Army \/ DVIDS · Public Domain/);
+  assert.match(html, /https:\/\/www.dvidshub.net\/image\/319335\/pakistan-humanitarian-aid-flood-relief/);
+  assert.doesNotMatch(html, /flood-hero-minnesota|Andrea Booher/);
   assert.doesNotMatch(html, /hero-brand-card/);
   assert.doesNotMatch(html, /AHS Lab|Advanced Hydrological Simulation/);
 });
@@ -129,7 +131,8 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(html, /Name to be added/);
   assert.match(html, /faculty-intro/);
   assert.match(html, /page-watermark people-page-watermark/);
-  assert.match(html, /flood-hero-minnesota\.jpg/);
+  assert.match(html, /work-water\.webp/);
+  assert.doesNotMatch(html, /flood-hero-minnesota|flood-hero-pakistan/);
   assert.match(html, /wang-jie-cv-original\.jpg/);
   assert.match(html, /width="114" height="160"/);
   assert.doesNotMatch(html, /portrait-code|PI \/ 01/);
@@ -142,7 +145,8 @@ test("publishes the verified publication record under its own route", async () =
 
   const html = await response.text();
   assert.match(html, /page-watermark publication-page-watermark/);
-  assert.match(html, /work-water\.webp/);
+  assert.match(html, /flood-hero-minnesota\.jpg/);
+  assert.doesNotMatch(html, /work-water\.webp|flood-hero-pakistan/);
   assert.match(html, /Papers/);
   assert.doesNotMatch(html, /publication-number/);
   assert.equal((html.match(/class="publication-year" dateTime="\d{4}"/g) || []).length, 38);
@@ -203,6 +207,7 @@ test("ships the final brand and social assets", async () => {
   const [layout] = await Promise.all([
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     access(new URL("../public/assets/flood-hero-minnesota.jpg", import.meta.url)),
+    access(new URL("../public/assets/flood-hero-pakistan.jpg", import.meta.url)),
     access(new URL("../public/assets/flood-global-change-logo-frosted.png", import.meta.url)),
     access(new URL("../public/assets/contact-yellow-river.jpg", import.meta.url)),
     access(new URL("../public/assets/og.png", import.meta.url)),

@@ -8,7 +8,7 @@ export default function Home() {
         <section className="hero">
           <div
             className="hero-image"
-            style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-minnesota.jpg")}")` }}
+            style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-pakistan.jpg")}")` }}
             aria-hidden="true"
           />
           <div className="hero-shade" aria-hidden="true" />
@@ -27,8 +27,9 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="hero-index hero-load" aria-hidden="true">
-            <span>Red River Flood · Moorhead, Minnesota</span><span>Andrea Booher · FEMA · Public Domain</span>
+          <div className="hero-index hero-load">
+            <span>Pakistan Floods · Pano Aqil · 2010</span>
+            <a href="https://www.dvidshub.net/image/319335/pakistan-humanitarian-aid-flood-relief" target="_blank" rel="noreferrer">Wayne Gray · U.S. Army / DVIDS · Public Domain</a>
             <span>Flood · Climate · Resilience</span>
           </div>
         </section>

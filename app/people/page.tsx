@@ -13,7 +13,7 @@ export default function PeoplePage() {
       <main className="route-main people-page watermark-page">
         <div
           className="page-watermark people-page-watermark"
-          style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-minnesota.jpg")}")` }}
+          style={{ backgroundImage: `url("${withBasePath("/assets/work-water.webp")}")` }}
           aria-hidden="true"
         />
 
