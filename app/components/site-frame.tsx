@@ -4,6 +4,9 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { withBasePath } from "../site-path";
 
 type RouteName = "home" | "research" | "people" | "publications" | "contact";
+type ThemeMode = "dark" | "light";
+
+const THEME_STORAGE_KEY = "fgcg-theme";
 
 const navItems: Array<{ key: RouteName; label: string; href: string }> = [
   { key: "research", label: "Research", href: "/research/" },
@@ -87,7 +90,21 @@ export function SiteFrame({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState<ThemeMode>("dark");
   const shellRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let savedTheme: string | null = null;
+    try {
+      savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+    } catch {
+      savedTheme = null;
+    }
+    const initialTheme: ThemeMode = savedTheme === "light" ? "light" : "dark";
+    document.documentElement.dataset.theme = initialTheme;
+    document.documentElement.style.colorScheme = initialTheme;
+    setTheme(initialTheme);
+  }, []);
 
   useEffect(() => {
     const shell = shellRef.current;
@@ -123,6 +140,20 @@ export function SiteFrame({
     };
   }, []);
 
+  const toggleTheme = () => {
+    setTheme((currentTheme) => {
+      const nextTheme: ThemeMode = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = nextTheme;
+      document.documentElement.style.colorScheme = nextTheme;
+      try {
+        window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      } catch {
+        // The visual switch still works when storage is unavailable.
+      }
+      return nextTheme;
+    });
+  };
+
   return (
     <div className={`site-shell ${home ? "is-home" : "is-interior"}`} ref={shellRef}>
       <header className={`site-nav ${scrolled || !home ? "is-scrolled" : ""}`}>
@@ -132,16 +163,6 @@ export function SiteFrame({
           </span>
           <span className="brand-name">Flood &amp; Global<br />Change Group</span>
         </a>
-        <button
-          className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="primary-navigation"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          onClick={() => setMenuOpen((value) => !value)}
-        >
-          <span /><span />
-        </button>
         <nav
           id="primary-navigation"
           className={menuOpen ? "is-open" : ""}
@@ -158,6 +179,34 @@ export function SiteFrame({
             </a>
           ))}
         </nav>
+        <div className="nav-actions">
+          <button
+            className="theme-toggle"
+            type="button"
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            aria-pressed={theme === "light"}
+            title={theme === "dark" ? "Light mode" : "Dark mode"}
+            onClick={toggleTheme}
+          >
+            <svg className="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3.5" />
+              <path d="M12 2.5v2M12 19.5v2M4.5 12h-2M21.5 12h-2M5.28 5.28l1.42 1.42M17.3 17.3l1.42 1.42M18.72 5.28 17.3 6.7M6.7 17.3l-1.42 1.42" />
+            </svg>
+            <svg className="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19.4 15.2A8 8 0 0 1 8.8 4.6 8.1 8.1 0 1 0 19.4 15.2Z" />
+            </svg>
+          </button>
+          <button
+            className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMenuOpen((value) => !value)}
+          >
+            <span /><span />
+          </button>
+        </div>
       </header>
 
       {flow && <FlowField />}

@@ -6,6 +6,7 @@ const siteUrl =
   "https://myglobalflood.github.io/";
 const socialImage = new URL("assets/og.png", siteUrl).toString();
 const favicon = new URL("assets/flood-global-change-logo-frosted.png", siteUrl).toString();
+const themeBootScript = `(function(){try{var t=localStorage.getItem("fgcg-theme")==="light"?"light":"dark";document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){document.documentElement.dataset.theme="dark"}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,7 +38,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );

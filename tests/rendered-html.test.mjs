@@ -39,11 +39,34 @@ test("renders the Flood and Global Change Group home page", async () => {
 });
 
 test("keeps the shared navigation geometry stable between short and scrolling routes", async () => {
-  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const [css, siteFrame] = await Promise.all([
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/site-frame.tsx", import.meta.url), "utf8"),
+  ]);
 
   assert.match(css, /html\s*\{[^}]*overflow-y:\s*scroll;[^}]*scrollbar-gutter:\s*stable;/s);
   assert.match(css, /\.site-nav\s*\{[^}]*height:\s*var\(--nav-height\);[^}]*padding:\s*0 var\(--page-pad\);[^}]*border-bottom:\s*1px solid transparent;/s);
+  assert.match(css, /\.site-nav \.nav-actions\s*\{\s*justify-self:\s*end;/s);
   assert.doesNotMatch(css, /\.site-nav\.is-scrolled\s*\{[^}]*padding-(?:top|bottom):/s);
+  assert.ok(siteFrame.indexOf("<nav") < siteFrame.indexOf('<div className="nav-actions">'));
+});
+
+test("offers a persistent, fully adapted light theme", async () => {
+  const [css, layout, siteFrame] = await Promise.all([
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/site-frame.tsx", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(layout, /data-theme="dark" suppressHydrationWarning/);
+  assert.match(layout, /localStorage\.getItem\("fgcg-theme"\)/);
+  assert.match(siteFrame, /const THEME_STORAGE_KEY = "fgcg-theme";/);
+  assert.match(siteFrame, /className="theme-toggle"/);
+  assert.match(siteFrame, /Switch to light mode/);
+  assert.match(siteFrame, /window\.localStorage\.setItem\(THEME_STORAGE_KEY, nextTheme\)/);
+  assert.match(css, /Persistent light theme[\s\S]*html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*brightness\(1\.02\);/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-interior\s*\{[^}]*--glass-surface:\s*linear-gradient/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-interior \.contact-earth\s*\{[^}]*brightness\(0\.94\);/s);
 });
 
 test("keeps the research and publication artwork visible and fixed behind scrolling content", async () => {
