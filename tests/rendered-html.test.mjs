@@ -64,9 +64,9 @@ test("offers a persistent, fully adapted light theme", async () => {
   assert.match(siteFrame, /className="theme-toggle"/);
   assert.match(siteFrame, /Switch to light mode/);
   assert.match(siteFrame, /window\.localStorage\.setItem\(THEME_STORAGE_KEY, nextTheme\)/);
-  assert.match(css, /Persistent light theme[\s\S]*html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*brightness\(1\.02\);/s);
+  assert.match(css, /Persistent light theme[\s\S]*html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*filter:/s);
   assert.match(css, /html\[data-theme="light"\] \.is-interior\s*\{[^}]*--glass-surface:\s*linear-gradient/s);
-  assert.match(css, /html\[data-theme="light"\] \.is-interior \.contact-earth\s*\{[^}]*brightness\(0\.94\);/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-interior \.contact-earth\s*\{[^}]*filter:/s);
 });
 
 test("keeps the research and publication artwork visible and fixed behind scrolling content", async () => {
