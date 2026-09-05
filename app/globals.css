@@ -968,13 +968,13 @@ body { background: #f7fcfd; color: var(--ink); }
 
 .hero-image {
   background-position: 50% 52%;
-  filter: saturate(0.56) contrast(0.9) brightness(0.72);
+  filter: saturate(0.6) contrast(0.92) brightness(0.78);
 }
 .hero-shade {
   background:
-    linear-gradient(180deg, rgba(0, 25, 35, 0.58) 0%, rgba(0, 25, 35, 0.3) 42%, rgba(0, 25, 35, 0.64) 100%),
-    linear-gradient(90deg, rgba(0, 25, 35, 0.24) 0%, rgba(0, 25, 35, 0.1) 52%, rgba(0, 25, 35, 0.2) 100%),
-    radial-gradient(ellipse at center, rgba(0, 20, 28, 0.1) 0%, rgba(0, 20, 28, 0.24) 100%);
+    linear-gradient(180deg, rgba(0, 25, 35, 0.52) 0%, rgba(0, 25, 35, 0.26) 42%, rgba(0, 25, 35, 0.58) 100%),
+    linear-gradient(90deg, rgba(0, 25, 35, 0.2) 0%, rgba(0, 25, 35, 0.08) 52%, rgba(0, 25, 35, 0.16) 100%),
+    radial-gradient(ellipse at center, rgba(0, 20, 28, 0.08) 0%, rgba(0, 20, 28, 0.2) 100%);
 }
 .hero-copy {
   display: grid;
@@ -1308,7 +1308,7 @@ footer { background: #edf8fa; }
 .faculty-copy > h1 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-size: clamp(2.15rem, 3vw, 3.35rem);
   font-weight: 460;
   line-height: 0.96;
   letter-spacing: -0.052em;
@@ -1352,13 +1352,14 @@ footer { background: #edf8fa; }
 .people-section-heading { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 .people-section-heading .eyebrow { margin-bottom: 1rem; }
 .people-section-heading h2 {
-  max-width: 18ch;
+  max-width: none;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.2vw, 3.7rem);
+  font-size: clamp(1.55rem, 2.2vw, 2.5rem);
   font-weight: 450;
   line-height: 1.04;
   letter-spacing: -0.045em;
+  white-space: nowrap;
 }
 .member-grid {
   display: grid;
@@ -1641,6 +1642,7 @@ footer { background: #edf8fa; }
 
 @media (max-width: 640px) {
   .publication-hub { padding-top: 2rem; }
+  .people-section-heading h2 { white-space: normal; }
   .people-hub .faculty-card { grid-template-columns: 1fr; }
   .people-hub .portrait-wrap { grid-column: 1; grid-row: 1; justify-self: start; margin-left: 0; }
   .people-hub .faculty-intro { grid-column: 1; grid-row: 2; margin-top: 2rem; }
@@ -1755,9 +1757,9 @@ body { background: #081a21; }
   --glass-blur: 12px;
   color: var(--ink);
   background:
-    radial-gradient(circle at 10% 28%, rgba(38, 134, 154, 0.16), transparent 32rem),
-    radial-gradient(circle at 88% 18%, rgba(196, 139, 67, 0.08), transparent 28rem),
-    linear-gradient(180deg, #102a33 0%, #0c222a 58%, #081a21 100%);
+    radial-gradient(circle at 10% 28%, rgba(38, 134, 154, 0.18), transparent 32rem),
+    radial-gradient(circle at 88% 18%, rgba(196, 139, 67, 0.09), transparent 28rem),
+    linear-gradient(180deg, #12303a 0%, #0f2730 58%, #0a1e26 100%);
 }
 
 .is-interior .site-nav,
@@ -1778,11 +1780,11 @@ body { background: #081a21; }
 .is-interior .site-nav nav a.is-active { color: #f4fbfc; }
 .is-interior .menu-toggle span { background: #e8f1f3; }
 
-.is-interior .route-main { background: #0d222a; }
-.is-interior .watermark-page { background: #0a1d24; }
+.is-interior .route-main { background: #102831; }
+.is-interior .watermark-page { background: #0c2129; }
 .is-interior .page-watermark {
-  filter: saturate(0.58) contrast(1.03) brightness(0.5);
-  opacity: 0.34;
+  filter: saturate(0.62) contrast(1.03) brightness(0.56);
+  opacity: 0.37;
 }
 
 .is-interior .glass-panel {
@@ -1853,14 +1855,15 @@ body { background: #081a21; }
 
 .is-interior .people-page {
   background:
-    radial-gradient(circle at 77% 17%, rgba(61, 154, 174, 0.12), transparent 29rem),
-    radial-gradient(circle at 18% 68%, rgba(204, 146, 70, 0.07), transparent 27rem),
-    linear-gradient(180deg, #102a33 0%, #0b2028 62%, #081a21 100%);
+    radial-gradient(circle at 77% 17%, rgba(61, 154, 174, 0.14), transparent 29rem),
+    radial-gradient(circle at 18% 68%, rgba(204, 146, 70, 0.08), transparent 27rem),
+    linear-gradient(180deg, #12303a 0%, #0e252e 62%, #0a1e26 100%);
 }
 .is-interior .people-page-watermark {
   background-position: 52% 54%;
-  filter: saturate(0.72) contrast(1.08) brightness(0.62);
-  opacity: 0.52;
+  filter: saturate(0.75) contrast(1.08) brightness(0.68);
+  opacity: 0.54;
+  transform: scaleX(-1);
 }
 .people-hub {
   padding-top: clamp(7.5rem, 10vw, 9rem);
@@ -1942,8 +1945,8 @@ body { background: #081a21; }
   background: #081b22;
 }
 .is-interior .contact-earth {
-  filter: saturate(0.68) contrast(1.06) brightness(0.52);
-  opacity: 0.82;
+  filter: saturate(0.7) contrast(1.06) brightness(0.58);
+  opacity: 0.84;
 }
 .is-interior .contact::before {
   background:

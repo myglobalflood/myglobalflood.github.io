@@ -52,16 +52,17 @@ test("keeps the research and publication artwork visible and fixed behind scroll
   assert.match(css, /\.watermark-page\s*\{[^}]*overflow:\s*clip;[^}]*animation:\s*watermark-page-fade/s);
   assert.match(css, /\.page-watermark\s*\{[^}]*position:\s*fixed;/s);
   assert.match(css, /\.research-local-nav\s*\{[^}]*position:\s*sticky;[^}]*top:\s*calc\(var\(--nav-height\) \+ 2rem\);/s);
-  assert.match(css, /Unified dark interior theme[\s\S]*\.is-interior \.page-watermark\s*\{[^}]*opacity:\s*0\.34;/s);
+  assert.match(css, /Unified dark interior theme[\s\S]*\.is-interior \.page-watermark\s*\{[^}]*opacity:\s*0\.37;/s);
 });
 
 test("uses a unified dark interior palette and compact section rhythm", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
-  assert.match(css, /Unified dark interior theme[\s\S]*\.is-interior \.route-main\s*\{\s*background:\s*#0d222a;/s);
+  assert.match(css, /Unified dark interior theme[\s\S]*\.is-interior \.route-main\s*\{\s*background:\s*#102831;/s);
   assert.match(css, /\.is-interior \.site-nav,[\s\S]*background:\s*rgba\(7, 22, 29, 0\.88\);/s);
   assert.match(css, /\.research-hub-section,[\s\S]*\.publication-hub-section\s*\{[^}]*padding-bottom:\s*clamp\(2rem, 3vw, 3rem\);/s);
-  assert.match(css, /\.is-interior \.people-page\s*\{[^}]*linear-gradient\(180deg, #102a33 0%, #0b2028 62%, #081a21 100%\)/s);
+  assert.match(css, /\.is-interior \.people-page\s*\{[^}]*linear-gradient\(180deg, #12303a 0%, #0e252e 62%, #0a1e26 100%\)/s);
+  assert.match(css, /\.is-interior \.people-page-watermark\s*\{[^}]*transform:\s*scaleX\(-1\);/s);
   assert.match(css, /--glass-surface:\s*linear-gradient\(145deg, rgba\(16, 45, 55, 0\.62\), rgba\(8, 29, 37, 0\.44\)\);/s);
   assert.match(css, /\.is-interior \.glass-panel\s*\{[^}]*background:\s*var\(--glass-surface\);[^}]*backdrop-filter:\s*blur\(var\(--glass-blur\)\) saturate\(122%\);/s);
   assert.match(css, /--accent-mint:\s*#91cfc4;[\s\S]*--accent-warm:\s*#e1b36e;/s);
@@ -89,6 +90,7 @@ test("uses SimSun for every marked Chinese passage and separates bilingual proje
 });
 
 test("publishes the verified principal investigator profile in a compact people page", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const response = await render("/people/");
   assert.equal(response.status, 200);
 
@@ -99,6 +101,8 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(html, /Principal Investigator/);
   assert.match(html, /Current Members/);
   assert.match(html, /class="faculty-card glass-panel"/);
+  assert.match(css, /\.faculty-copy > h1\s*\{[^}]*font-size:\s*clamp\(2\.15rem, 3vw, 3\.35rem\);/s);
+  assert.match(css, /\.people-section-heading h2\s*\{[^}]*white-space:\s*nowrap;/s);
   assert.match(html, /Alumni/);
   assert.match(html, /Name to be added/);
   assert.match(html, /faculty-intro/);
