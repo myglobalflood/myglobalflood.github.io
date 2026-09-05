@@ -2,27 +2,51 @@ import { SiteFrame } from "../components/site-frame";
 import { books, intellectualProperty, publications } from "../site-data";
 import { withBasePath } from "../site-path";
 
-function PublicationContent({
-  paper,
-  index,
-}: {
-  paper: (typeof publications)[number];
-  index: number;
-}) {
+type PublicationEntry = {
+  year: string;
+  title: string;
+  titleZh?: string;
+  authors: string;
+  authorsZh?: string;
+  journal: string;
+  journalZh?: string;
+  href?: string;
+};
+
+function PublicationContent({ paper }: { paper: PublicationEntry }) {
   return (
     <>
-      <span className="publication-number">{String(index + 1).padStart(2, "0")}</span>
-      <span className="publication-year">{paper.year}</span>
+      <time className="publication-year" dateTime={paper.year}>{paper.year}</time>
       <span className="publication-main">
         <strong>{paper.title}</strong>
-        {"titleZh" in paper && paper.titleZh ? <em className="zh-copy" lang="zh-CN">{paper.titleZh}</em> : null}
+        {paper.titleZh ? <em className="zh-copy" lang="zh-CN">{paper.titleZh}</em> : null}
+        <span className="publication-authors">
+          {paper.authors}
+          {paper.authorsZh ? <><br /><span className="zh-copy" lang="zh-CN">{paper.authorsZh}</span></> : null}
+        </span>
         <small>
           {paper.journal}
-          {"journalZh" in paper && paper.journalZh ? <span className="zh-copy" lang="zh-CN"> · {paper.journalZh}</span> : null}
+          {paper.journalZh ? <span className="zh-copy" lang="zh-CN"> · {paper.journalZh}</span> : null}
         </small>
       </span>
-      {"href" in paper && paper.href ? <span className="publication-arrow" aria-hidden="true">↗</span> : <span />}
+      {paper.href ? <span className="publication-arrow" aria-hidden="true">↗</span> : <span />}
     </>
+  );
+}
+
+function PublicationList({ entries }: { entries: PublicationEntry[] }) {
+  return (
+    <div className="publication-list">
+      {entries.map((entry) => entry.href ? (
+        <a className="publication" data-reveal href={entry.href} target="_blank" rel="noreferrer" key={`${entry.year}-${entry.title}`}>
+          <PublicationContent paper={entry} />
+        </a>
+      ) : (
+        <article className="publication" data-reveal key={`${entry.year}-${entry.title}`}>
+          <PublicationContent paper={entry} />
+        </article>
+      ))}
+    </div>
   );
 }
 
@@ -48,26 +72,7 @@ export default function PublicationsPage() {
           <div className="publication-hub-content">
             <section className="publication-hub-section" id="papers" aria-labelledby="papers-title">
               <h2 className="content-section-label" id="papers-title">Papers</h2>
-              <div className="publication-list">
-                {sortedPublications.map((paper, index) => (
-                  "href" in paper && paper.href ? (
-                    <a
-                      className="publication"
-                      data-reveal
-                      href={paper.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      key={`${paper.year}-${paper.title}`}
-                    >
-                      <PublicationContent paper={paper} index={index} />
-                    </a>
-                  ) : (
-                    <article className="publication" data-reveal key={`${paper.year}-${paper.title}`}>
-                      <PublicationContent paper={paper} index={index} />
-                    </article>
-                  )
-                ))}
-              </div>
+              <PublicationList entries={sortedPublications} />
               <a
                 className="work-profile-link"
                 href="https://scholar.google.com/citations?hl=zh-CN&pli=1&user=jvNCMNgAAAAJ"
@@ -81,42 +86,17 @@ export default function PublicationsPage() {
 
             <section className="publication-hub-section" id="books" aria-labelledby="books-title">
               <h2 className="content-section-label" id="books-title">Books · Scholarly Chapters</h2>
-              <div className="publication-list">
-                {books.map((book, index) => (
-                  <article className="publication" data-reveal key={book.title}>
-                    <span className="publication-number">{String(index + 1).padStart(2, "0")}</span>
-                    <span className="publication-year">{book.year}</span>
-                    <span className="publication-main">
-                      <strong>{book.title}</strong>
-                      <small>{book.text}</small>
-                    </span>
-                    <span />
-                  </article>
-                ))}
-              </div>
+              <PublicationList entries={books.map((book) => ({ ...book, journal: book.text }))} />
             </section>
 
             <section className="publication-hub-section" id="intellectual-property" aria-labelledby="ip-title">
               <h2 className="content-section-label" id="ip-title">Intellectual Property · Software Copyrights</h2>
-              <div className="publication-list">
-                {intellectualProperty.map((item, index) => (
-                  <article className="publication" data-reveal key={item.registration}>
-                    <span className="publication-number">{String(index + 1).padStart(2, "0")}</span>
-                    <span className="publication-year">{item.year}</span>
-                    <span className="publication-main">
-                      <strong>{item.title}</strong>
-                      <em className="zh-copy" lang="zh-CN">{item.titleZh}</em>
-                      <small>
-                        {item.registration} · {item.authors.split(" / ")[0]}
-                        {item.authors.includes(" / ") ? (
-                          <span className="zh-copy" lang="zh-CN"> / {item.authors.split(" / ")[1]}</span>
-                        ) : null}
-                      </small>
-                    </span>
-                    <span />
-                  </article>
-                ))}
-              </div>
+              <PublicationList entries={intellectualProperty.map((item) => ({
+                ...item,
+                authors: item.authors.split(" / ")[0],
+                authorsZh: item.authors.split(" / ")[1],
+                journal: item.registration,
+              }))} />
             </section>
           </div>
         </section>

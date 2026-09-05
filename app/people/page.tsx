@@ -13,7 +13,7 @@ export default function PeoplePage() {
       <main className="route-main people-page watermark-page">
         <div
           className="page-watermark people-page-watermark"
-          style={{ backgroundImage: `url("${withBasePath("/assets/people-qinghai-lake.jpg")}")` }}
+          style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-minnesota.jpg")}")` }}
           aria-hidden="true"
         />
 
@@ -42,11 +42,12 @@ export default function PeoplePage() {
                   </p>
                 </div>
                 <div className="portrait-wrap">
-                  <div
+                  <img
                     className="portrait"
-                    style={{ backgroundImage: `url("${withBasePath("/assets/wang-jie.jpg")}")` }}
-                    role="img"
-                    aria-label="Portrait of Jie Wang"
+                    src={withBasePath("/assets/wang-jie-cv-original.jpg")}
+                    width={114}
+                    height={160}
+                    alt="Portrait of Jie Wang"
                   />
                 </div>
                 <dl className="profile-meta glass-panel">

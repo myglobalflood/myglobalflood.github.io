@@ -85,7 +85,6 @@ test("uses a unified dark interior palette and compact section rhythm", async ()
   assert.match(css, /\.is-interior \.site-nav,[\s\S]*background:\s*rgba\(7, 22, 29, 0\.88\);/s);
   assert.match(css, /\.research-hub-section,[\s\S]*\.publication-hub-section\s*\{[^}]*padding-bottom:\s*clamp\(2rem, 3vw, 3rem\);/s);
   assert.match(css, /\.is-interior \.people-page\s*\{[^}]*linear-gradient\(180deg, #12303a 0%, #0e252e 62%, #0a1e26 100%\)/s);
-  assert.match(css, /\.is-interior \.people-page-watermark\s*\{[^}]*transform:\s*scaleX\(-1\);/s);
   assert.match(css, /--glass-surface:\s*linear-gradient\(145deg, rgba\(16, 45, 55, 0\.62\), rgba\(8, 29, 37, 0\.44\)\);/s);
   assert.match(css, /\.is-interior \.glass-panel\s*\{[^}]*background:\s*var\(--glass-surface\);[^}]*backdrop-filter:\s*blur\(var\(--glass-blur\)\) saturate\(122%\);/s);
   assert.match(css, /--accent-mint:\s*#91cfc4;[\s\S]*--accent-warm:\s*#e1b36e;/s);
@@ -130,7 +129,9 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(html, /Name to be added/);
   assert.match(html, /faculty-intro/);
   assert.match(html, /page-watermark people-page-watermark/);
-  assert.match(html, /people-qinghai-lake\.jpg/);
+  assert.match(html, /flood-hero-minnesota\.jpg/);
+  assert.match(html, /wang-jie-cv-original\.jpg/);
+  assert.match(html, /width="114" height="160"/);
   assert.doesNotMatch(html, /portrait-code|PI \/ 01/);
   assert.doesNotMatch(html, /Graduate Students/);
 });
@@ -143,6 +144,11 @@ test("publishes the verified publication record under its own route", async () =
   assert.match(html, /page-watermark publication-page-watermark/);
   assert.match(html, /work-water\.webp/);
   assert.match(html, /Papers/);
+  assert.doesNotMatch(html, /publication-number/);
+  assert.equal((html.match(/class="publication-year" dateTime="\d{4}"/g) || []).length, 38);
+  assert.equal((html.match(/class="publication-authors"/g) || []).length, 38);
+  assert.match(html, /Wang J, Chang Y, Shangguan D, Dong Y, Zhao Q, He X, Zhang S/);
+  assert.match(html, /Yun X, Wang J, Wu H, et al\./);
   assert.match(html, /Books/);
   assert.match(html, /Intellectual Property/);
   assert.match(html, /10\.1175\/JHM-D-26-0019\.1/);
