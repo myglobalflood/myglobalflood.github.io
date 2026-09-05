@@ -1,5 +1,5 @@
 import { constants } from "node:fs";
-import { copyFile, lstat, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { copyFile, lstat, mkdir, readFile, readdir, utimes, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
@@ -27,25 +27,22 @@ export async function preparePagesAssets(output, previous = []) {
     .map((name) => `_next/static/${name}`).sort();
   let retained = 0;
 
-  // Keep only each release's own assets, never its inherited history. This bounds
-  // the export to the current release plus two predecessors while caches expire.
+  // Pages HTML is cached for ten minutes. Keep a full day of old hashed assets,
+  // including through rapid successive releases, without extending their age.
+  const cutoff = Date.now() - 24 * 60 * 60 * 1000;
   for (const directory of previous.slice(0, 2)) {
-    let names;
-    try {
-      names = JSON.parse(await readFile(path.join(directory, manifestName), "utf8")).assets;
-      if (!Array.isArray(names)) throw new Error("Invalid Pages asset manifest");
-    } catch (error) {
-      if (error.code !== "ENOENT") throw error;
-      names = (await filesIn(path.join(directory, "_next/static")))
-        .map((name) => `_next/static/${name}`);
-    }
+    const names = (await filesIn(path.join(directory, "_next/static")))
+      .map((name) => `_next/static/${name}`);
     for (const name of names) {
       const source = assetPath(directory, name);
       const destination = assetPath(output, name);
-      if (!(await lstat(source)).isFile()) throw new Error(`Not a regular asset: ${name}`);
+      const sourceStat = await lstat(source);
+      if (!sourceStat.isFile()) throw new Error(`Not a regular asset: ${name}`);
+      if (sourceStat.mtimeMs < cutoff) continue;
       await mkdir(path.dirname(destination), { recursive: true });
       try {
         await copyFile(source, destination, constants.COPYFILE_EXCL);
+        await utimes(destination, sourceStat.atime, sourceStat.mtime);
         retained += 1;
       } catch (error) {
         if (error.code !== "EEXIST") throw error;

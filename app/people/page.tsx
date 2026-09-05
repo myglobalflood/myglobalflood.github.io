@@ -18,7 +18,7 @@ export default function PeoplePage() {
         />
 
         <section className="people-hub section-pad">
-          <aside className="research-local-nav people-local-nav" aria-label="People page navigation">
+          <aside className="research-local-nav people-local-nav glass-panel" aria-label="People page navigation">
             <a href="#pi"><span>01</span>PI</a>
             <a href="#members"><span>02</span>Current Members</a>
             <a href="#alumni"><span>03</span>Alumni</a>

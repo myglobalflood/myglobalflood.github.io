@@ -100,6 +100,18 @@ test("uses a unified dark interior palette and compact section rhythm", async ()
   assert.doesNotMatch(css, /\.is-interior #(members|alumni) \.eyebrow/);
 });
 
+test("shares rounded, padded glass navigation on all three content pages", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  for (const pathname of ["/people/", "/research/", "/publications/"]) {
+    const html = await (await render(pathname)).text();
+    assert.match(html, /<aside class="research-local-nav[^\"]*glass-panel"/);
+  }
+  assert.match(css, /\.research-local-nav\s*\{[^}]*padding:\s*0\.75rem;[^}]*border-radius:\s*1rem;/s);
+  assert.match(css, /\.research-local-nav a\s*\{[^}]*padding:\s*0\.8rem 0\.75rem;/s);
+  assert.match(css, /\.research-local-nav\s*\{[^}]*overflow-x:\s*auto;[^}]*padding:\s*0\.65rem 0\.8rem;/s);
+  assert.doesNotMatch(css, /\.research-local-nav\s*\{[^}]*margin-(?:left|right):\s*calc\(var\(--page-pad\) \* -1\)/s);
+});
+
 test("uses SimSun for every marked Chinese passage and separates bilingual project lines", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const [researchResponse, publicationsResponse] = await Promise.all([
