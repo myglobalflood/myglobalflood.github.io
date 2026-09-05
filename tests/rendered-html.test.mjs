@@ -312,6 +312,22 @@ test("keeps Contact content without obsolete background image credits", async ()
   assert.doesNotMatch(html, /contact-yellow-river|NASA Earth Observatory|USGS Landsat|contact-earth/);
 });
 
+test("groups verified campus coordinates at the bottom right, never as photo geolocation", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  for (const pathname of ["/", "/contact/"]) {
+    const html = await (await render(pathname)).text();
+    assert.equal((html.match(/class="campus-location"/g) || []).length, 1);
+    assert.match(html, /103\.86° E · 36\.05° N/);
+    assert.match(html, /\/ Lanzhou University/);
+    assert.match(html, /Approximate location of Lanzhou University, Chengguan Campus; not the photograph location/);
+    assert.doesNotMatch(html, /36\.03|103\.83|class="contact-coordinate"|class="hero-kicker/);
+    assert.match(html, /class="(?:hero-index hero-load|contact-meta)"><div class="campus-location"/);
+  }
+  assert.match(css, /\.hero-index\s*\{[^}]*right:\s*var\(--page-pad\);[^}]*bottom:\s*2rem;/s);
+  assert.match(css, /\.contact-meta\s*\{[^}]*justify-content:\s*flex-end;/s);
+  assert.match(css, /\.campus-location\s*\{[^}]*flex-wrap:\s*wrap;[^}]*justify-content:\s*flex-end;[^}]*text-align:\s*right;/s);
+});
+
 test("ships the final brand and social assets", async () => {
   const [layout] = await Promise.all([
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),

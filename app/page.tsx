@@ -1,4 +1,5 @@
 import { SiteFrame } from "./components/site-frame";
+import { CampusLocation } from "./components/campus-location";
 import { withBasePath } from "./site-path";
 
 export default function Home() {
@@ -13,10 +14,6 @@ export default function Home() {
           />
           <div className="hero-shade" aria-hidden="true" />
           <div className="hero-grid" aria-hidden="true" />
-          <div className="hero-kicker hero-load">
-            <span>36.03° N · 103.83° E</span>
-            <span>Lanzhou University</span>
-          </div>
           <div className="hero-copy">
             <div className="hero-copy-center">
               <p className="eyebrow hero-load">Floods, understood.</p>
@@ -28,7 +25,8 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-index hero-load">
-            <span>Flood · Climate · Resilience</span>
+            <CampusLocation />
+            <span className="hero-theme-tags">Flood · Climate · Resilience</span>
           </div>
         </section>
       </main>

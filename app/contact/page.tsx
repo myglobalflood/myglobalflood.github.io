@@ -1,13 +1,11 @@
 import { SiteFrame } from "../components/site-frame";
+import { CampusLocation } from "../components/campus-location";
 
 export default function ContactPage() {
   return (
     <SiteFrame active="contact" footer={false}>
       <main className="route-main contact-main">
         <section className="contact">
-          <div className="contact-coordinate" aria-hidden="true">
-            <span>36.03° N</span><span>103.83° E</span>
-          </div>
           <div className="contact-copy glass-panel">
             <p className="eyebrow">Join the work</p>
             <h1>Let&apos;s understand<br /><span>what comes next.</span></h1>
@@ -20,7 +18,7 @@ export default function ContactPage() {
             </a>
           </div>
           <div className="contact-meta">
-            <span>Lanzhou University · China</span>
+            <CampusLocation />
           </div>
         </section>
       </main>

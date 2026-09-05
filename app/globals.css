@@ -2274,3 +2274,33 @@ html[data-theme="light"] .is-interior .cursor-aura {
 @media (prefers-reduced-motion: reduce) {
   .theme-toggle { transition: none; }
 }
+
+/* Keep institutional coordinates together at the bottom right, including
+   narrow layouts. These identify the campus, not the homepage photograph. */
+.campus-location {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0 0.7em;
+  max-width: 100%;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  text-align: right;
+}
+.campus-location > span { white-space: nowrap; }
+.hero-index {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  max-width: calc(100% - var(--page-pad) * 2);
+  text-align: right;
+}
+.contact-meta {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+@media (max-width: 900px) {
+  .hero-index .hero-theme-tags { display: none; }
+}
