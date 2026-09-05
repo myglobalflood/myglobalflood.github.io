@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
+import { runInNewContext } from "node:vm";
 
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -32,7 +33,7 @@ test("renders the Flood and Global Change Group home page", async () => {
   assert.match(html, /Flood &amp; Global Change Group/);
   assert.match(html, /Floods, understood\./);
   assert.match(html, /flood-hero-village-enhanced\.png/);
-  assert.match(html, /AI-enhanced photograph/);
+  assert.doesNotMatch(html, /AI-enhanced photograph/);
   assert.match(html, /Flood · Climate · Resilience/);
   assert.doesNotMatch(html, /flood-hero-pakistan|flood-hero-minnesota|Pakistan Floods|Pano Aqil|Wayne Gray|DVIDS|Public Domain|Andrea Booher/);
   assert.doesNotMatch(html, /hero-brand-card/);
@@ -59,7 +60,7 @@ test("offers a persistent, fully adapted light theme", async () => {
     readFile(new URL("../app/components/site-frame.tsx", import.meta.url), "utf8"),
   ]);
 
-  assert.match(layout, /data-theme="dark" suppressHydrationWarning/);
+  assert.match(layout, /data-theme="light" suppressHydrationWarning/);
   assert.match(layout, /localStorage\.getItem\("fgcg-theme"\)/);
   assert.match(siteFrame, /const THEME_STORAGE_KEY = "fgcg-theme";/);
   assert.match(siteFrame, /className="theme-toggle"/);
@@ -70,11 +71,30 @@ test("offers a persistent, fully adapted light theme", async () => {
   assert.match(css, /html\[data-theme="light"\] \.is-interior \.contact-earth\s*\{[^}]*filter:/s);
   assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-copy-center::before\s*\{\s*content:\s*none;/s);
   assert.match(css, /html\[data-theme="light"\] \.is-home \.hero h1\s*\{[^}]*text-shadow:\s*none;/s);
-  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero \.eyebrow\s*\{[^}]*text-shadow:\s*none;/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero \.eyebrow\s*\{[^}]*color:\s*#55d2e9;[^}]*text-shadow:\s*0 1px 1px rgba\(0, 22, 31, 0\.9\);/s);
   assert.match(css, /html\[data-theme="light"\] \.is-home \.site-nav\.is-scrolled\s*\{[^}]*background:\s*transparent;[^}]*backdrop-filter:\s*none;/s);
-  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*filter:\s*saturate\(0?\.35\) contrast\(0?\.98\) brightness\(1\) blur\(var\(--hero-soften\)\);/s);
-  assert.match(css, /\.hero-image\s*\{[^}]*--hero-soften:\s*clamp\(0\.2px, 0\.025vw, 0\.55px\);[^}]*filter:\s*saturate\(0?\.3\) contrast\(0?\.92\) brightness\(0?\.88\) blur\(var\(--hero-soften\)\);/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*filter:\s*saturate\(var\(--photo-saturation\)\) contrast\(0?\.98\) brightness\(1\) blur\(var\(--hero-soften\)\);/s);
+  assert.match(css, /\.hero-image\s*\{[^}]*--hero-soften:\s*clamp\(0\.2px, 0\.025vw, 0\.55px\);[^}]*filter:\s*saturate\(var\(--photo-saturation\)\) contrast\(0?\.92\) brightness\(0?\.88\) blur\(var\(--hero-soften\)\);/s);
   assert.doesNotMatch(css, /\.hero(?:\s+\.hero-copy(?:-center)?|\s+h1)?\s*\{[^}]*filter:\s*blur\(/s);
+});
+
+test("defaults to light before paint while honoring an explicit saved dark preference", async () => {
+  const [layout, siteFrame] = await Promise.all([
+    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/site-frame.tsx", import.meta.url), "utf8"),
+  ]);
+  const bootScript = layout.match(/const themeBootScript = `([^`]+)`;/)[1];
+  for (const [saved, expected] of [[null, "light"], ["light", "light"], ["dark", "dark"], ["invalid", "light"], ["blocked", "light"]]) {
+    const document = { documentElement: { dataset: {}, style: {} } };
+    runInNewContext(bootScript, {
+      document,
+      localStorage: { getItem() { if (saved === "blocked") throw new Error("Storage unavailable"); return saved; } },
+    });
+    assert.equal(document.documentElement.dataset.theme, expected);
+    assert.equal(document.documentElement.style.colorScheme, expected);
+  }
+  assert.match(siteFrame, /useState<ThemeMode>\("light"\)/);
+  assert.match(siteFrame, /savedTheme === "dark" \? "dark" : "light"/);
 });
 
 test("keeps the research and publication artwork visible and fixed behind scrolling content", async () => {
@@ -126,11 +146,27 @@ test("protects light-home text contrast without heavy multi-layer fog", async ()
   for (const [red, green, blue, alpha] of stops) {
     assert.ok(alpha <= 0.56, "Keep the reduced light-home scrim; do not restore heavy fog");
     const shadow = luminance([red * alpha, green * alpha, blue * alpha]);
-    assert.ok((shadow + 0.05) / (luminance([0, 9, 13]) + 0.05) >= 4.5, "Labels must remain readable even over black image pixels");
+    assert.ok((shadow + 0.05) / (luminance([0, 9, 13]) + 0.05) >= 4.5, "Navigation and actions must remain readable even over black image pixels");
     assert.ok((shadow + 0.05) / (luminance([8, 35, 43]) + 0.05) >= 3, "Large title must retain sufficient contrast");
   }
-  assert.match(css, /\.is-home \.hero \.eyebrow\s*\{\s*color:\s*#00090d;/s);
+  assert.match(css, /\.is-home \.hero \.eyebrow\s*\{\s*color:\s*#55d2e9;/s);
   assert.match(css, /\.is-home \.site-nav nav a\s*\{\s*color:\s*#00090d;/s);
+});
+
+test("retains natural photograph colors consistently across both themes", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /\.site-shell\s*\{[^}]*--photo-saturation:\s*0\.9;/s);
+  const photoRules = [...css.matchAll(/([^{}]+)\{([^{}]*filter:\s*saturate\(var\(--photo-saturation\)\)[^{}]*)\}/g)];
+  assert.equal(photoRules.length, 8, "Home, shared interior, People and Contact must share color retention in both themes");
+  for (const [_, selector, body] of photoRules) {
+    assert.match(selector, /\.(hero-image|page-watermark|people-page-watermark|contact-earth)\s*$/);
+    assert.doesNotMatch(body, /grayscale|sepia|hue-rotate/, "Do not replace the source photograph's hues");
+  }
+  const lightScrim = css.match(/html\[data-theme="light"\] \.is-home \.hero-shade\s*\{([^}]+)\}/s)[1];
+  for (const stop of lightScrim.matchAll(/rgba\((\d+), (\d+), (\d+),/g)) {
+    const channels = stop.slice(1).map(Number);
+    assert.ok(Math.max(...channels) - Math.min(...channels) <= 3, "The light scrim must not impose a blue color cast");
+  }
 });
 
 test("raises the hero viewpoint without changing pointer parallax", async () => {

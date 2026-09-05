@@ -90,7 +90,7 @@ export function SiteFrame({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState<ThemeMode>("dark");
+  const [theme, setTheme] = useState<ThemeMode>("light");
   const shellRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -100,7 +100,7 @@ export function SiteFrame({
     } catch {
       savedTheme = null;
     }
-    const initialTheme: ThemeMode = savedTheme === "light" ? "light" : "dark";
+    const initialTheme: ThemeMode = savedTheme === "dark" ? "dark" : "light";
     document.documentElement.dataset.theme = initialTheme;
     document.documentElement.style.colorScheme = initialTheme;
     setTheme(initialTheme);

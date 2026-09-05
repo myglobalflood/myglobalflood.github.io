@@ -50,6 +50,9 @@ a:focus-visible, button:focus-visible {
 ::selection { background: var(--accent); color: #021019; }
 
 .site-shell {
+  /* Preserve the photographs' own colors in both themes; luminosity belongs
+     to each page's exposure and scrim, not an almost-monochrome filter. */
+  --photo-saturation: 0.9;
   --pointer-x: 50vw;
   --pointer-y: 50vh;
   --hero-shift-x: 0px;
@@ -1013,13 +1016,14 @@ body { background: #f7fcfd; color: var(--ink); }
      framing when cover has no vertical overflow; pointer parallax stays intact. */
   background-position: 50% 28%;
   transform-origin: 50% 20%;
-  filter: saturate(0.3) contrast(0.92) brightness(0.88) blur(var(--hero-soften));
+  filter: saturate(var(--photo-saturation)) contrast(0.92) brightness(0.88) blur(var(--hero-soften));
 }
 .hero-shade {
+  /* A near-neutral cool shade retains the greens, ochres and brick tones. */
   background:
-    linear-gradient(180deg, rgba(8, 30, 40, 0.46) 0%, rgba(8, 30, 40, 0.2) 42%, rgba(6, 26, 36, 0.54) 100%),
-    linear-gradient(90deg, rgba(9, 34, 45, 0.18) 0%, rgba(9, 34, 45, 0.12) 52%, rgba(9, 34, 45, 0.18) 100%),
-    radial-gradient(ellipse at center, rgba(8, 29, 39, 0.12) 0%, rgba(8, 29, 39, 0.18) 100%);
+    linear-gradient(180deg, rgba(20, 28, 30, 0.46) 0%, rgba(20, 28, 30, 0.2) 42%, rgba(16, 24, 26, 0.54) 100%),
+    linear-gradient(90deg, rgba(23, 32, 34, 0.18) 0%, rgba(23, 32, 34, 0.12) 52%, rgba(23, 32, 34, 0.18) 100%),
+    radial-gradient(ellipse at center, rgba(20, 27, 29, 0.12) 0%, rgba(20, 27, 29, 0.18) 100%);
 }
 .hero-copy {
   display: grid;
@@ -1839,7 +1843,7 @@ body { background: #081a21; }
 .is-interior .route-main { background: #102831; }
 .is-interior .watermark-page { background: #0c2129; }
 .is-interior .page-watermark {
-  filter: saturate(0.62) contrast(1.03) brightness(0.56);
+  filter: saturate(var(--photo-saturation)) contrast(1.03) brightness(0.56);
   opacity: 0.37;
 }
 
@@ -1921,7 +1925,7 @@ body { background: #081a21; }
 }
 .is-interior .people-page-watermark {
   background-position: center 32%;
-  filter: saturate(0.7) contrast(1.02) brightness(0.72);
+  filter: saturate(var(--photo-saturation)) contrast(1.02) brightness(0.72);
   opacity: 0.48;
 }
 .people-hub-section { padding-bottom: clamp(3rem, 5vw, 4.5rem); }
@@ -2003,7 +2007,7 @@ body { background: #081a21; }
   background: #081b22;
 }
 .is-interior .contact-earth {
-  filter: saturate(0.7) contrast(1.06) brightness(0.58);
+  filter: saturate(var(--photo-saturation)) contrast(1.06) brightness(0.58);
   opacity: 0.84;
 }
 .is-interior .contact::before {
@@ -2098,12 +2102,12 @@ html[data-theme="light"] .menu-toggle span,
 html[data-theme="light"] .is-interior .menu-toggle span { background: #214f5b; }
 
 html[data-theme="light"] .is-home .hero-image {
-  filter: saturate(0.35) contrast(0.98) brightness(1) blur(var(--hero-soften));
+  filter: saturate(var(--photo-saturation)) contrast(0.98) brightness(1) blur(var(--hero-soften));
 }
 html[data-theme="light"] .is-home .hero-shade {
   /* A single even scrim preserves detail without a white halo around the title.
      Its minimum alpha also protects dark labels over the photograph's shadows. */
-  background: linear-gradient(180deg, rgba(211, 226, 230, 0.56) 0%, rgba(211, 226, 230, 0.54) 36%, rgba(211, 226, 230, 0.54) 70%, rgba(211, 226, 230, 0.56) 100%);
+  background: linear-gradient(180deg, rgba(224, 225, 223, 0.56) 0%, rgba(224, 225, 223, 0.54) 36%, rgba(224, 225, 223, 0.54) 70%, rgba(224, 225, 223, 0.56) 100%);
 }
 html[data-theme="light"] .is-home .brand-name,
 html[data-theme="light"] .is-home .site-nav nav a {
@@ -2127,8 +2131,10 @@ html[data-theme="light"] .is-home .hero-copy-center::before {
   content: none;
 }
 html[data-theme="light"] .is-home .hero .eyebrow {
-  color: #00090d;
-  text-shadow: none;
+  color: #55d2e9;
+  /* Keep the same cyan brand accent; a tight dark edge helps on light roofs
+     without restoring the broad halo behind the headline. */
+  text-shadow: 0 1px 1px rgba(0, 22, 31, 0.9);
 }
 html[data-theme="light"] .is-home .hero h1 {
   color: #08232b;
@@ -2165,7 +2171,7 @@ html[data-theme="light"] .is-interior {
 html[data-theme="light"] .is-interior .route-main { background: #d8e5e8; }
 html[data-theme="light"] .is-interior .watermark-page { background: #d5e1e4; }
 html[data-theme="light"] .is-interior .page-watermark {
-  filter: saturate(0.56) contrast(0.96) brightness(0.9);
+  filter: saturate(var(--photo-saturation)) contrast(0.96) brightness(0.9);
   opacity: 0.3;
 }
 html[data-theme="light"] .is-interior .glass-panel {
@@ -2199,7 +2205,7 @@ html[data-theme="light"] .is-interior .people-page {
     linear-gradient(180deg, #dfeaed 0%, #d4e1e4 62%, #cddde1 100%);
 }
 html[data-theme="light"] .is-interior .people-page-watermark {
-  filter: saturate(0.58) contrast(0.94) brightness(0.86);
+  filter: saturate(var(--photo-saturation)) contrast(0.94) brightness(0.86);
   opacity: 0.32;
 }
 html[data-theme="light"] .is-interior .people-hub .faculty-card {
@@ -2230,7 +2236,7 @@ html[data-theme="light"] .is-interior .contact {
   background: #cfdee2;
 }
 html[data-theme="light"] .is-interior .contact-earth {
-  filter: saturate(0.72) contrast(1) brightness(0.88);
+  filter: saturate(var(--photo-saturation)) contrast(1) brightness(0.88);
   opacity: 0.78;
 }
 html[data-theme="light"] .is-interior .contact::before {

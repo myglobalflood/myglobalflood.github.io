@@ -28,7 +28,6 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-index hero-load">
-            <span>AI-enhanced photograph</span>
             <span>Flood · Climate · Resilience</span>
           </div>
         </section>
