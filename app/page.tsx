@@ -8,7 +8,7 @@ export default function Home() {
         <section className="hero">
           <div
             className="hero-image"
-            style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-pakistan.jpg")}")` }}
+            style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-village-enhanced.png")}")` }}
             aria-hidden="true"
           />
           <div className="hero-shade" aria-hidden="true" />
@@ -28,8 +28,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-index hero-load">
-            <span>Pakistan Floods · Pano Aqil · 2010</span>
-            <a href="https://www.dvidshub.net/image/319335/pakistan-humanitarian-aid-flood-relief" target="_blank" rel="noreferrer">Wayne Gray · U.S. Army / DVIDS · Public Domain</a>
+            <span>AI-enhanced photograph</span>
             <span>Flood · Climate · Resilience</span>
           </div>
         </section>

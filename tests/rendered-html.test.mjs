@@ -31,11 +31,10 @@ test("renders the Flood and Global Change Group home page", async () => {
   const html = await response.text();
   assert.match(html, /Flood &amp; Global Change Group/);
   assert.match(html, /Floods, understood\./);
-  assert.match(html, /flood-hero-pakistan\.jpg/);
-  assert.match(html, /Pakistan Floods · Pano Aqil · 2010/);
-  assert.match(html, /Wayne Gray · U.S. Army \/ DVIDS · Public Domain/);
-  assert.match(html, /https:\/\/www.dvidshub.net\/image\/319335\/pakistan-humanitarian-aid-flood-relief/);
-  assert.doesNotMatch(html, /flood-hero-minnesota|Andrea Booher/);
+  assert.match(html, /flood-hero-village-enhanced\.png/);
+  assert.match(html, /AI-enhanced photograph/);
+  assert.match(html, /Flood · Climate · Resilience/);
+  assert.doesNotMatch(html, /flood-hero-pakistan|flood-hero-minnesota|Pakistan Floods|Pano Aqil|Wayne Gray|DVIDS|Public Domain|Andrea Booher/);
   assert.doesNotMatch(html, /hero-brand-card/);
   assert.doesNotMatch(html, /AHS Lab|Advanced Hydrological Simulation/);
 });
@@ -73,8 +72,9 @@ test("offers a persistent, fully adapted light theme", async () => {
   assert.match(css, /html\[data-theme="light"\] \.is-home \.hero h1\s*\{[^}]*text-shadow:\s*none;/s);
   assert.match(css, /html\[data-theme="light"\] \.is-home \.hero \.eyebrow\s*\{[^}]*text-shadow:\s*none;/s);
   assert.match(css, /html\[data-theme="light"\] \.is-home \.site-nav\.is-scrolled\s*\{[^}]*background:\s*transparent;[^}]*backdrop-filter:\s*none;/s);
-  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*filter:\s*saturate\(0?\.35\) contrast\(0?\.98\) brightness\(1\);/s);
-  assert.match(css, /\.hero-image\s*\{[^}]*filter:\s*saturate\(0?\.3\) contrast\(0?\.92\) brightness\(0?\.88\);/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*filter:\s*saturate\(0?\.35\) contrast\(0?\.98\) brightness\(1\) blur\(var\(--hero-soften\)\);/s);
+  assert.match(css, /\.hero-image\s*\{[^}]*--hero-soften:\s*clamp\(0\.2px, 0\.025vw, 0\.55px\);[^}]*filter:\s*saturate\(0?\.3\) contrast\(0?\.92\) brightness\(0?\.88\) blur\(var\(--hero-soften\)\);/s);
+  assert.doesNotMatch(css, /\.hero(?:\s+\.hero-copy(?:-center)?|\s+h1)?\s*\{[^}]*filter:\s*blur\(/s);
 });
 
 test("keeps the research and publication artwork visible and fixed behind scrolling content", async () => {
@@ -252,6 +252,8 @@ test("ships the final brand and social assets", async () => {
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     access(new URL("../public/assets/flood-hero-minnesota.jpg", import.meta.url)),
     access(new URL("../public/assets/flood-hero-pakistan.jpg", import.meta.url)),
+    access(new URL("../public/assets/flood-hero-village.jpg", import.meta.url)),
+    access(new URL("../public/assets/flood-hero-village-enhanced.png", import.meta.url)),
     access(new URL("../public/assets/flood-global-change-logo-frosted.png", import.meta.url)),
     access(new URL("../public/assets/contact-yellow-river.jpg", import.meta.url)),
     access(new URL("../public/assets/og.png", import.meta.url)),

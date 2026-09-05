@@ -1006,9 +1006,11 @@ body { background: #f7fcfd; color: var(--ink); }
 .is-interior .menu-toggle span { background: #12313d; }
 
 .hero-image {
-  /* Keep the selected flood photograph intact; grade only its backdrop layer. */
+  /* The AI-enhanced derivative retains a separate, untouched source image.
+     Only a trace of softening is needed; never blur the text layer. */
+  --hero-soften: clamp(0.2px, 0.025vw, 0.55px);
   background-position: 50% 46%;
-  filter: saturate(0.3) contrast(0.92) brightness(0.88);
+  filter: saturate(0.3) contrast(0.92) brightness(0.88) blur(var(--hero-soften));
 }
 .hero-shade {
   background:
@@ -2093,7 +2095,7 @@ html[data-theme="light"] .menu-toggle span,
 html[data-theme="light"] .is-interior .menu-toggle span { background: #214f5b; }
 
 html[data-theme="light"] .is-home .hero-image {
-  filter: saturate(0.35) contrast(0.98) brightness(1);
+  filter: saturate(0.35) contrast(0.98) brightness(1) blur(var(--hero-soften));
 }
 html[data-theme="light"] .is-home .hero-shade {
   /* A single even scrim preserves detail without a white halo around the title.
