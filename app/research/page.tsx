@@ -1,17 +1,10 @@
 import { SiteFrame } from "../components/site-frame";
 import { hostedProjects, monitoringSystems, openData } from "../site-data";
-import { withBasePath } from "../site-path";
 
 export default function ResearchPage() {
   return (
     <SiteFrame active="research">
       <main className="route-main watermark-page">
-        <div
-          className="page-watermark research-page-watermark"
-          style={{ backgroundImage: `url("${withBasePath("/assets/mekong-satellite.webp")}")` }}
-          aria-hidden="true"
-        />
-
         <section className="research-hub section-pad">
           <aside className="research-local-nav" aria-label="Research page navigation">
             <a href="#projects"><span>01</span>Projects</a>

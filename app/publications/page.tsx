@@ -1,6 +1,5 @@
 import { SiteFrame } from "../components/site-frame";
 import { books, intellectualProperty, publications } from "../site-data";
-import { withBasePath } from "../site-path";
 
 type PublicationEntry = {
   year: string;
@@ -56,12 +55,6 @@ export default function PublicationsPage() {
   return (
     <SiteFrame active="publications">
       <main className="route-main watermark-page">
-        <div
-          className="page-watermark publication-page-watermark"
-          style={{ backgroundImage: `url("${withBasePath("/assets/flood-hero-minnesota.jpg")}")` }}
-          aria-hidden="true"
-        />
-
         <section className="publication-hub section-pad">
           <aside className="research-local-nav publication-local-nav" aria-label="Publication page navigation">
             <a href="#papers"><span>01</span>Papers</a>

@@ -11,12 +11,6 @@ export default function PeoplePage() {
   return (
     <SiteFrame active="people">
       <main className="route-main people-page watermark-page">
-        <div
-          className="page-watermark people-page-watermark"
-          style={{ backgroundImage: `url("${withBasePath("/assets/work-water.webp")}")` }}
-          aria-hidden="true"
-        />
-
         <section className="people-hub section-pad">
           <aside className="research-local-nav people-local-nav" aria-label="People page navigation">
             <a href="#pi"><span>01</span>PI</a>

@@ -97,13 +97,18 @@ test("defaults to light before paint while honoring an explicit saved dark prefe
   assert.match(siteFrame, /savedTheme === "dark" \? "dark" : "light"/);
 });
 
-test("keeps the research and publication artwork visible and fixed behind scrolling content", async () => {
+test("removes interior background photographs while preserving the layout and sticky navigation", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
 
   assert.match(css, /\.watermark-page\s*\{[^}]*overflow:\s*clip;[^}]*animation:\s*watermark-page-fade/s);
-  assert.match(css, /\.page-watermark\s*\{[^}]*position:\s*fixed;/s);
   assert.match(css, /\.research-local-nav\s*\{[^}]*position:\s*sticky;[^}]*top:\s*calc\(var\(--nav-height\) \+ 2rem\);/s);
-  assert.match(css, /Unified dark interior theme[\s\S]*\.is-interior \.page-watermark\s*\{[^}]*opacity:\s*0\.37;/s);
+  for (const pathname of ["/research/", "/people/", "/publications/", "/contact/"]) {
+    const response = await render(pathname);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.doesNotMatch(html, /class="(?:page-watermark|contact-earth)\b/);
+    assert.doesNotMatch(html, /background-image|mekong-satellite|work-water\.webp|flood-hero-minnesota|contact-yellow-river/);
+  }
 });
 
 test("uses a unified dark interior palette and compact section rhythm", async () => {
@@ -236,8 +241,7 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(css, /\.faculty-overview\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\) 12rem;[^}]*align-items:\s*center;/s);
   assert.match(css, /\.people-hub \.portrait\s*\{[^}]*max-width:\s*114px;[^}]*margin:\s*0;/s);
   assert.match(css, /@container faculty \(max-width:\s*38rem\)/);
-  assert.match(html, /page-watermark people-page-watermark/);
-  assert.match(html, /work-water\.webp/);
+  assert.doesNotMatch(html, /page-watermark people-page-watermark|work-water\.webp/);
   assert.doesNotMatch(html, /flood-hero-minnesota|flood-hero-pakistan/);
   assert.match(html, /wang-jie-portrait-hd\.jpg/);
   assert.match(html, /width="413" height="531"/);
@@ -250,8 +254,7 @@ test("publishes the verified publication record under its own route", async () =
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /page-watermark publication-page-watermark/);
-  assert.match(html, /flood-hero-minnesota\.jpg/);
+  assert.doesNotMatch(html, /page-watermark publication-page-watermark|flood-hero-minnesota\.jpg/);
   assert.doesNotMatch(html, /work-water\.webp|flood-hero-pakistan/);
   assert.match(html, /Papers/);
   assert.doesNotMatch(html, /publication-number/);
@@ -282,8 +285,7 @@ test("links both operational monitoring systems", async () => {
   const html = await response.text();
   assert.match(html, /GBMMS\.html/);
   assert.match(html, /LMRBMS\.html/);
-  assert.match(html, /page-watermark research-page-watermark/);
-  assert.match(html, /mekong-satellite\.webp/);
+  assert.doesNotMatch(html, /page-watermark research-page-watermark|mekong-satellite\.webp/);
   assert.match(html, /188649f5-bbef-4588-a44c-e6af578b0238/);
   assert.match(html, /10\.11888\/Atmos\.tpdc\.303450/);
   assert.match(html, /黄河源逐日0\.1°校正气象数据集/);
@@ -299,14 +301,15 @@ test("links both operational monitoring systems", async () => {
   assert.doesNotMatch(html, /Research · Basin Intelligence|One system|Three scales|From hillslopes/);
 });
 
-test("uses the Yellow River Delta image for the contact page", async () => {
+test("keeps Contact content without obsolete background image credits", async () => {
   const response = await render("/contact/");
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /contact-yellow-river\.jpg/);
-  assert.match(html, /NASA Earth Observatory/);
-  assert.doesNotMatch(html, /contact-earth\.webp/);
+  assert.match(html, /jiewang@lzu\.edu\.cn/);
+  assert.match(html, /Lanzhou University/);
+  assert.match(html, /contact-copy glass-panel/);
+  assert.doesNotMatch(html, /contact-yellow-river|NASA Earth Observatory|USGS Landsat|contact-earth/);
 });
 
 test("ships the final brand and social assets", async () => {
