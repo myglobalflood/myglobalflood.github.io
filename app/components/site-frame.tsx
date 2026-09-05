@@ -159,7 +159,7 @@ export function SiteFrame({
       <header className={`site-nav ${scrolled || !home ? "is-scrolled" : ""}`}>
         <a className="brand" href={withBasePath("/")} aria-label="Flood and Global Change Group home">
           <span className="brand-mark">
-            <img src={withBasePath("/assets/flood-global-change-logo-frosted.png")} alt="" />
+            <img src={withBasePath("/assets/flood-global-change-logo-frosted.png")} width={48} height={48} alt="" />
           </span>
           <span className="brand-name">Flood &amp; Global<br />Change Group</span>
         </a>

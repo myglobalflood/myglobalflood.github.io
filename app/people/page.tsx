@@ -27,28 +27,30 @@ export default function PeoplePage() {
           <div className="people-hub-content">
             <section className="people-hub-section" id="pi" aria-labelledby="faculty-title">
               <article className="faculty-card glass-panel" data-reveal>
-                <div className="faculty-copy faculty-intro">
-                  <p className="eyebrow">People · Principal Investigator</p>
-                  <h1 id="faculty-title">Jie Wang <span className="zh-copy" lang="zh-CN">王杰</span></h1>
-                  <p className="profile-role">
-                    Lecturer · Professional Master&apos;s Supervisor<br />
-                    Institute of Hydrology and Water Resources Engineering
-                  </p>
-                  <p className="profile-bio">
-                    Dr. Wang studies floods and global change. His work connects
-                    high-performance hydrological–hydrodynamic modelling, flood
-                    attribution and multi-scale monitoring to understand changing
-                    flood regimes across complex river basins.
-                  </p>
-                </div>
-                <div className="portrait-wrap">
-                  <img
-                    className="portrait"
-                    src={withBasePath("/assets/wang-jie-cv-original.jpg")}
-                    width={114}
-                    height={160}
-                    alt="Portrait of Jie Wang"
-                  />
+                <div className="faculty-overview">
+                  <div className="faculty-copy faculty-intro">
+                    <p className="eyebrow">People · Principal Investigator</p>
+                    <h1 id="faculty-title">Jie Wang <span className="zh-copy" lang="zh-CN">王杰</span></h1>
+                    <p className="profile-role">
+                      Lecturer · Professional Master&apos;s Supervisor<br />
+                      Institute of Hydrology and Water Resources Engineering
+                    </p>
+                    <p className="profile-bio">
+                      Dr. Wang studies floods and global change. His work connects
+                      high-performance hydrological–hydrodynamic modelling, flood
+                      attribution and multi-scale monitoring to understand changing
+                      flood regimes across complex river basins.
+                    </p>
+                  </div>
+                  <div className="portrait-wrap">
+                    <img
+                      className="portrait"
+                      src={withBasePath("/assets/wang-jie-cv-original.jpg")}
+                      width={114}
+                      height={160}
+                      alt="Portrait of Jie Wang"
+                    />
+                  </div>
                 </div>
                 <dl className="profile-meta glass-panel">
                   <div><dt>Appointment</dt><dd>Lecturer since June 2022</dd></div>

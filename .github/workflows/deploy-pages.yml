@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -35,6 +36,44 @@ jobs:
           GITHUB_PAGES: "true"
           NEXT_PUBLIC_SITE_URL: https://myglobalflood.github.io/
         run: npm run build:pages
+
+      - name: Download assets from the two previous successful releases
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs/promises');
+            const path = require('node:path');
+            const directory = path.join(process.env.RUNNER_TEMP, 'previous-pages');
+            await fs.mkdir(directory, { recursive: true });
+            const { data } = await github.rest.actions.listWorkflowRuns({
+              ...context.repo, workflow_id: 'deploy-pages.yml',
+              branch: 'main', status: 'success', per_page: 2
+            });
+            for (const [index, run] of data.workflow_runs.entries()) {
+              const { data: artifacts } = await github.rest.actions.listWorkflowRunArtifacts({
+                ...context.repo, run_id: run.id
+              });
+              const artifact = artifacts.artifacts.find(item => item.name === 'github-pages' && !item.expired);
+              if (!artifact) continue;
+              const { data: archive } = await github.rest.actions.downloadArtifact({
+                ...context.repo, artifact_id: artifact.id, archive_format: 'zip'
+              });
+              await fs.writeFile(path.join(directory, `${index}.zip`), Buffer.from(archive));
+            }
+
+      - name: Retain cached-page assets and check all exported page references
+        shell: bash
+        run: |
+          previous=()
+          for archive in "$RUNNER_TEMP"/previous-pages/*.zip; do
+            [ -f "$archive" ] || continue
+            directory="${archive%.zip}"
+            mkdir -p "$directory"
+            unzip -q "$archive" -d "$directory"
+            tar -xf "$directory/artifact.tar" -C "$directory"
+            previous+=("$directory")
+          done
+          node scripts/prepare-pages-assets.mjs out "${previous[@]}"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

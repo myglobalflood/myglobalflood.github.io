@@ -72,6 +72,9 @@ test("offers a persistent, fully adapted light theme", async () => {
   assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-copy-center::before\s*\{\s*content:\s*none;/s);
   assert.match(css, /html\[data-theme="light"\] \.is-home \.hero h1\s*\{[^}]*text-shadow:\s*none;/s);
   assert.match(css, /html\[data-theme="light"\] \.is-home \.hero \.eyebrow\s*\{[^}]*text-shadow:\s*none;/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-home \.site-nav\.is-scrolled\s*\{[^}]*background:\s*transparent;[^}]*backdrop-filter:\s*none;/s);
+  assert.match(css, /html\[data-theme="light"\] \.is-home \.hero-image\s*\{[^}]*filter:\s*saturate\(0?\.4\) contrast\(1\.02\) brightness\(1\.03\);/s);
+  assert.match(css, /\.hero-image\s*\{[^}]*filter:\s*saturate\(0?\.3\) contrast\(0?\.92\) brightness\(0?\.88\);/s);
 });
 
 test("keeps the research and publication artwork visible and fixed behind scrolling content", async () => {
@@ -133,6 +136,11 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(html, /Alumni/);
   assert.match(html, /Name to be added/);
   assert.match(html, /faculty-intro/);
+  assert.ok(html.indexOf('id="faculty-title"') < html.indexOf('class="profile-bio"'));
+  assert.ok(html.indexOf('class="profile-bio"') < html.indexOf('class="portrait-wrap"'));
+  assert.match(css, /\.faculty-overview\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\) 12rem;[^}]*align-items:\s*center;/s);
+  assert.match(css, /\.people-hub \.portrait\s*\{[^}]*max-width:\s*114px;[^}]*margin:\s*0;/s);
+  assert.match(css, /@container faculty \(max-width:\s*38rem\)/);
   assert.match(html, /page-watermark people-page-watermark/);
   assert.match(html, /work-water\.webp/);
   assert.doesNotMatch(html, /flood-hero-minnesota|flood-hero-pakistan/);
