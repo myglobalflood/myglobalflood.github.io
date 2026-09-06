@@ -31,9 +31,8 @@ export default function PeoplePage() {
                     </p>
                     <p className="profile-bio">
                       Dr. Wang studies floods and global change. His work connects
-                      high-performance hydrological–hydrodynamic modelling, flood
-                      attribution and multi-scale monitoring to understand changing
-                      flood regimes across complex river basins.
+                      flood simulation and assessment,flood changes and attribution analysis
+                      and flood monitoring and forecasting.
                     </p>
                   </div>
                   <div className="portrait-wrap">
