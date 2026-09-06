@@ -31,8 +31,7 @@ export default function PeoplePage() {
                     </p>
                     <p className="profile-bio">
                       Dr. Wang studies floods and global change. His work connects
-                      flood simulation and assessment,flood changes and attribution analysis
-                      and flood monitoring and forecasting.
+                      flood simulation and assessment,flood changes and attribution analysis and flood monitoring and forecasting.
                     </p>
                   </div>
                   <div className="portrait-wrap">
