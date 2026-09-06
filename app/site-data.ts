@@ -299,7 +299,7 @@ export const intellectualProperty = [
 export const hostedProjects = [
   {
     period: "2024–2026",
-    title: "Flood Genesis and Future Change Projection in the Source Region of the Yellow River",
+    title: "The flood cause analysis and future change projection in the source region of the Yellow River",
     titleZh: "黄河源洪水成因解析和未来变化预估",
     sponsor: "National Natural Science Foundation of China · Young Scientists Fund (Category C)",
     sponsorZh: "国家自然科学基金青年科学基金项目（C类）",
@@ -317,7 +317,7 @@ export const hostedProjects = [
   },
   {
     period: "2025–2026",
-    title: "Testing and Optimization of Meteorological Risk Warning Products for Reservoir Rainstorm and Flood Disasters in Xinjiang",
+    title: "Testing and Optimization of Meteorological Risk Warning Products for Storm-induced Flood Disasters in Xinjiang reservoirs",
     titleZh: "新疆水库暴雨洪水灾害气象风险预警产品测试与优化",
     sponsor: "National Meteorological Centre · Commissioned Project",
     sponsorZh: "中国气象局国家气象中心业务委托项目",
@@ -326,7 +326,7 @@ export const hostedProjects = [
   },
   {
     period: "2023–2024",
-    title: "Development, Improvement and Calibration of a Refined Distributed Forecasting Model for the Liujiang River Basin",
+    title: "Development and Improvement of a Refined Distributed Forecasting Model for the Liujiang River Basin",
     titleZh: "柳江流域精细化分布式预报模型建设改进与调试",
     sponsor: "National Meteorological Centre · Commissioned Project",
     sponsorZh: "中国气象局国家气象中心业务委托项目",
@@ -335,7 +335,7 @@ export const hostedProjects = [
   },
   {
     period: "2025",
-    title: "Hydrometeorological Model Upgrade, Testing, Validation and Code Optimization",
+    title: "Upgrade and Code Optimization for Hydrometeorological Model",
     titleZh: "水文气象模型升级测试检验与代码优化",
     sponsor: "National Meteorological Centre · Commissioned Project",
     sponsorZh: "中国气象局国家气象中心业务委托项目",
