@@ -313,13 +313,13 @@ test("keeps Contact content without obsolete background image credits", async ()
   assert.doesNotMatch(html, /contact-yellow-river|NASA Earth Observatory|USGS Landsat|contact-earth/);
 });
 
-test("groups verified campus coordinates at the bottom right, never as photo geolocation", async () => {
+test("keeps the owner's simplified corner label at the bottom right", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   for (const pathname of ["/", "/contact/"]) {
     const html = await (await render(pathname)).text();
     assert.equal((html.match(/class="campus-location"/g) || []).length, 1);
-    assert.match(html, /103\.86° E · 36\.05° N/);
-    assert.match(html, /\/ Lanzhou University/);
+    // The owner removed the coordinate text in the public repository.
+    assert.match(html, /class="campus-location"[^>]*><span><\/span><span>\/<\/span>/);
     assert.match(html, /Approximate location of Lanzhou University, Chengguan Campus; not the photograph location/);
     assert.doesNotMatch(html, /36\.03|103\.83|class="contact-coordinate"|class="hero-kicker/);
     assert.match(html, /class="(?:hero-index hero-load|contact-meta)"><div class="campus-location"/);
