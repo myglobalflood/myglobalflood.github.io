@@ -377,6 +377,7 @@ test("adds News as a centered publication-style list without a category sidebar"
 test("publishes two current students with original portraits and academic-only information", async () => {
   const html = await (await render("/people/")).text();
   assert.equal((html.match(/class="member-card member-profile glass-panel"/g) || []).length, 2);
+  assert.equal((html.match(/class="member-role">Master’s student<\/p>/g) || []).length, 2);
   for (const text of ["Mingyang Liu", "刘明洋", "Qian Zhang", "张倩", "Chongqing University", "Expected 2027", "cryospheric change", "格点降水数据评估"]) {
     assert.ok(html.includes(text), text);
   }

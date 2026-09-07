@@ -13,7 +13,7 @@ export const currentMembers = [
   {
     name: "Mingyang Liu",
     nameZh: "刘明洋",
-    role: "Graduate student",
+    role: "Master’s student",
     portrait: "/assets/liu-mingyang-portrait.jpg",
     portraitWidth: 3500,
     portraitHeight: 3500,
@@ -24,7 +24,7 @@ export const currentMembers = [
   {
     name: "Qian Zhang",
     nameZh: "张倩",
-    role: "Master’s student · 2024–present",
+    role: "Master’s student",
     portrait: "/assets/zhang-qian-portrait.jpg",
     portraitWidth: 186,
     portraitHeight: 264,
