@@ -7,8 +7,8 @@ export function CampusLocation() {
       className="campus-location"
       title="Approximate location of Lanzhou University, Chengguan Campus; not the photograph location"
     >
-      <span>103.86° E · 36.05° N</span>
-      <span>/ Lanzhou University</span>
+      <span></span>
+      <span>/</span>
     </div>
   );
 }
