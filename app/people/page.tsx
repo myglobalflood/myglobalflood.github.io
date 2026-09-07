@@ -63,10 +63,7 @@ export default function PeoplePage() {
             </section>
 
             <section className="people-hub-section" id="members" aria-labelledby="members-title">
-              <div className="people-section-heading" data-reveal>
-                <p className="eyebrow">Current Members</p>
-                <h2 id="members-title">Graduate students and group members.</h2>
-              </div>
+              <h2 className="content-section-label" id="members-title">Current Members</h2>
               <div className="member-grid current-member-grid">
                 {currentMembers.map((member) => (
                   <article className="member-card member-profile glass-panel" data-reveal key={member.name}>
@@ -101,17 +98,8 @@ export default function PeoplePage() {
             </section>
 
             <section className="people-hub-section" id="alumni" aria-labelledby="alumni-title">
-              <div className="people-section-heading" data-reveal>
-                <p className="eyebrow">Alumni</p>
-                <h2 id="alumni-title">Former graduate students.</h2>
-              </div>
-              <div className="member-grid">
-                {["01", "02", "03"].map((slot) => (
-                  <article className="member-card glass-panel" data-reveal key={slot}>
-                    <span>{slot}</span><h3>Name to be added</h3><p>Alumni profile</p>
-                  </article>
-                ))}
-              </div>
+              <h2 className="content-section-label" id="alumni-title">Alumni</h2>
+              <p className="section-empty">Alumni profiles will be listed here.</p>
             </section>
             <section className="people-hub-section" id="collaborators" aria-labelledby="collaborators-title">
               <h2 className="content-section-label" id="collaborators-title">Collaborators</h2>

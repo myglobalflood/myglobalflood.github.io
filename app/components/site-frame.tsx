@@ -9,10 +9,10 @@ type ThemeMode = "dark" | "light";
 const THEME_STORAGE_KEY = "fgcg-theme";
 
 const navItems: Array<{ key: RouteName; label: string; href: string }> = [
+  { key: "news", label: "News", href: "/news/" },
+  { key: "publications", label: "Publication", href: "/publications/" },
   { key: "research", label: "Research", href: "/research/" },
   { key: "people", label: "People", href: "/people/" },
-  { key: "publications", label: "Publication", href: "/publications/" },
-  { key: "news", label: "News", href: "/news/" },
   { key: "contact", label: "Contact", href: "/contact/" },
 ];
 

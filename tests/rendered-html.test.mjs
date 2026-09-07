@@ -54,6 +54,15 @@ test("keeps the shared navigation geometry stable between short and scrolling ro
   assert.ok(siteFrame.indexOf("<nav") < siteFrame.indexOf('<div className="nav-actions">'));
 });
 
+test("keeps the requested primary navigation order on every page", async () => {
+  for (const pathname of ["/", "/news/", "/publications/", "/research/", "/people/", "/contact/"]) {
+    const html = await (await render(pathname)).text();
+    const nav = html.match(/<nav\b[^>]*id="primary-navigation"[^>]*>([\s\S]*?)<\/nav>/)[1];
+    const labels = [...nav.matchAll(/<a\b[^>]*>([^<]+)<\/a>/g)].map((match) => match[1]);
+    assert.deepEqual(labels, ["News", "Publication", "Research", "People", "Contact"]);
+  }
+});
+
 test("offers a persistent, fully adapted light theme", async () => {
   const [css, layout, siteFrame] = await Promise.all([
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
@@ -235,7 +244,9 @@ test("publishes the verified principal investigator profile in a compact people 
   assert.match(css, /\.faculty-copy > h1\s*\{[^}]*font-size:\s*clamp\(2\.15rem, 3vw, 3\.35rem\);/s);
   assert.match(css, /\.people-section-heading h2\s*\{[^}]*white-space:\s*nowrap;/s);
   assert.match(html, /Alumni/);
-  assert.match(html, /Name to be added/);
+  assert.doesNotMatch(html, /Name to be added|Graduate students and group members\.|Former graduate students\./);
+  assert.match(html, /class="content-section-label" id="members-title">Current Members<\/h2>/);
+  assert.match(html, /class="content-section-label" id="alumni-title">Alumni<\/h2><p class="section-empty">Alumni profiles will be listed here\./);
   assert.match(html, /faculty-intro/);
   assert.ok(html.indexOf('id="faculty-title"') < html.indexOf('class="profile-bio"'));
   assert.ok(html.indexOf('class="profile-bio"') < html.indexOf('class="portrait-wrap"'));
