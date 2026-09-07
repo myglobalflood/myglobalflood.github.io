@@ -381,6 +381,12 @@ test("publishes two current students with original portraits and academic-only i
   }
 });
 
+test("uses consistent rectangular portrait display dimensions without altering source files", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /\.people-hub \.portrait\s*\{[^}]*max-width:\s*114px;[^}]*height:\s*160px;[^}]*object-fit:\s*cover;/s);
+  assert.match(css, /\.member-portrait\s*\{[^}]*width:\s*114px;[^}]*height:\s*160px;[^}]*object-fit:\s*cover;[^}]*border:\s*0;[^}]*border-radius:\s*0;/s);
+});
+
 test("renames Data and adds official VIC and CaMa-Flood resources under Code", async () => {
   const html = await (await render("/research/")).text();
   assert.match(html, /href="#open-data"><span>02<\/span>Data<\/a>/);

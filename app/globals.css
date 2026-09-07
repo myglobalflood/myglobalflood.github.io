@@ -1396,7 +1396,9 @@ footer { background: #edf8fa; }
   display: block;
   width: 100%;
   max-width: 114px;
-  height: auto;
+  height: 160px;
+  object-fit: cover;
+  object-position: center top;
   aspect-ratio: auto;
   margin: 0;
 }
@@ -2001,11 +2003,11 @@ body { background: #081a21; }
   max-width: 64rem;
 }
 .member-profile { align-content: start; gap: 1.75rem; padding: clamp(1.4rem, 2.4vw, 2rem); }
-.member-overview { display: grid; grid-template-columns: minmax(0, 1fr) 7rem; align-items: center; gap: 1.25rem; min-height: 10rem; }
+.member-overview { display: grid; grid-template-columns: minmax(0, 1fr) 114px; align-items: center; gap: 1.25rem; min-height: 160px; }
 .member-profile h3 { margin: 0 0 0.65rem; color: var(--ink); font-size: 1.65rem; line-height: 1.2; }
 .member-profile h3 span { display: block; margin-top: 0.5rem; color: var(--accent-warm); font-size: 1.05rem; }
 .member-profile .member-role { font-size: 0.9rem; line-height: 1.6; }
-.member-portrait { display: block; width: 7rem; max-width: 100%; height: auto; border: 0; border-radius: 0; filter: none; }
+.member-portrait { display: block; width: 114px; max-width: 100%; height: 160px; object-fit: cover; object-position: center top; border: 0; border-radius: 0; filter: none; }
 .member-details { display: grid; gap: 1.5rem; margin: 0; min-width: 0; }
 .member-details dt { margin-bottom: 0.55rem; color: var(--accent); font-family: var(--font-geist-mono), monospace; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .member-details dd { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.65; overflow-wrap: anywhere; }
