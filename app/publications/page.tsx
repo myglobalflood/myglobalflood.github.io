@@ -59,7 +59,8 @@ export default function PublicationsPage() {
           <aside className="research-local-nav publication-local-nav" aria-label="Publication page navigation">
             <a href="#papers"><span>01</span>Papers</a>
             <a href="#books"><span>02</span>Books</a>
-            <a href="#intellectual-property"><span>03</span>Intellectual Property</a>
+            <a href="#patents"><span>03</span>Patents</a>
+            <a href="#intellectual-property"><span>04</span>Intellectual Property</a>
           </aside>
 
           <div className="publication-hub-content">
@@ -80,6 +81,11 @@ export default function PublicationsPage() {
             <section className="publication-hub-section" id="books" aria-labelledby="books-title">
               <h2 className="content-section-label" id="books-title">Books · Scholarly Chapters</h2>
               <PublicationList entries={books.map((book) => ({ ...book, journal: book.text }))} />
+            </section>
+
+            <section className="publication-hub-section" id="patents" aria-labelledby="patents-title">
+              <h2 className="content-section-label" id="patents-title">Patents</h2>
+              <p className="section-empty">Patent records will be listed here.</p>
             </section>
 
             <section className="publication-hub-section" id="intellectual-property" aria-labelledby="ip-title">

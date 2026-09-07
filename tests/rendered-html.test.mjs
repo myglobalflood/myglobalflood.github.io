@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 import { runInNewContext } from "node:vm";
+import { createHash } from "node:crypto";
 
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -102,7 +103,7 @@ test("removes interior background photographs while preserving the layout and st
 
   assert.match(css, /\.watermark-page\s*\{[^}]*overflow:\s*clip;[^}]*animation:\s*watermark-page-fade/s);
   assert.match(css, /\.research-local-nav\s*\{[^}]*position:\s*sticky;[^}]*top:\s*calc\(var\(--nav-height\) \+ 2rem\);/s);
-  for (const pathname of ["/research/", "/people/", "/publications/", "/contact/"]) {
+  for (const pathname of ["/research/", "/people/", "/publications/", "/news/", "/contact/"]) {
     const response = await render(pathname);
     assert.equal(response.status, 200);
     const html = await response.text();
@@ -342,4 +343,66 @@ test("ships the final brand and social assets", async () => {
 
   assert.match(layout, /assets\/flood-global-change-logo-frosted\.png/);
   assert.doesNotMatch(layout, /favicon\.svg/);
+});
+
+test("adds News as a centered publication-style list without a category sidebar", async () => {
+  const response = await render("/news/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="is-active" href="\/news\/"/);
+  assert.match(html, /class="news-hub section-pad"/);
+  assert.equal((html.match(/class="publication news-item"/g) || []).length, 1);
+  assert.match(html, /dateTime="2026-07-02">2026\.07\.02/);
+  assert.match(html, /黄河源逐日0\.1°校正气象数据集（1951–2024）发布/);
+  assert.match(html, /https:\/\/data\.tpdc\.ac\.cn\/zh-hans\/news\/636d7300-e15a-4967-b72d-9ca2aed3e483" target="_blank" rel="noreferrer"/);
+  assert.doesNotMatch(html, /<aside|content-section-label|>Papers<|>Books</);
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /grid-template-columns:\s*repeat\(5, max-content\)/);
+  assert.match(css, /\.site-nav nav\s*\{[^}]*justify-content:\s*safe center;[^}]*overflow-y:\s*auto;/s);
+  assert.match(css, /\.news-hub\s*\{\s*max-width:\s*calc\(70rem \+ var\(--page-pad\) \* 2\);/);
+  assert.match(css, /\.news-item \.publication-main\s*\{[^}]*grid-row:\s*2;/);
+});
+
+test("publishes two current students with original portraits and academic-only information", async () => {
+  const html = await (await render("/people/")).text();
+  assert.equal((html.match(/class="member-card member-profile glass-panel"/g) || []).length, 2);
+  for (const text of ["Mingyang Liu", "刘明洋", "Qian Zhang", "张倩", "Chongqing University", "Expected 2027", "cryospheric change", "格点降水数据评估"]) {
+    assert.ok(html.includes(text), text);
+  }
+  assert.match(html, /liu-mingyang-portrait\.jpg" width="3500" height="3500"/);
+  assert.match(html, /zhang-qian-portrait\.jpg" width="186" height="264"/);
+  assert.doesNotMatch(html, /135-2517|3043892729|政治面貌|共青团员|25岁|简历\.docx/);
+  for (const [filename, hash] of [
+    ["liu-mingyang-portrait.jpg", "3643d0629b8d8e6b5b498f5e8de79d2b8c7790b2aaf538dcb8be91a6a7490b41"],
+    ["zhang-qian-portrait.jpg", "8d96e00fff05587fa7605e37e5555425a8dc2e79227cfabaedc61f6903d9ebbf"],
+  ]) {
+    const bytes = await readFile(new URL(`../public/assets/${filename}`, import.meta.url));
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), hash);
+  }
+});
+
+test("renames Data and adds official VIC and CaMa-Flood resources under Code", async () => {
+  const html = await (await render("/research/")).text();
+  assert.match(html, /href="#open-data"><span>02<\/span>Data<\/a>/);
+  assert.match(html, /id="data-title">Data<\/h2>/);
+  assert.doesNotMatch(html, />Open Data</);
+  assert.match(html, /href="#code"/);
+  assert.match(html, /id="code" aria-labelledby="code-title"/);
+  for (const href of ["https://vic.readthedocs.io/en/master/", "https://global-hydrodynamics.github.io/", "https://github.com/UW-Hydro/VIC", "https://github.com/global-hydrodynamics/CaMa-Flood_v4"]) {
+    assert.ok(html.includes(`href="${href}" target="_blank" rel="noreferrer"`));
+  }
+  assert.match(html, /UW Hydro · University of Washington/);
+  assert.match(html, /Global Hydrodynamics Lab · The University of Tokyo/);
+});
+
+test("adds separate collaborator and patent sections without inventing records", async () => {
+  const people = await (await render("/people/")).text();
+  const publications = await (await render("/publications/")).text();
+  assert.match(people, /href="#collaborators"/);
+  assert.match(people, /id="collaborators" aria-labelledby="collaborators-title"/);
+  assert.match(people, /Collaborator profiles will be listed here\./);
+  assert.match(publications, /href="#patents"/);
+  assert.match(publications, /id="patents" aria-labelledby="patents-title"/);
+  assert.match(publications, /Patent records will be listed here\./);
+  assert.match(publications, /id="ip-title">Intellectual Property · Software Copyrights/);
 });

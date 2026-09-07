@@ -1,5 +1,6 @@
 import { SiteFrame } from "../components/site-frame";
 import { withBasePath } from "../site-path";
+import { currentMembers } from "../site-data";
 
 const profileLinks = [
   { label: "ORCID", value: "0000-0003-2520-2920", href: "https://orcid.org/0000-0003-2520-2920" },
@@ -16,6 +17,7 @@ export default function PeoplePage() {
             <a href="#pi"><span>01</span>PI</a>
             <a href="#members"><span>02</span>Current Members</a>
             <a href="#alumni"><span>03</span>Alumni</a>
+            <a href="#collaborators"><span>04</span>Collaborators</a>
           </aside>
 
           <div className="people-hub-content">
@@ -67,10 +69,34 @@ export default function PeoplePage() {
                 <p className="eyebrow">Current Members</p>
                 <h2 id="members-title">Graduate students and group members.</h2>
               </div>
-              <div className="member-grid">
-                {["01", "02", "03"].map((slot) => (
-                  <article className="member-card glass-panel" data-reveal key={slot}>
-                    <span>{slot}</span><h3>Name to be added</h3><p>Graduate student profile</p>
+              <div className="member-grid current-member-grid">
+                {currentMembers.map((member) => (
+                  <article className="member-card member-profile glass-panel" data-reveal key={member.name}>
+                    <div className="member-overview">
+                      <div>
+                        <h3>{member.name}<span className="zh-copy" lang="zh-CN">{member.nameZh}</span></h3>
+                        <p className="member-role">{member.role}</p>
+                      </div>
+                      <img
+                        className="member-portrait"
+                        src={withBasePath(member.portrait)}
+                        width={member.portraitWidth}
+                        height={member.portraitHeight}
+                        alt={`Portrait of ${member.name}`}
+                        loading="lazy"
+                      />
+                    </div>
+                    <dl className="member-details">
+                      <div>
+                        <dt>Research</dt>
+                        <dd>{member.research}</dd>
+                        <dd className="zh-copy" lang="zh-CN">{member.researchZh}</dd>
+                      </div>
+                      <div>
+                        <dt>Education</dt>
+                        {member.education.map((entry) => <dd key={entry}>{entry}</dd>)}
+                      </div>
+                    </dl>
                   </article>
                 ))}
               </div>
@@ -88,6 +114,10 @@ export default function PeoplePage() {
                   </article>
                 ))}
               </div>
+            </section>
+            <section className="people-hub-section" id="collaborators" aria-labelledby="collaborators-title">
+              <h2 className="content-section-label" id="collaborators-title">Collaborators</h2>
+              <p className="section-empty">Collaborator profiles will be listed here.</p>
             </section>
           </div>
         </section>

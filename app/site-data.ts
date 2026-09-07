@@ -1,3 +1,65 @@
+// Title and publication date verified against the linked TPDC news record.
+export const news = [
+  {
+    date: "2026-07-02",
+    title: "New release: 0.1° bias-corrected daily meteorological data for the Source Region of the Yellow River (1951–2024)",
+    titleZh: "黄河源逐日0.1°校正气象数据集（1951–2024）发布",
+    source: "National Tibetan Plateau Data Center",
+    href: "https://data.tpdc.ac.cn/zh-hans/news/636d7300-e15a-4967-b72d-9ca2aed3e483",
+  },
+];
+
+export const currentMembers = [
+  {
+    name: "Mingyang Liu",
+    nameZh: "刘明洋",
+    role: "Graduate student",
+    portrait: "/assets/liu-mingyang-portrait.jpg",
+    portraitWidth: 3500,
+    portraitHeight: 3500,
+    education: ["Undergraduate education · Chongqing University"],
+    research: "Machine-learning approaches to evapotranspiration responses under cryospheric change.",
+    researchZh: "基于机器学习的冰冻圈变化背景下的蒸散发效应",
+  },
+  {
+    name: "Qian Zhang",
+    nameZh: "张倩",
+    role: "Master’s student · 2024–present",
+    portrait: "/assets/zhang-qian-portrait.jpg",
+    portraitWidth: 186,
+    portraitHeight: 264,
+    education: [
+      "Master’s in Civil and Hydraulic Engineering · Lanzhou University · Expected 2027",
+      "Bachelor’s in Water Engineering · Hohai University · 2024",
+    ],
+    research: "Hydrological modelling, gridded precipitation data evaluation, and coupled hydrological–hydrodynamic simulation.",
+    researchZh: "水文模型、格点降水数据评估、水文水动力模拟",
+  },
+];
+
+export const codeResources = [
+  {
+    name: "VIC",
+    title: "Variable Infiltration Capacity",
+    titleZh: "可变下渗容量水文模型",
+    text: "A macroscale hydrologic model for simulating water and energy balances.",
+    maintainer: "UW Hydro · University of Washington",
+    href: "https://vic.readthedocs.io/en/master/",
+    linkLabel: "Documentation",
+    sourceHref: "https://github.com/UW-Hydro/VIC",
+  },
+  {
+    name: "CaMa-Flood",
+    title: "Catchment-based Macro-scale Floodplain Model",
+    titleZh: "大尺度河流与洪泛区水动力模型",
+    text: "A global river model for simulating river discharge and floodplain inundation.",
+    maintainer: "Global Hydrodynamics Lab · The University of Tokyo",
+    href: "https://global-hydrodynamics.github.io/",
+    linkLabel: "Official website",
+    sourceHref: "https://github.com/global-hydrodynamics/CaMa-Flood_v4",
+  },
+];
+
 export const monitoringSystems = [
   {
     code: "GBM",

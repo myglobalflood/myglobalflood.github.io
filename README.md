@@ -13,7 +13,9 @@ npm install
 npm run dev
 ```
 
-The site is organized as separate routes for Home, Research, People, Publications, and Contact.
+The site is organized as separate routes for Home, Research, People, Publications, News, and Contact.
+
+Research includes Projects, Data, Code, and Funding. People includes current members, alumni, and collaborators; Publications keeps papers, books, patents, and software copyrights separate. News items, member profiles, and model resource links are maintained in `app/site-data.ts`.
 
 ## Publishing
 

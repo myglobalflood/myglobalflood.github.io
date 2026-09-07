@@ -1,5 +1,5 @@
 import { SiteFrame } from "../components/site-frame";
-import { hostedProjects, monitoringSystems, openData } from "../site-data";
+import { codeResources, hostedProjects, monitoringSystems, openData } from "../site-data";
 
 export default function ResearchPage() {
   return (
@@ -8,8 +8,9 @@ export default function ResearchPage() {
         <section className="research-hub section-pad">
           <aside className="research-local-nav" aria-label="Research page navigation">
             <a href="#projects"><span>01</span>Projects</a>
-            <a href="#open-data"><span>02</span>Open Data</a>
-            <a href="#funding"><span>03</span>Funding</a>
+            <a href="#open-data"><span>02</span>Data</a>
+            <a href="#code"><span>03</span>Code</a>
+            <a href="#funding"><span>04</span>Funding</a>
           </aside>
 
           <div className="research-hub-content">
@@ -38,7 +39,7 @@ export default function ResearchPage() {
             </section>
 
             <section className="research-hub-section" id="open-data" aria-labelledby="data-title">
-              <h2 className="content-section-label" id="data-title">Open Data</h2>
+              <h2 className="content-section-label" id="data-title">Data</h2>
               <div className="research-card-grid">
                 {openData.map((dataset) => (
                   <a
@@ -57,6 +58,27 @@ export default function ResearchPage() {
                     </div>
                     <span className="system-action">DOI {dataset.doi} ↗</span>
                   </a>
+                ))}
+              </div>
+            </section>
+
+            <section className="research-hub-section" id="code" aria-labelledby="code-title">
+              <h2 className="content-section-label" id="code-title">Code</h2>
+              <div className="research-card-grid">
+                {codeResources.map((resource) => (
+                  <article className="system-card resource-card code-card glass-panel" data-reveal key={resource.name}>
+                    <span className="system-code">{resource.name}</span>
+                    <div>
+                      <h3>{resource.title}</h3>
+                      <p className="system-title-zh zh-copy" lang="zh-CN">{resource.titleZh}</p>
+                      <p>{resource.text}</p>
+                      <p className="code-maintainer">{resource.maintainer}</p>
+                    </div>
+                    <div className="code-links">
+                      <a href={resource.href} target="_blank" rel="noreferrer">{resource.linkLabel} <span aria-hidden="true">↗</span></a>
+                      <a href={resource.sourceHref} target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a>
+                    </div>
+                  </article>
                 ))}
               </div>
             </section>
