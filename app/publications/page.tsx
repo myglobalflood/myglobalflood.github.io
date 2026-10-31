@@ -60,7 +60,7 @@ export default function PublicationsPage() {
             <a href="#papers"><span>01</span>Papers</a>
             <a href="#books"><span>02</span>Books</a>
             <a href="#patents"><span>03</span>Patents</a>
-            <a href="#intellectual-property"><span>04</span>Intellectual Property</a>
+            <a href="#intellectual-property"><span>04</span>Software</a>
           </aside>
 
           <div className="publication-hub-content">
@@ -89,7 +89,7 @@ export default function PublicationsPage() {
             </section>
 
             <section className="publication-hub-section" id="intellectual-property" aria-labelledby="ip-title">
-              <h2 className="content-section-label" id="ip-title">Intellectual Property · Software Copyrights</h2>
+              <h2 className="content-section-label" id="ip-title"> Software Copyrights</h2>
               <PublicationList entries={intellectualProperty.map((item) => ({
                 ...item,
                 authors: item.authors.split(" / ")[0],
