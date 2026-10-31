@@ -307,6 +307,20 @@ export const books = [
 ];
 
 export const intellectualProperty = [
+ {
+    year: "2026",
+    title: "Basin-wide Flood Extration and Assessment Software V1.0",
+    titleZh: "流域洪水要素提取和评估软件V1.0",
+    authors: "Jie Wang / 王杰",
+    registration: "2026SR1094666",
+  },
+  {
+    year: "2026",
+    title: "intervening Routing by Incorporating In-situ Data Software V1.0",
+    titleZh: "融入站点观测的区间汇流软件V1.0",
+    authors: "Jie Wang · Qian Zhang / 王杰 · 张倩",
+    registration: "2026SR1094663",
+  },
   {
     year: "2025",
     title: "Basin High-Performance Water-Element Monitoring and Forecasting System Software V1.0",
